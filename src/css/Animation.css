@@ -1,0 +1,23 @@
+
+/* sidebar_right div는 오른쪽에서 시작하기 때문에 해당 -로 조정해줘야 한다 */
+@keyframes slideInFromRight {
+    from { transform: translateX(0); /* 오른쪽 벽면 기준 -280px에서 시작 */ }
+    to { transform: translateX(-120%); /* 원래 위치로 이동 */ }
+}
+
+@keyframes slideOutToRight {
+    from { transform: translateX(-120%); /* 원래 위치로 시작 */ }
+    to { transform: translateX(0); /* 화면의 오른쪽으로 이동 */ }
+}
+
+.slide-in {
+    animation: slideInFromRight 0.3s ease-out forwards;
+}
+
+.slide-out {
+    animation: slideOutToRight 0.3s ease-out forwards;
+}
+
+.sidebar-hidden {
+    transform: translateX(100%); /* 초기 상태에서 오른쪽에 숨김 */
+}

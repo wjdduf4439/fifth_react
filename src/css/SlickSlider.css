@@ -1,0 +1,43 @@
+.slick-slider {
+	width: 100% !important; /* 슬라이더 컨테이너의 너비를 50%로 설정 */
+	height: 400px; /* 슬라이더 컨테이너 높이 설정 */
+	/* 슬라이더를 가운데 정렬 */
+	/* margin: 0 auto; */
+}
+
+/* 실제 슬라이더 요소 높이 지정 */
+.slick-vertical .slick-slide {
+	height: 300px;
+}
+    
+.slick-dots {
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 50px;
+    text-align: left; /* 가운데 정렬 */
+	
+}
+
+.slick-dots li {
+    display: inline-block;
+    margin: 0 5px; /* dot 간의 간격 조정 */
+}
+
+.slick-dots li button:before {
+    font-size: 20px; /* dot 크기 조정 */
+    color: black; /* dot 색상 조정 */
+    opacity: 0.75; /* 투명도 조정 */
+}
+
+.slick-dots li button:hover:before {
+
+}
+
+.slick-dots li.slick-active button:before {
+    color: orange; /* 활성화된 dot 색상 */
+    opacity: 1; /* 활성화된 dot 투명도 */
+}
+
+.slick-dots li.slick-active button:hover:before {
+
+}

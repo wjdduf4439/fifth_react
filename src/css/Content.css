@@ -1,0 +1,318 @@
+.container {
+	align-items: flex-start;
+	margin-top: 50px; 
+    margin-left: 300px; /* 왼쪽 사이드바의 너비 + 여백 */
+    margin-right: 300px; /* 오른쪽 사이드바의 너비 + 여백 */
+	margin-bottom: 50px; 
+}
+
+.container_toolString {
+	align-items: flex-start;
+	margin-top: 50px; 
+    margin-left: 300px; /* 왼쪽 사이드바의 너비 + 여백 */
+    margin-right: 300px; /* 오른쪽 사이드바의 너비 + 여백 */
+	margin-bottom: 50px; 
+}
+
+.content {
+    margin-left: 50px; /* 왼쪽 사이드바의 너비 + 여백 */
+    margin-right: 50px; /* 오른쪽 사이드바의 너비 + 여백 */
+	align-items: flex-start;
+	width: 100%;
+	display: inline-block;
+}
+
+.content > p {
+	width: 65%;
+}
+
+.sidebar_left {
+    position: fixed;
+    left: 0;
+    top: 70px;
+    height: 100%;
+    background-color: var(--background-color);
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+	border: 1px solid var(--background-border-color);
+}
+
+.profile_img {
+	width: 100%;
+	border: 1px solid var(--background-border-color);
+	border-radius: 50%;
+	object-fit: cover; /* 이미지가 잘리지 않도록 */
+}
+
+.about_me_ol {
+	text-decoration: none;
+	list-style-type: none; /* 번호 표기를 하지 않도록 설정 */
+}
+
+.about_me_ul {
+	width: 100%;
+	text-decoration: none;
+	list-style-type: none; /* 번호 표기를 하지 않도록 설정 */
+}
+
+.about_me_slider_div {
+	font-family: 'MaruBuri';
+	max-width: 95.5%;
+	min-height: 250px;
+	padding: 10px;
+	/* border: 2px solid black; */
+}
+
+.about_me_slider_div:hover {
+	box-shadow: inset -2px -2px 0 4px var(--background-border-color);
+}
+
+.about_me_meta {
+	width: 100px;
+	border: 1px solid var(--background-border-color);
+	margin-left: 5px;
+    margin-bottom: 15px;
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--background-border-color);
+    font-weight: 500;
+    letter-spacing: 5px;
+	text-align: center;
+}
+
+.about_me_meta:hover {
+	background-color: #555555;
+	font-weight: 700;
+}
+
+.about_me_bar {
+	width: 60%;
+	border: 1px solid var(--background-border-color);
+}
+
+.howto_bar {
+	width: 35%;
+	border: 1px solid var(--background-border-color);
+}
+
+.about_me_heading {
+    font-size: 18px;
+    margin-bottom: 4em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    position: relative;
+	padding : 5px 5px 5px 5px;
+}
+
+.howto_heading {
+    font-size: 18px;
+    margin-bottom: 1em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    position: relative;
+	padding : 5px 5px 5px 5px;
+}
+
+.about_me_content {
+
+	font-family: 'MinSans-Regular';
+	display: inline-block;
+
+}
+
+.about_me_content:hover {
+	box-shadow: inset -2px -2px 0 4px var(--background-border-color);
+}
+
+
+.stack_ul {
+	width: 100%;
+	text-decoration: none;
+	list-style-type: none; /* 번호 표기를 하지 않도록 설정 */
+}
+
+.stack_ul > li {
+	font-family: 'MinSans-Regular';
+	width: 20%;
+	float: left;
+	min-height: 200px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.contact_ul {
+	width: 100%;
+	text-decoration: none;
+	list-style-type: none; /* 번호 표기를 하지 않도록 설정 */
+}
+
+.contact_ul > li{
+	width: 45%;
+	float:left;
+	margin-left: -40px;
+}
+
+.contact_my_ul {
+	width: 100%;
+	text-decoration: none;
+	list-style-type: none; /* 번호 표기를 하지 않도록 설정 */
+	margin-left: -40px;
+}
+
+.contact_my_ul > li {
+	font-family: 'MinSans-Regular';
+    display: flex;
+	width: 100%;
+	min-height: 60px;
+    align-items: center; /* 수직 중앙 정렬 */
+	box-shadow: inset 0px 0px 0 1px var(--background-border-color);
+	float:left;
+}
+
+.contact_contact_ul {
+	width: 100%;
+	text-decoration: none;
+	list-style-type: none; /* 번호 표기를 하지 않도록 설정 */
+}
+
+.contact_contact_ul > li, textarea {
+	font-family: 'MinSans-Regular';
+    display: flex;
+	width: 100%;
+	min-height: 60px;
+    align-items: center; /* 수직 중앙 정렬 */
+	box-shadow: inset 0px 0px 0 1px var(--background-border-color)	;
+	float:left;
+}
+
+.form-control {
+	width: 100%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background: transparent;
+	border: transparent;
+	background: #cccccc;
+	height: 54px;
+	font-size: 16px;
+	font-weight: 400;
+	resize: none;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	border-radius: 0; 
+}
+.form-control:active, .form-control:focus {
+	outline: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-color: transparent;
+	background: #f0f0f0; 
+}
+
+.howto-content {
+	font-family: 'MinSans-Regular';
+	width: 100%; /* 다른 콘텐츠의 너비를 50%로 설정 */
+	text-align: center;
+	display: inline-block;
+}
+
+.howto-content-ul {
+	width: 100%;
+	min-height: 200px;
+	text-decoration: none;
+	list-style-type: none; /* 번호 표기를 하지 않도록 설정 */
+	margin-bottom: -40px;
+	margin-left: -40px;
+
+}
+
+.howto-content-ul > li {
+	position: relative;
+	float:left;
+	width: 15%;
+	height: 80px;
+	background-color: rgba(0, 0, 0, 0.1);
+	box-shadow: inset 0px 0px 0 1px var(--background-border-color);
+	margin: 10px;
+	padding:10px;
+
+	/* 추가된 스타일 */
+    user-select: none;          /* 텍스트 선택 비활성화 */
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+/Edge */
+    cursor: default;            /* 커서 모양 기본 설정 */
+}
+
+.howto-content-ul > li:hover {
+	box-shadow: inset -2px -2px 0 1px var(--background-border-color);
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.howto-content-ul > li:active {
+	box-shadow: inset 2px 2px 0 1px var(--background-border-color);
+}
+
+.string_tool_heading {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    position: relative;
+	padding : 5px 5px 5px 5px;
+}
+
+.string_tool_textarea {
+	width: 80%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background: transparent;
+	border: transparent;
+	background: #cccccc;
+	min-height: 150px;
+	font-size: 16px;
+	font-weight: 400;
+	resize: none;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	border-radius: 0; 
+}
+
+.string_tool_textarea:active, .string_tool_textarea:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-color: transparent;
+	background: #f0f0f0; 
+}
+
+.string_tool_result {
+	list-style-type: circle;
+}
+
+.string_tool_result > li {
+	max-width: 80%;
+	word-wrap: break-word;
+	margin-bottom: 10px;
+	white-space: pre-wrap; /* 줄바꿈 문자에 따라 개행을 허용 */
+}

@@ -1,13 +1,85 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif;
+	background-color: var(--background-color);
+	color: var(--text-color);
+	transition: background-color 0.3s ease, color 0.3s ease;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+    --background-color: #ffffff;
+	--background-hover-color: #cccccc;
+	--background-border-color: #01771f;
+	--background-border-color-focus: #023b10;
+	--background-scroll-color: #023b10;
+
+	--background-color_loginbutton: #86baf7;
+	--background-color_cancelbutton: #f7d386;
+
+    --text-color: #000000;
+    --primary-color: #6200ee;
+    --underline-background-color: #f9f9f9;
+    --underline-border-color: #232323;
+
+	--tree-menu-border-color: #00aaff;
+
+	--disable-color: #ffcc99;
+	--delete-color: #cc5555;
+	--resotre-color: #1aa577;
+	--move-border-color: #8a8a8a;
+
+	--like-color: #00aaff;
+	--dislike-color: #ff0000;
+
+}
+
+.dark-mode {
+    --background-color: #232323;
+	--background-hover-color: #8d8d8d;
+    --background-border-color: #d8bbff;
+	--background-border-color-focus: #923eff;
+	--background-scroll-color: #923eff;
+
+	--background-color_loginbutton: #6088b6;
+	--background-color_cancelbutton: #f78e86;
+
+    --text-color: #ffffff;
+    --primary-color: #bb86fc;
+    --underline-background-color: #232323;
+    --underline-border-color: #ffffff;
+	
+	--tree-menu-border-color: #ffb6c1;
+
+	--disable-color: #835a3d;
+	--delete-color: #ff6666;
+	--resotre-color: #40ac4e;
+	--move-border-color: #8a8a8a;
+
+	--like-color: #00aaff;
+	--dislike-color: #ff0000;
+
+}
+
+.on-mode {
+	--background-color: #86baf7;
+}
+
+
+/* 스크롤바 없애기 - ie */
+body{
+	-ms-overflow-style: none;
+}
+/* 스크롤바 없애기 */
+::-webkit-scrollbar {
+	display: none;
+}
+/* 출처: https://wooaoe.tistory.com/49 [개발개발 울었다:티스토리] */

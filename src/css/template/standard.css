@@ -1,0 +1,190 @@
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+	min-height: 500px !important;
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.ck.ck-editor__editable > .ck-placeholder::before {
+    color: var(--text-color) !important;
+    opacity: 0.6;
+}
+
+.ck.ck-editor__editable:not(.ck-focused) {
+    border: none !important;
+	box-shadow: 0px 0px 1px 1px var(--background-border-color) !important;
+}
+
+.ck.ck-editor__editable:not(.ck-blurred) {
+	border: none !important;
+	box-shadow: 0px 0px 1px 2px var(--background-border-color-focus) !important;
+}
+
+.file_list_ul, .uploaded_list_ul{
+    list-style-type: none;
+    padding: 0px;
+    display: flex;  /* float 대신 flex 사용 */
+    min-height: 150px;
+}
+
+.file_list_ul > li:nth-child(1), .uploaded_list_ul > li:nth-child(1) {
+    flex: 0 0 20%;  /* flex-grow: 0, flex-shrink: 0, flex-basis: 20% */
+    min-height: 150px;  /* 고정된 최소 높이 */
+}
+
+.file_list_ul > li:nth-child(2), .uploaded_list_ul > li:nth-child(2) {
+    flex: 1 1 75%;  /* flex-grow: 1, flex-shrink: 1, flex-basis: 75% */
+    min-height: 150px;
+    padding: 0px 0px 0px 20px;
+}
+
+.file_upload_ul, .file_uploaded_ul{
+    list-style-type: none;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  /* 파일 항목 간 간격 */
+}
+
+.file_upload_button_div, .file_uploaded_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 1px 1px var(--background-border-color) !important;
+    border-radius: 12px;
+    height: 100%;  /* 부모 높이에 맞춤 */
+    min-height: 150px;
+}
+
+.file_upload_button_div:hover {
+	background-color: var(--background-hover-color);
+}
+
+.file_upload_button_div.dragover {
+    background-color: var(--background-hover-color);
+    opacity: 0.7;
+    box-shadow: 0px 0px 1px 2px var(--background-border-color-focus) !important;
+}
+
+.file_upload_div, .reply_div_header {
+    display: flex;
+    align-items: center;
+	height: 35px;
+	padding: 5px 20px;
+	box-shadow: 0px 0px 1px 1px var(--background-border-color) !important;
+	border-radius: 12px;
+}
+
+.reply_div {
+    display: flex;
+	padding: 5px 20px;
+	box-shadow: 0px 0px 1px 1px var(--background-border-color) !important;
+	border-radius: 12px;
+}
+
+.reply_textarea {
+	width: 90%;
+	min-height: 70px;
+	box-sizing: border-box;
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.reply_textarea:focus {
+	background-color: var(--background-hover-color);
+}
+
+.file_upload_div a {
+	color: var(--text-color);
+	text-decoration: none;
+}
+.file_upload_div a:hover {
+	color: var(--background-border-color);
+	text-decoration: underline;
+}
+
+.reply_list_ul{
+    list-style-type: none;
+    padding: 0px;
+    min-height: 150px;
+}
+
+.reply_list_ul > li {
+    min-height: 25px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.reply_button_ul{
+    list-style-type: none;
+    padding: 0px 20px;
+}
+
+.reply_button_ul > li {
+    height: 100%;
+}
+
+.file_upload_button_div, .file_uploaded_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 1px 1px var(--background-border-color) !important;
+    border-radius: 12px;
+    height: 100%;  /* 부모 높이에 맞춤 */
+    min-height: 25px;
+}
+
+.reply_list_div {
+    min-height: 25px;
+    padding: 5px 20px;
+    justify-content: center;
+	border-top: 1px solid var(--background-border-color);
+	border-bottom: 1px solid var(--background-border-color);
+}
+
+.reply_list_div_focus .reply_response_button{
+	font-weight: bold;
+	color: var(--background-border-color-focus);
+	background-color: var(--background-border-color);
+}
+
+.reply_like_button, .reply_dislike_button {
+	color: var(--text-color);
+	text-decoration: none;
+}
+
+.reply_delete_button, .reply_update_button{
+	color: var(--text-color);
+	text-decoration: none;
+	font-size: 12px;
+}
+
+.reply_response_button {
+	color: var(--text-color);
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.reply_like_button:hover {
+	color: var(--like-color);
+	text-decoration: underline;
+}
+
+.reply_dislike_button:hover {
+	color: var(--dislike-color);
+	text-decoration: underline;
+}
+
+.reply_update_button:hover {
+	color: var(--update-color);
+	text-decoration: underline;
+}
+
+.reply_delete_button:hover {
+	color: var(--delete-color);
+	text-decoration: underline;
+}
+
+.reply_response_button:hover {
+	/* color: var(--background-border-color); */
+	text-decoration: underline;
+}
