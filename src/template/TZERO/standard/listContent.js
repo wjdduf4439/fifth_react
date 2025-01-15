@@ -5,12 +5,13 @@ export const useTZEROStandardListContent = (props) => {
 
     const {
 		page, setPage,
-        reload, setReload,
-        setShowWriteForm,
-        option, setOption,
-        resultList, setResultList,
-        resultCount,
-        handleCount,
+		reload, setReload,
+		setShowWriteForm,
+		setLoadingStatus,
+		option, setOption,
+		resultList, setResultList,
+		noticeList, setNoticeList,
+		handleCount,
     } = props;
 
 	
@@ -21,11 +22,27 @@ export const useTZEROStandardListContent = (props) => {
     };
 
 	function getTZEROStandardList(option) {
+		setLoadingStatus(true, 'list');
 		axios.post('/user/template/tzero/post/list', option)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
 				setResultList(data.resultList);
+				setLoadingStatus(false, 'list');
+			} else {
+				alert("문제가 발생했습니다 : " + data.message);
+			}
+		}).catch(error => {
+			console.error('Error updating data:', error);
+		});
+	}
+
+	function getTZEROStandardNoticeList(option) {
+		axios.post('/user/template/tzero/post/notice', option)
+		.then(response => {
+			const data = response.data;
+			if (data.result) {
+				setNoticeList(data.resultList);
 			} else {
 				alert("문제가 발생했습니다 : " + data.message);
 			}
@@ -46,6 +63,7 @@ export const useTZEROStandardListContent = (props) => {
 	useEffect(() => {
 		if(reload) {
 			getTZEROStandardList(option);
+			getTZEROStandardNoticeList(option);
 			handleCount();
 			setReload(false);
 		}

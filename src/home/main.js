@@ -187,22 +187,24 @@ const Main = (props) => {
 						<div className="howto-content">
 							<ul className="howto-content-ul">
 								<li onClick={() => handleHowToSliderClick(0)}>
+									<span className="font_size_46">+</span><br/>CMS 홈페이지 배포과정
+								</li>
+								<li onClick={() => handleHowToSliderClick(1)}>
 									<span className="font_size_46"><ImAmazon /></span><br/>AWS 활용에 대한 경험
 								</li>
-								<li onClick={() => handleHowToSliderClick(1)}>	
+								<li onClick={() => handleHowToSliderClick(2)}>	
 									<span className="font_size_46"><DiReact /></span><br/>리액트 활용에 대한 경험
-									{/* 컴포넌트 활용에 대해서 적기 */}
-								</li>
-								<li onClick={() => handleHowToSliderClick(2)}>
-									<span className="font_size_46"><GoUpload /></span><br/>이미지 내용첨부 기능
 								</li>
 								<li onClick={() => handleHowToSliderClick(3)}>
-									<span className="font_size_46"><BiLogInCircle /></span><br/>jwt 로그인/인증 방식
+									<span className="font_size_46"><GoUpload /></span><br/>이미지 내용첨부 기능
 								</li>
 								<li onClick={() => handleHowToSliderClick(4)}>
-									<span className="font_size_46"><TbApi /></span><br/>api 활용에 대한 경험
+									<span className="font_size_46"><BiLogInCircle /></span><br/>jwt 로그인/인증 방식
 								</li>
 								<li onClick={() => handleHowToSliderClick(5)}>
+									<span className="font_size_46"><TbApi /></span><br/>api 활용에 대한 경험
+								</li>
+								<li onClick={() => handleHowToSliderClick(6)}>
 									<span className="font_size_46">+</span><br/>추가 백엔드 기능 구현
 								</li>
 								
@@ -212,6 +214,9 @@ const Main = (props) => {
 						<div className='howto_bar margin_bottom_10'></div>
 						
 						<Slider ref={howToSliderRef}  {...aboutMeHowToContentSliderSettings}>
+							<div className='about_me_slider_div'>
+								<p>CMS 홈페이지 배포과정</p>
+							</div>
 							<div className='about_me_slider_div'>
 								<p>aws 활용에 대한 경험</p>
 							</div>

@@ -27,9 +27,11 @@ export const useTZEROStandardFormContent = (props) => {
 		replyResponseUid, setReplyResponseUid,
 		replyResponseContext, setReplyResponseContext,
 		replyTagFocusUid, setReplyTagFocusUid,
+		postContentImageFileString, setPostContentImageFileString,
 		setSelectedFiles,
 		setShowWriteForm,
 		setShowViewForm,
+		setLoadingStatus,
 	} = props;
 
 	const axiosInstance = useAxios();
@@ -91,6 +93,7 @@ export const useTZEROStandardFormContent = (props) => {
 	}
 
 	const getPostOne = (uid) => {
+		setLoadingStatus(true, 'view');
 		axios.post('/user/template/tzero/post/one', { uid: uid, codeHead : writeForm.codeHead })
 		.then(response => {
 			const data = response.data;
@@ -102,6 +105,7 @@ export const useTZEROStandardFormContent = (props) => {
 				setReplyForm(prev => ({ ...prev, 
 					pid: data.resultList.uid,
 				}));
+				setLoadingStatus(false, 'view');
 			} else {
 				alert("문제가 발생했습니다 : " + data.message);
 			}
@@ -111,6 +115,7 @@ export const useTZEROStandardFormContent = (props) => {
 	}
 
 	const getAdminPostOne = (uid) => {
+		setLoadingStatus(true, 'write');
 		axiosInstance.post('/admin/template/tzero/post/one', { uid: uid, codeHead : writeForm.codeHead })
 		.then(response => {
 			const data = response.data;
@@ -118,6 +123,11 @@ export const useTZEROStandardFormContent = (props) => {
 				setWriteForm(prev => ({ ...prev, 
 					...data.resultList,
 					processContext: data.resultList.contentVO.context,
+				}));
+				setLoadingStatus(false, 'write');
+				setWriteForm(prev => ({ ...prev, 
+					//saveTempContentImageFileString: data.saveTempContentImageFileString,
+					postContentImageFileString: data.saveTempContentImageFileString,
 				}));
 			} else {
 				alert("문제가 발생했습니다 : " + data.message);

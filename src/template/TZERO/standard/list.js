@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 import MuiTheme from 'css/MuiTheme';
+import Loading from 'layout/util/Loading';
 
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { RxUpdate } from "react-icons/rx";
 import { MdAutoDelete } from "react-icons/md";
+import { IoMdNotifications } from "react-icons/io";
 
 import { FaFileCode } from "react-icons/fa6";
 
@@ -27,10 +29,12 @@ const TZEROStandardList = (props) => {
 		option, setOption,
 		resultList, setResultList,
 		resultCount,
+		noticeList, setNoticeList,
 		setShowWriteForm,
 		setShowViewForm,
+		setLoadingStatus,
+		showListLoading,
 		handleCount,
-		reSetLinkParams,
 		linkParams,
 		backParams,
 	} = props;
@@ -41,8 +45,10 @@ const TZEROStandardList = (props) => {
 		page, setPage,
 		reload, setReload,
 		setShowWriteForm,
+		setLoadingStatus,
 		option, setOption,
 		resultList, setResultList,
+		noticeList, setNoticeList,
 		handleCount,
 	});
 
@@ -59,41 +65,69 @@ const TZEROStandardList = (props) => {
 	*/
 	return (
 		<>
-			<div className="content">
-				<h1>게시판 목록</h1>
-			</div>
+
+			{templateOption.noticeShow === 'Y' && noticeList.length > 0 ?
+				<>
+					<List>
+						{noticeList.map((item) => (
+							<MuiTheme.ListItem1
+								key={item.uid} // 고유한 "key" prop 추가
+								secondaryAction={item.secondaryButton}
+								onClick={() => { item.uid && linkParams('view', item.uid); }}
+							>
+								<ListItemAvatar>
+									<IoMdNotifications className="font_size_26" />
+								</ListItemAvatar>
+								<MuiTheme.ListItemText1
+									primary={<>
+										{item.title.substring(0, 3) == '스포)' ? 
+											<><span style={{ color: 'var(--spoiler-color)' }}>스포)</span>{item.title.substring(3)}</> : item.title}
+										{item.del_chk === 'Y' ? <MdAutoDelete className='font_size_18 margin_left_10' style={{ color: 'red' }} /> : null}
+									</>}
+									data-uid={item.uid}
+								/>
+							</MuiTheme.ListItem1>
+						))}
+					</List>
+					<hr style={{ border: '1px solid var(--background-border-color)' }} />
+				</>
+			: null}
+			<List>
+				{showListLoading? <Loading /> : (
+					<>
+						{resultList.length > 0 && resultList.map((item) => (
+							<MuiTheme.ListItem1
+								key={item.uid} // 고유한 "key" prop 추가
+								secondaryAction={item.secondaryButton}
+								onClick={() => { item.uid && linkParams('view', item.uid); }}
+							>
+								<ListItemAvatar>
+									<FaFileCode className="font_size_26" />
+								</ListItemAvatar>
+								<MuiTheme.ListItemText1
+									primary={<>
+										{item.title.substring(0, 3) == '스포)' ? 
+											<><span style={{ color: 'var(--spoiler-color)' }}>스포)</span>{item.title.substring(3)}</> : item.title}
+										{item.del_chk === 'Y' ? <MdAutoDelete className='font_size_18 margin_left_10' style={{ color: 'red' }} /> : null}
+									</>}
+									data-uid={item.uid}
+								/>
+							</MuiTheme.ListItem1>
+						))}
+						{resultList.length === 0 ?
+								<MuiTheme.ListItem1>
+									<ListItemAvatar>
+										등록되어 있는 게시물이 없습니다.
+									</ListItemAvatar>
+								</MuiTheme.ListItem1>
+							: null
+						}
+					</>
+				)}
+			</List>
 			<FormGroup row>
 				<MuiTheme.ListButton1 onClick={() => { linkParams('write', 0); } }>글쓰기</MuiTheme.ListButton1>
 			</FormGroup>
-			<List>
-				{resultList.map((item) => (
-					<MuiTheme.ListItem1
-						key={item.uid} // 고유한 "key" prop 추가
-						secondaryAction={item.secondaryButton}
-						onClick={() => { item.uid && linkParams('view', item.uid); }}
-					>
-						<ListItemAvatar>
-							<FaFileCode className="font_size_26" />
-						</ListItemAvatar>
-						<MuiTheme.ListItemText1
-							primary={<>
-								{item.title}
-								{item.del_chk === 'Y' ? <MdAutoDelete className='font_size_18 margin_left_10' style={{ color: 'red' }} /> : null}
-							</>}
-							data-uid={item.uid}
-						/>
-					</MuiTheme.ListItem1>
-				))}
-				{	
-					resultList.length === 0 ?
-						<MuiTheme.ListItem1>
-							<ListItemAvatar>
-								등록되어 있는 게시물이 없습니다.
-							</ListItemAvatar>
-						</MuiTheme.ListItem1>
-					: null
-				}
-			</List>
 
 			{resultCount > 0 ?
 				<Pagination

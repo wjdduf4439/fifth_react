@@ -188,3 +188,8 @@
 	/* color: var(--background-border-color); */
 	text-decoration: underline;
 }
+
+.content_div img {
+	max-width: 100%;
+	height: auto;
+}

@@ -6,6 +6,7 @@ import 'css/template/standard.css';
 
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
+import Loading from 'layout/util/Loading';
 import TZEROStandardForm from 'template/TZERO/standard/form';
 
 function TemplateRouter() {
@@ -23,12 +24,18 @@ function TemplateRouter() {
 		placeName: '',	// placeName : 게시판에 표시할 필드의 이름을 지정합니다.
 		placeWidth: 0,	// placeWidth : 게시판의 너비를 지정합니다.
 		maxFileUploadNumber: 1,	// maxFileUploadNumber : 업로드 가능한 최대 파일 개수를 지정합니다.
-		fileUploadType: 'jpg',	// fileUploadType : 업로드 가능한 파일 형식을 지정합니다 (예: jpg,png,pdf).
+		fileUploadType: '',	// fileUploadType : 업로드 가능한 파일 형식을 지정합니다 (예: jpg,png,pdf).
 		replyLimit: 0,	// replyLimit : 한 게시물의 댓글 표시 가능 개수를 지정합니다.
+		noticeShow: 'N',	// noticeLimit : 게시판의 공지사항 표시 설정/표시 여부를 결정합니다.
+		viewUnderListShow: 'N',	// viewUnderListShow : 게시판 조회화면 아래의 리스트 표시 여부를 결정합니다.
 	});
 
 	const [showWriteForm, setShowWriteForm] = useState(false);
 	const [showViewForm, setShowViewForm] = useState(false);
+	const [showListLoading, setShowListLoading] = useState(false);
+	const [showWriteLoading, setShowWriteLoading] = useState(false);
+	const [showViewLoading, setShowViewLoading] = useState(false);
+
 
 	let id = searchParams.get('id');
 	let process = searchParams.get('process');
@@ -47,6 +54,12 @@ function TemplateRouter() {
 		}).catch(error => {
 			console.error('Error updating data:', error);
 		});
+	}
+
+	const setLoadingStatus = (showLoading, process) => {
+		if (process === 'list') setShowListLoading(showLoading);
+		else if (process === 'write') setShowWriteLoading(showLoading);
+		else if (process === 'view') setShowViewLoading(showLoading);
 	}
 
 	useEffect(() => {
@@ -76,14 +89,22 @@ function TemplateRouter() {
 			<div className="margin_left_150" key={key}>{key}: {templateOption[key]}</div>
 		))}
 		</p> */}
+		{/* 		
 		<p>id: {searchParams.get('id')}</p>
 		<p>process: {searchParams.get('process')}</p>		
+		<p>showListLoading: {showListLoading.toString()}</p>
+		<p>showWriteLoading: {showWriteLoading.toString()}</p>
+		<p>showViewLoading: {showViewLoading.toString()}</p> */}
 
 		{templateType === 'TZERO' && skinType === 'STANDARD' && 
 			<TZEROStandardForm 
 				templateOption={templateOption} codeHead={codeHead} 
 				showWriteForm={showWriteForm} setShowWriteForm={setShowWriteForm}
 				showViewForm={showViewForm} setShowViewForm={setShowViewForm}
+				setLoadingStatus={setLoadingStatus}
+				showListLoading={showListLoading}
+				showWriteLoading={showWriteLoading}
+				showViewLoading={showViewLoading}
 				/>
 		}
 	  </>

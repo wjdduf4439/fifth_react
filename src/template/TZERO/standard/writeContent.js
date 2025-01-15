@@ -7,6 +7,7 @@ export const useTZEROStandardWriteContent = (props) => {
 		reload, setReload,
 		process,
 		writeForm, setWriteForm,
+		contentFileForm, setContentFileForm,
 		selectedFiles, setSelectedFiles,
 		showWriteForm, setShowWriteForm,
 		linkParams,
@@ -276,6 +277,130 @@ export const useTZEROStandardWriteContent = (props) => {
 		}
 	}
 
+	
+
+	const toolbarOptions = [
+		//["link", "image", "video"],
+		["link", "image"],
+		[{ header: [1, 2, 3, false] }],
+		["bold", "italic", "underline", "strike"],
+		["blockquote"],
+		[{ list: "ordered" }, { list: "bullet" }],
+		[{ color: [] }, { background: [] }],
+		[{ align: [] }],
+	]; 
+
+	const contentImageHandler = async () => {
+
+		console.log("imageHandler 호출");
+		const input = document.createElement("input");
+		input.setAttribute("type", "file");
+		input.setAttribute("accept", "image/*");
+		input.setAttribute("multiple", ""); // 여러 파일 선택 가능하게 설정
+		input.click();
+		input.addEventListener("change", async () => {
+			const files = Array.from(input.files); // FileList를 배열로 변환
+			console.log("files : ", files);
+
+			const formData = new FormData();
+    
+			// 선택된 파일들을 FormData에 추가
+			formData.append('codeHead', writeForm.codeHead);
+			files.forEach((file, index) => {
+				formData.append('files', file);
+			});
+
+			if(writeForm.uid < 1){
+				insertContentImageNoPost(formData);
+			}else{
+
+			}
+		});
+	}
+
+	const insertContentImageNoPost = async(formData) => {
+
+		let imgtaghead = '<img src="http://localhost:3003/images/' + writeForm.codeHead + '/contentFileNoPost/';
+		let imgtagtail = '" />';
+
+		if(writeForm.saveTempContentImageFileString !== '' && writeForm.saveTempContentImageFileString !== undefined){
+			formData.append(',', writeForm.saveTempContentImageFileString);
+		}
+
+		await axiosInstance.post('/admin/template/tzero/file/contentUploadNoPost', formData, 
+			{
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			}
+		).then(response => {
+			const data = response.data;
+			if(data.result){
+				let saveTempContentImageFileString = data.saveTempContentImageFileString;
+				let saveTempContentImageFileStringArray = saveTempContentImageFileString.split(',');
+				saveTempContentImageFileStringArray.forEach((file, index) => {
+					//console.log("file img tag : ", imgtaghead + file + imgtagtail);
+					setWriteForm(prevState => ({
+						...prevState,
+						processContext: prevState.processContext + imgtaghead + file + imgtagtail,
+						saveTempContentImageFileString: prevState.saveTempContentImageFileString + file + ',',
+					}));
+				});
+			}else{
+				alert("문제가 발생했습니다 : " + data.message);
+			}
+		}).catch(error => {
+			console.error('Error updating data:', error);
+		});
+	}
+
+	const insertContentImage = async(formData) => {
+
+		let imgtaghead = '<img src="http://localhost:3003/images/' + writeForm.codeHead + '/contentFile/';
+		let imgtagtail = '" />';
+	}
+
+	// const imageHandler = async () => {
+	// 	const input = document.createElement("input");
+	// 	input.setAttribute("type", "file");
+	// 	input.setAttribute("accept", "image/*");
+	// 	input.click();
+	// 	input.addEventListener("change", async () => {
+	// 	  //이미지를 담아 전송할 file을 만든다
+	// 	  const file = input.files?.[0];
+	// 	  try {
+	// 		//업로드할 파일의 이름으로 Date 사용
+	// 		const name = Date.now();
+	// 		//생성한 s3 관련 설정들
+	// 		AWS.config.update({
+	// 		  region: REGION,
+	// 		  accessKeyId: ACCESS_KEY,
+	// 		  secretAccessKey: SECRET_ACCESS_KEY,
+	// 		});
+	// 		//앞서 생성한 file을 담아 s3에 업로드하는 객체를 만든다
+	// 		const upload = new AWS.S3.ManagedUpload({
+	// 		  params: {
+	// 			ACL: "public-read",
+	// 			Bucket: "itsmovietime", //버킷 이름
+	// 			Key: `upload/${name}`, 
+	// 			Body: file,
+	// 		  },
+	// 		});
+	// 		//이미지 업로드 후
+	// 		//곧바로 업로드 된 이미지 url을 가져오기
+	// 		const IMG_URL = await upload.promise().then((res) => res.Location);
+	// 		//useRef를 사용해 에디터에 접근한 후
+	// 		//에디터의 현재 커서 위치에 이미지 삽입
+	// 		const editor = quillRef.current.getEditor();
+	// 		const range = editor.getSelection();
+	// 		// 가져온 위치에 이미지를 삽입한다
+	// 		editor.insertEmbed(range.index, "image", IMG_URL);
+	// 	  } catch (error) {
+	// 		console.log(error);
+	// 	  }
+	// 	});
+	//   };
+
 	useEffect(() => {
         console.log("selectedFiles : ", selectedFiles);
 		const fileInput = document.querySelector('input[name="selectedFiles"]');
@@ -299,5 +424,7 @@ export const useTZEROStandardWriteContent = (props) => {
 		handleSelectedFileRemove,
 		handleFileDownload,
 		handleUploadedFileRemove,
+		toolbarOptions,
+		contentImageHandler,
 	}
 }

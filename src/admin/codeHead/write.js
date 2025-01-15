@@ -156,6 +156,8 @@ const CodeWriteForm = (props) => {
 								maxFileUploadNumber : 업로드 가능한 최대 파일 개수를 지정합니다.<br/>
 								fileUploadType : 업로드 가능한 파일 형식을 지정합니다 (예: jpg,png,pdf).<br/>
 								replyLimit : 한 게시물의 댓글 표시 가능 개수를 지정합니다.<br/>
+								noticeLimit : 게시판의 공지사항 표시 설정/표시 여부를 결정합니다.<br/>
+								viewUnderListShow : 게시판 조회화면 아래의 리스트 표시 여부를 결정합니다.<br/>
 							</div>
 						</div>
 						

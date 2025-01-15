@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
+import { FaListUl } from "react-icons/fa";
+
 import MuiTheme from 'css/MuiTheme';
+import Loading from 'layout/util/Loading';
 
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -18,6 +21,10 @@ const TZEROStandardForm = (props) => {
 			templateOption, codeHead,
 			showWriteForm, setShowWriteForm,
 			showViewForm, setShowViewForm,
+			setLoadingStatus,
+			showListLoading,
+			showWriteLoading,
+			showViewLoading,
 	} = props;
 
 	const replyInsertButtonId = 'reply_insert_button';
@@ -27,7 +34,7 @@ const TZEROStandardForm = (props) => {
 	const [reload, setReload] = useState(true);
 	const [reloadView, setReloadView] = useState(true);
 	const [reloadReply, setReloadReply] = useState(false);
-	const [option, setOption] = useState({ startPoint: 0, limit: 10, codeHead: codeHead });
+	const [option, setOption] = useState({ startPoint: 0, limit: 10, codeHead: codeHead, noticeShow: templateOption.noticeShow });
 	const [replyPage, setReplyPage] = useState(1);
 	const resetReplyOption = { startPoint: 0, limit: templateOption.replyLimit};
 	const [replyOption, setReplyOption] = useState(resetReplyOption);
@@ -37,6 +44,17 @@ const TZEROStandardForm = (props) => {
 
 	const [resultList, setResultList] = useState([]);
 	const [resultCount, setResultCount] = useState(0);
+	const [noticeList, setNoticeList] = useState([]);
+
+	const resetFileForm = {
+		uid: 0,
+		code: '',
+		pid: '',
+		fsign: '',
+		fpath: '',
+		savingFname: '',
+		fname: '',
+	};
 
 	const resetWriteForm = {
 		uid: 0,
@@ -55,15 +73,9 @@ const TZEROStandardForm = (props) => {
 		contentVO: {
 			context: '',
 		},
-		fileVO: [{
-			uid: 0,
-			code: '',
-			pid: '',
-			fsign: '',
-			fpath: '',
-			savingFname: '',
-			fname: '',
-		}],
+		fileVO: [resetFileForm],
+		saveTempContentImageFileString: '',
+		postContentImageFileString : ''
 	};
 
 	const resetReplyForm = {
@@ -87,6 +99,8 @@ const TZEROStandardForm = (props) => {
 	const [replyResponseUid, setReplyResponseUid] = useState(0);
 	const [replyResponseContext, setReplyResponseContext] = useState('');
 	const [replyTagFocusUid, setReplyTagFocusUid] = useState(0);
+
+	const [contentFileForm, setContentFileForm] = useState(resetFileForm);
 
 	const [selectedFiles, setSelectedFiles] = useState([]);
 
@@ -118,6 +132,7 @@ const TZEROStandardForm = (props) => {
 		setSelectedFiles,
 		setShowWriteForm,
 		setShowViewForm,
+		setLoadingStatus,
 	});
 
 	const {
@@ -139,18 +154,34 @@ const TZEROStandardForm = (props) => {
 			<div className="main_container">
 				<div className="container margin_left_100 margin_right_100">
 
+					{showWriteForm && 
+						<div className="content">
+							<h1>게시물 수정</h1>
+						</div>
+					}
+
 					{showWriteForm	&&
-						<TZEROStandardWriteForm 
-							templateOption={templateOption}
-							reload={reload} setReload={setReload}
-							process={process} setProcess={setProcess}
-							id={id} setId={setId}
-							writeForm={writeForm} setWriteForm={setWriteForm}
-							selectedFiles={selectedFiles} setSelectedFiles={setSelectedFiles}
-							showWriteForm={showWriteForm} setShowWriteForm={setShowWriteForm}
-							linkParams={linkParams}
-							backParams={backParams}
-						/>
+						(
+							<TZEROStandardWriteForm 
+								templateOption={templateOption}
+								reload={reload} setReload={setReload}
+								process={process} setProcess={setProcess}
+								id={id} setId={setId}
+								writeForm={writeForm} setWriteForm={setWriteForm}
+								contentFileForm={contentFileForm} setContentFileForm={setContentFileForm}
+								selectedFiles={selectedFiles} setSelectedFiles={setSelectedFiles}
+								showWriteForm={showWriteForm} setShowWriteForm={setShowWriteForm}
+								showWriteLoading={showWriteLoading}
+								linkParams={linkParams}
+								backParams={backParams}
+							/>
+						)
+					}
+
+					{showViewForm && 
+						<div className="content">
+							<h1>게시물 조회</h1>
+						</div>
 					}
 
 					{showViewForm &&
@@ -159,6 +190,7 @@ const TZEROStandardForm = (props) => {
 							replyUpdateButtonId={replyUpdateButtonId}
 							replyResponseButtonId={replyResponseButtonId}
 							templateOption={templateOption}
+							showViewLoading={showViewLoading}
 							reloadView={reloadView} setReloadView={setReloadView}
 							reloadReply={reloadReply} setReloadReply={setReloadReply}
 							replyPage={replyPage} setReplyPage={setReplyPage}
@@ -179,8 +211,24 @@ const TZEROStandardForm = (props) => {
 							handleResponseTextareaKeyDown={handleResponseTextareaKeyDown}
 						/>
 					}
+
+					{ !showWriteForm && !showViewForm &&
+						<div className="content">
+							<h1>게시판 목록</h1>
+						</div>
+					}
+					{  showViewForm && templateOption.viewUnderListShow === 'Y' &&
+
+						<div>
+							<MuiTheme.FormControlLabel1
+								style={{ width: '20%' }}
+								control={ <h3><FaListUl className='font_size_20 margin_right_15' />리스트</h3> }
+								onClick={() => { backParams('view'); }}
+							/>
+						</div>
+					}
 					
-					{(!showWriteForm && !showViewForm) &&
+					{((!showWriteForm && !showViewForm) || (showViewForm && templateOption.viewUnderListShow === 'Y')) && (
 						<>
 							<TZEROStandardList
 								templateOption={templateOption}
@@ -188,13 +236,17 @@ const TZEROStandardForm = (props) => {
 								option={option} setOption={setOption}
 								resultList={resultList} setResultList={setResultList}	
 								resultCount={resultCount}
+								noticeList={noticeList} setNoticeList={setNoticeList}
 								setShowWriteForm={setShowWriteForm}	
 								setShowViewForm={setShowViewForm}
+								setLoadingStatus={setLoadingStatus}
+								showListLoading={showListLoading}
 								handleCount={handleCount}
 								linkParams={linkParams}
 								backParams={backParams}
 							/>
 						</>
+						)
 					}
 
 				</div>

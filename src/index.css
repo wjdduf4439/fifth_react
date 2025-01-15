@@ -40,6 +40,9 @@ code {
 	--like-color: #00aaff;
 	--dislike-color: #ff0000;
 
+	--spoiler-color: #ff4800;
+	--loading-color: #ffffffb7;
+
 }
 
 .dark-mode {
@@ -67,6 +70,9 @@ code {
 	--like-color: #00aaff;
 	--dislike-color: #ff0000;
 
+	--spoiler-color: #e04000;
+	--loading-color: #11111107;
+
 }
 
 .on-mode {
@@ -82,4 +88,3 @@ body{
 ::-webkit-scrollbar {
 	display: none;
 }
-/* 출처: https://wooaoe.tistory.com/49 [개발개발 울었다:티스토리] */

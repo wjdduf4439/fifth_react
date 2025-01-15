@@ -15,6 +15,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 
 import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import { brown } from '@mui/material/colors';
 
 const CommonTextField = styled(TextField)({
@@ -213,6 +214,16 @@ const MuiTheme = {
 		'& .MuiTypography-secondary': {
 		color: 'var(--secondary-text-color)', // secondary 텍스트 색상
 		},
+	}),
+
+	FormControlLabel1: styled(FormControlLabel)({
+		//justifyContent: 'center',
+		alignItems: 'center', // 수직 중앙 정렬 추가
+		height: '54px',
+		margin: '10px 0px',
+		padding: '0px 10px',
+		border: '1px solid var(--background-border-color)',
+		borderRadius: '5px',
 	}),
 	
     CustomBox: styled(Box)({

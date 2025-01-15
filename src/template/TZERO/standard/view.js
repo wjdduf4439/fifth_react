@@ -5,6 +5,7 @@ import { MdOutlineQuickreply, MdOutlineUploadFile, MdCancelPresentation } from "
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 
 import MuiTheme from 'css/MuiTheme';
+import Loading from 'layout/util/Loading';
 import { ThemeContext } from 'provider/ThemeContext';
 
 import Pagination from 'react-js-pagination';
@@ -24,6 +25,7 @@ const TZEROStandardViewForm = (props) => {
 		replyUpdateButtonId,
 		replyResponseButtonId,
 		templateOption,
+		showViewLoading,
 		reloadView, setReloadView,
 		reloadReply, setReloadReply,
 		replyPage, setReplyPage,
@@ -75,43 +77,43 @@ const TZEROStandardViewForm = (props) => {
 
 	return (
 		<>
-			<div className=""><FaInfo /> esc 키를 누르면 리스트 페이지로 이동합니다. </div>
-			<MuiTheme.TextField2 style={{ width: '73%' }} label={"제목"} value={viewForm.title} disabled />
-			<MuiTheme.TextField2 style={{ width: '10%' }} label={"작성자"} value={viewForm.frstRegistNm} disabled />
-			<MuiTheme.TextField2 style={{ width: '12%' }} label={"작성시간"} value={formatDate(viewForm.frstRegistPnttm)} disabled />
-			<MuiTheme.TextField2 style={{ width: '5%' }} label={"조회수"} value={viewForm.viewNum} disabled />
+			{showViewLoading? <Loading /> : (
+				<>
+					<div className=""><FaInfo /> esc 키를 누르면 리스트 페이지로 이동합니다. </div>
+					<MuiTheme.TextField2 style={{ width: '73%' }} label={"제목"} value={viewForm.title} disabled />
+					<MuiTheme.TextField2 style={{ width: '10%' }} label={"작성자"} value={viewForm.frstRegistNm} disabled />
+					<MuiTheme.TextField2 style={{ width: '12%' }} label={"작성시간"} value={formatDate(viewForm.frstRegistPnttm)} disabled />
+					<MuiTheme.TextField2 style={{ width: '5%' }} label={"조회수"} value={viewForm.viewNum} disabled />
 
-			<div style={{ minHeight: '250px' }}>
-				{/* dangerouslySetInnerHTML 옵션을 사용해서 내용을 표시 */}
-				<div dangerouslySetInnerHTML={{ __html: viewForm.contentVO.context }} />
-			</div>
-			<Box
-				sx={{
-					display: 'flex',
-					justifyContent: 'center',
-				}}
-			>
-				<MuiTheme.LikeButton onClick={() => handleLike(viewForm, 'like')}>
-					<AiOutlineLike />좋아요<br /><br />{viewForm.like}
-				</MuiTheme.LikeButton>
-				<MuiTheme.LikeButton onClick={() => handleLike(viewForm, 'dislike')}>
-					<AiOutlineDislike />싫어요<br /><br />{viewForm.dislike}
-				</MuiTheme.LikeButton>
-			</Box>
-			<ul className='uploaded_list_ul margin_top_50 margin_bottom_50'>
-				<li>
-					<div className='file_uploaded_div font_size_18'>
-						<MdOutlineUploadFile className='margin_right_15' />업로드된 파일
+					<div style={{ minHeight: '250px' }}>
+						{/* dangerouslySetInnerHTML 옵션을 사용해서 내용을 표시 */}
+						<div className='content_div' dangerouslySetInnerHTML={{ __html: viewForm.contentVO.context }} />
 					</div>
-				</li>
-				<li>
-					<ul className='file_uploaded_ul'>
-						{viewForm.fileVO.map((file, index) => (
-							FileDownloadNode(file, index)
-						))}
+					<Box sx={{ display: 'flex', justifyContent: 'center', }} >
+						<MuiTheme.LikeButton onClick={() => handleLike(viewForm, 'like')}>
+							<AiOutlineLike />좋아요<br /><br />{viewForm.like}
+						</MuiTheme.LikeButton>
+						<MuiTheme.LikeButton onClick={() => handleLike(viewForm, 'dislike')}>
+							<AiOutlineDislike />싫어요<br /><br />{viewForm.dislike}
+						</MuiTheme.LikeButton>
+					</Box>
+					<ul className='uploaded_list_ul margin_top_50 margin_bottom_50'>
+						<li>
+							<div className='file_uploaded_div font_size_18'>
+								<MdOutlineUploadFile className='margin_right_15' />업로드된 파일
+							</div>
+						</li>
+						<li>
+							<ul className='file_uploaded_ul'>
+								{viewForm.fileVO.map((file, index) => (
+									FileDownloadNode(file, index)
+								))}
+							</ul>
+						</li>
 					</ul>
-				</li>
-			</ul>
+				</>
+			)}		
+			
 			<ul className='reply_list_ul margin_top_50 margin_bottom_50'>
 				<li>
 					<div className='reply_div_header font_size_18'>
@@ -152,13 +154,15 @@ const TZEROStandardViewForm = (props) => {
 				))}
 				
 			</ul>
-			<Pagination
-				activePage={replyPage}
-				itemsCountPerPage={replyOption.limit}
-				totalItemsCount={replyCount}
-				pageRangeDisplayed={10}
-				onChange={handleReplyPageChange}
-			/>
+			{replyCount > 0 ?
+				<Pagination
+					activePage={replyPage}
+					itemsCountPerPage={replyOption.limit}
+					totalItemsCount={replyCount}
+					pageRangeDisplayed={10}
+					onChange={handleReplyPageChange}
+				/>
+			: <></>}
 			{
 				viewForm.frstRegistNm === localStorage.getItem('id') &&
 					<MuiTheme.ListButton1 onClick={() => { linkParams('update', viewForm.uid); }}>수정</MuiTheme.ListButton1>
