@@ -6,6 +6,7 @@ linuxconsole.txt
 App.js
 
 # react js server
+storageServer.js
 serverRedirect.js
 
 # dependencies

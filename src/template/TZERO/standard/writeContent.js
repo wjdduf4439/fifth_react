@@ -323,7 +323,7 @@ export const useTZEROStandardWriteContent = (props) => {
 		const osEnv = environment.os;
 		let baseUrl;
 		if (osEnv === 'aws') {
-			baseUrl = 'http://www.ljycms.com:3003';
+			baseUrl = 'https://www.ljycms.com:3003';
 		} else {
 			baseUrl = 'http://localhost:3003';
 		}
