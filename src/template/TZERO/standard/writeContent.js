@@ -4,6 +4,7 @@ import { useAxios } from 'provider/AxiosProvider';
 export const useTZEROStandardWriteContent = (props) => {
 
 	const {
+		environment,
 		reload, setReload,
 		process,
 		writeForm, setWriteForm,
@@ -319,9 +320,9 @@ export const useTZEROStandardWriteContent = (props) => {
 	}
 
 	const insertContentImageNoPost = async(formData) => {
-		const osEnv = process.env.REACT_APP_OS;
+		const osEnv = environment.os;
 		let baseUrl;
-		if (osEnv.platform() === 'aws') {
+		if (osEnv === 'aws') {
 			baseUrl = 'http://localhost:3003';
 		} else {
 			baseUrl = 'http://www.ljycms.com:3003';

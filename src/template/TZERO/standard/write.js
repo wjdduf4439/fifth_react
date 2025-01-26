@@ -48,6 +48,7 @@ const TZEROStandardWriteForm = (props) => {
 		toolbarOptions,
 		contentImageHandler,
 	} = useTZEROStandardWriteContent({
+		environment,
 		reload, setReload,
 		process,
 		writeForm, setWriteForm,
