@@ -1,5 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+#react
+.env
+linuxconsole.txt
+
 # react js server
 serverRedirect.js
 
