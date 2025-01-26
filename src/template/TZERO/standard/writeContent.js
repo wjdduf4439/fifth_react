@@ -319,12 +319,12 @@ export const useTZEROStandardWriteContent = (props) => {
 	}
 
 	const insertContentImageNoPost = async(formData) => {
-
+		const os = require('os');
 		let baseUrl;
-		if (navigator.userAgent.includes('Win')) {
+		if (os.platform() === 'win32' || os.platform() === 'win64' || os.platform() === 'win') {
 			baseUrl = 'http://localhost:3003';
 		} else {
-			baseUrl = 'https://www.ljycms.com';
+			baseUrl = 'http://www.ljycms.com:3003';
 		}
 		let imgtaghead = `<img src="${baseUrl}/images/${writeForm.codeHead}/contentFileNoPost/`;
 		let imgtagtail = '" />';
