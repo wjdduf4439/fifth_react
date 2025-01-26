@@ -9,7 +9,10 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Loading from 'layout/util/Loading';
 import TZEROStandardForm from 'template/TZERO/standard/form';
 
-function TemplateRouter() {
+function TemplateRouter(props) {
+
+	const { environment } = props;
+
 	// URL의 'code' 값을 가져옴
 	const { codeHead } = useParams();
 	const [searchParams] = useSearchParams();  // 추가

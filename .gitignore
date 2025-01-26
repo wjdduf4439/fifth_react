@@ -3,6 +3,7 @@
 #react
 .env
 linuxconsole.txt
+App.js
 
 # react js server
 serverRedirect.js
