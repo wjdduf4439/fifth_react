@@ -323,9 +323,9 @@ export const useTZEROStandardWriteContent = (props) => {
 		const osEnv = environment.os;
 		let baseUrl;
 		if (osEnv === 'aws') {
-			baseUrl = 'http://localhost:3003';
-		} else {
 			baseUrl = 'http://www.ljycms.com:3003';
+		} else {
+			baseUrl = 'http://localhost:3003';
 		}
 		let imgtaghead = `<img src="${baseUrl}/images/${writeForm.codeHead}/contentFileNoPost/`;
 		let imgtagtail = '" />';
