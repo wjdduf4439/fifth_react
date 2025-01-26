@@ -319,9 +319,9 @@ export const useTZEROStandardWriteContent = (props) => {
 	}
 
 	const insertContentImageNoPost = async(formData) => {
-		const os = require('os');
+		const osEnv = process.env.REACT_APP_OS;
 		let baseUrl;
-		if (os.platform() === 'win32' || os.platform() === 'win64' || os.platform() === 'win') {
+		if (osEnv.platform() === 'aws') {
 			baseUrl = 'http://localhost:3003';
 		} else {
 			baseUrl = 'http://www.ljycms.com:3003';
