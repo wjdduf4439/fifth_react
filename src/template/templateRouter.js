@@ -41,7 +41,7 @@ function TemplateRouter() {
 	let process = searchParams.get('process');
 
 	const getTemplateCodeHeadOption = (codeHead) => {
-		axiosInstance.post('/template/codeHead/one', { code : codeHead })
+		axiosInstance.post('/api/template/codeHead/one', { code : codeHead })
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

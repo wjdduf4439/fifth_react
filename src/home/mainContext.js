@@ -97,7 +97,7 @@ export const useMainContext = (
     };
 
 	const insertContact = async (data) => {
-		await axiosInstance.post('/contract/insert', data)
+		await axiosInstance.post('/api/contract/insert', data)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

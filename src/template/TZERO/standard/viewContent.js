@@ -151,7 +151,7 @@ export const useTZEROStandardViewContent = (props) => {
 
 	const fileDownload = async (uid, codeHead) => {
 		try {
-			const response = await axiosInstance.post('/user/template/tzero/file/download',
+			const response = await axiosInstance.post('/api/user/template/tzero/file/download',
 				{ uid: uid, codeHead: codeHead },
 				{
 					headers: {
@@ -371,7 +371,7 @@ export const useTZEROStandardViewContent = (props) => {
 	}
 
 	const viewPost = async (viewForm) => {
-		await axios.post('/user/template/tzero/post/viewNum', viewForm)
+		await axios.post('/api/user/template/tzero/post/viewNum', viewForm)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -383,7 +383,7 @@ export const useTZEROStandardViewContent = (props) => {
 	}
 
 	const likePost = async (viewForm, process) => {
-		await axiosInstance.put('/admin/template/tzero/post/' + process, viewForm)
+		await axiosInstance.put('/api/admin/template/tzero/post/' + process, viewForm)
 		.then(response => {
 			const data = response.data;
 			console.log(data);
@@ -402,7 +402,7 @@ export const useTZEROStandardViewContent = (props) => {
 	}
 
 	const insertReply = async (replyForm) => {
-		await axiosInstance.post('/admin/template/tzero/reply/insert', replyForm)
+		await axiosInstance.post('/api/admin/template/tzero/reply/insert', replyForm)
 		.then(response => {
 			const data = response.data;
 			const reply_textarea = document.getElementById('reply_textarea');
@@ -419,7 +419,7 @@ export const useTZEROStandardViewContent = (props) => {
 	}
 
 	const updateReply = async (uid, codeHead, replyUpdateContext) => {
-		await axiosInstance.put('/admin/template/tzero/reply/update', {
+		await axiosInstance.put('/api/admin/template/tzero/reply/update', {
 			uid: uid,
 			codeHead: codeHead,
 			context: replyUpdateContext
@@ -438,7 +438,7 @@ export const useTZEROStandardViewContent = (props) => {
 	}
 
 	const replyResponse = async (momRepUid, codeHead, replyResponseUid, replyResponseContext) => {
-		await axiosInstance.post('/admin/template/tzero/reply/response', {
+		await axiosInstance.post('/api/admin/template/tzero/reply/response', {
 			pid: viewForm.uid,
 			codeHead: codeHead,
 			momRepUid: momRepUid,
@@ -477,7 +477,7 @@ export const useTZEROStandardViewContent = (props) => {
 
 		//console.log('deleteReply process : ' + uid + ' ' + codeHead);
 
-		await axiosInstance.delete('/admin/template/tzero/reply/delete', {
+		await axiosInstance.delete('/api/admin/template/tzero/reply/delete', {
 			params: {
 				uid: uid,
 				codeHead: codeHead
@@ -496,7 +496,7 @@ export const useTZEROStandardViewContent = (props) => {
 	}
 
 	const likeProcessReply = async (uid, codeHead, process) => {
-		await axiosInstance.put('/admin/template/tzero/reply/' + process, {
+		await axiosInstance.put('/api/admin/template/tzero/reply/' + process, {
 			uid: uid,
 			codeHead: codeHead
 		}).then(response => {

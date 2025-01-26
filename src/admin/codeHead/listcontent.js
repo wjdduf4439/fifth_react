@@ -51,7 +51,7 @@ export const useCodeHeadListContent = (props) => {
     };
 
 	function getCodeHeadList(option) {
-		axiosInstance.post('/admin/codeHead/list', option)
+		axiosInstance.post('/api/admin/codeHead/list', option)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

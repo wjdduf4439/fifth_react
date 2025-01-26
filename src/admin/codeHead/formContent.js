@@ -60,7 +60,7 @@ export const useCodeHeadFormContent = (props) => {
 	}
 
 	const getCodeHeadOne = (uid) => {
-		axiosInstance.post('/admin/codeHead/one', { uid: uid })
+		axiosInstance.post('/api/admin/codeHead/one', { uid: uid })
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -77,7 +77,7 @@ export const useCodeHeadFormContent = (props) => {
 	}
 
 	const getCodeHeadCount = () => {
-		axiosInstance.post('/admin/codeHead/count', { })
+		axiosInstance.post('/api/admin/codeHead/count', { })
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

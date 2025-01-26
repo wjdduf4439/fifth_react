@@ -396,7 +396,7 @@ export const useMenuFormContent = (props) => {
 	const getMenuList = async () => {
         const formData = { index: 0, string_index : '<script>alert(\'hello!\');</script>', menulist_index : 0, boolean_test : true, json_test : { param1 : 'this is param1 alert', param2 : 'console.log(\'this is param2 eval\')' },  };
         try {
-            await axiosInstance.post('/admin/menu/list', formData)
+            await axiosInstance.post('/api/admin/menu/list', formData)
 			.then(response => {
 				const data = response.data;
 				if (data.result) {
@@ -429,7 +429,7 @@ export const useMenuFormContent = (props) => {
 			
 			let requestNodeData = { uid: uid };
         
-            await axiosInstance.post("/admin/menu/write", requestNodeData)
+            await axiosInstance.post("/api/admin/menu/write", requestNodeData)
 			.then(response => {
 				const data = response.data;
 				if (data.result) {
@@ -468,7 +468,7 @@ export const useMenuFormContent = (props) => {
 			*/
 			let requestNodeData = { ...newNodeData, pCode: pCode, depth: depth };
         
-            await axiosInstance.post("/admin/menu/insert", requestNodeData)
+            await axiosInstance.post("/api/admin/menu/insert", requestNodeData)
 			.then(response => {
 				const data = response.data;
 				if (data.result) {
@@ -485,7 +485,7 @@ export const useMenuFormContent = (props) => {
 			
 			let requestNodeData = { uid: uid, title: title};
         
-            await axiosInstance.post("/admin/menu/rename", requestNodeData)
+            await axiosInstance.post("/api/admin/menu/rename", requestNodeData)
 			.then(response => {
 				const data = response.data;
 				if (data.result) {
@@ -505,7 +505,7 @@ export const useMenuFormContent = (props) => {
 			if(menuDataVO.maxFileUploadNumber === '' ) menuDataVO.maxFileUploadNumber = '0';
 			const { childNode, ...requestNodeData } = menuDataVO;
         
-            await axiosInstance.post("/admin/menu/update", requestNodeData)
+            await axiosInstance.post("/api/admin/menu/update", requestNodeData)
 			.then(response => {
 				const data = response.data;
 				if (data.result) {
@@ -524,7 +524,7 @@ export const useMenuFormContent = (props) => {
 			
 			let requestNodeData = { uid: uid };
         
-            await axiosInstance.post("/admin/menu/delete", requestNodeData)
+            await axiosInstance.post("/api/admin/menu/delete", requestNodeData)
 			.then(response => {
 				const data = response.data;
 				if (data.result) {
@@ -544,7 +544,7 @@ export const useMenuFormContent = (props) => {
 			
 			let requestNodeData = { uid: uid };
         
-            await axiosInstance.post("/admin/menu/restore", requestNodeData)
+            await axiosInstance.post("/api/admin/menu/restore", requestNodeData)
 			.then(response => {
 				const data = response.data;
 				if (data.result) {
@@ -563,7 +563,7 @@ export const useMenuFormContent = (props) => {
 		
 		let requestNodeData = { draggedUid: draggedUid, targetUid: targetUid, position: position };
 		
-		await axiosInstance.post("/admin/menu/move", requestNodeData)
+		await axiosInstance.post("/api/admin/menu/move", requestNodeData)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

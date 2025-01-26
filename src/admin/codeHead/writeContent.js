@@ -79,7 +79,7 @@ export const useCodeHeadWriteContent = (props) => {
 
 
 	const insertCodeHead = async(writeForm) => {
-		await axiosInstance.post('/admin/codeHead/insert', writeForm)
+		await axiosInstance.post('/api/admin/codeHead/insert', writeForm)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -95,7 +95,7 @@ export const useCodeHeadWriteContent = (props) => {
 	}
 
 	const updateCodeHead = async (writeForm) => {
-		await axiosInstance.post('/admin/codeHead/update', writeForm)
+		await axiosInstance.post('/api/admin/codeHead/update', writeForm)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -111,7 +111,7 @@ export const useCodeHeadWriteContent = (props) => {
 	}
 
 	const restoreCodeHead = async (writeForm) => {
-		await axiosInstance.post('/admin/codeHead/restore', writeForm)
+		await axiosInstance.post('/api/admin/codeHead/restore', writeForm)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -127,7 +127,7 @@ export const useCodeHeadWriteContent = (props) => {
 	}
 
 	const deleteCodeHead = async (writeForm) => {
-		await axiosInstance.post('/admin/codeHead/delete', writeForm)
+		await axiosInstance.post('/api/admin/codeHead/delete', writeForm)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

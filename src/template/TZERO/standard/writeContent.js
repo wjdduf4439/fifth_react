@@ -116,7 +116,7 @@ export const useTZEROStandardWriteContent = (props) => {
 
 
 	const insertPost = async(writeForm) => {
-		await axiosInstance.post('/admin/template/tzero/post/insert', writeForm)
+		await axiosInstance.post('/api/admin/template/tzero/post/insert', writeForm)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -138,7 +138,7 @@ export const useTZEROStandardWriteContent = (props) => {
 	}
 
 	const updatePost = async(writeForm) => {
-		await axiosInstance.put('/admin/template/tzero/post/update', writeForm)
+		await axiosInstance.put('/api/admin/template/tzero/post/update', writeForm)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -159,7 +159,7 @@ export const useTZEROStandardWriteContent = (props) => {
 	}
 
 	const restorePost = async (writeForm) => {
-		await axiosInstance.put('/admin/template/tzero/post/restore', writeForm)
+		await axiosInstance.put('/api/admin/template/tzero/post/restore', writeForm)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -175,7 +175,7 @@ export const useTZEROStandardWriteContent = (props) => {
 	}
 
 	const deletePost = async (writeForm, process) => {
-		await axiosInstance.put('/admin/template/tzero/post/' + process, writeForm)
+		await axiosInstance.put('/api/admin/template/tzero/post/' + process, writeForm)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -191,7 +191,7 @@ export const useTZEROStandardWriteContent = (props) => {
 	}
 
 	const uploadFile = async(formData) => {
-		await axiosInstance.post('/admin/template/tzero/file/upload', formData, {
+		await axiosInstance.post('/api/admin/template/tzero/file/upload', formData, {
 			headers: {
 				'Content-Type': 'multipart/form-data',
 			},	
@@ -210,7 +210,7 @@ export const useTZEROStandardWriteContent = (props) => {
 
 	const fileDownload = async (uid, codeHead) => {
 		try {
-			const response = await axiosInstance.post('/user/template/tzero/file/download',
+			const response = await axiosInstance.post('/api/user/template/tzero/file/download',
 				{ uid: uid, codeHead: codeHead },
 				{
 					headers: {
@@ -254,7 +254,7 @@ export const useTZEROStandardWriteContent = (props) => {
 		// console.log("삭제할 uid : ", uid, "& 삭제할 codeHead : ", codeHead);
 
 		try {
-			const response = await axiosInstance.put('/admin/template/tzero/file/delete', 
+			const response = await axiosInstance.put('/api/admin/template/tzero/file/delete', 
 				{ uid: uid, codeHead: codeHead }
 			);
 			
@@ -327,7 +327,7 @@ export const useTZEROStandardWriteContent = (props) => {
 			formData.append(',', writeForm.saveTempContentImageFileString);
 		}
 
-		await axiosInstance.post('/admin/template/tzero/file/contentUploadNoPost', formData, 
+		await axiosInstance.post('/api/admin/template/tzero/file/contentUploadNoPost', formData, 
 			{
 				headers: {
 					'Content-Type': 'multipart/form-data',

@@ -94,7 +94,7 @@ export const useTZEROStandardFormContent = (props) => {
 
 	const getPostOne = (uid) => {
 		setLoadingStatus(true, 'view');
-		axios.post('/user/template/tzero/post/one', { uid: uid, codeHead : writeForm.codeHead })
+		axios.post('/api/user/template/tzero/post/one', { uid: uid, codeHead : writeForm.codeHead })
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -116,7 +116,7 @@ export const useTZEROStandardFormContent = (props) => {
 
 	const getAdminPostOne = (uid) => {
 		setLoadingStatus(true, 'write');
-		axiosInstance.post('/admin/template/tzero/post/one', { uid: uid, codeHead : writeForm.codeHead })
+		axiosInstance.post('/api/admin/template/tzero/post/one', { uid: uid, codeHead : writeForm.codeHead })
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -138,7 +138,7 @@ export const useTZEROStandardFormContent = (props) => {
 	}
 
 	const getPostCount = () => {
-		axios.post('/user/template/tzero/post/count', { codeHead: writeForm.codeHead })
+		axios.post('/api/user/template/tzero/post/count', { codeHead: writeForm.codeHead })
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -152,7 +152,7 @@ export const useTZEROStandardFormContent = (props) => {
 	}
 
 	const getReplyList = (uid) => {
-		axios.post('/user/template/tzero/reply/list', { 
+		axios.post('/api/user/template/tzero/reply/list', { 
 			uid: uid,
 			codeHead: writeForm.codeHead,
 			startPoint: replyOption.startPoint,
@@ -171,7 +171,7 @@ export const useTZEROStandardFormContent = (props) => {
 	}
 
 	const getReplyCount = (uid) => {
-		axios.post('/user/template/tzero/reply/count', { uid: uid, codeHead: writeForm.codeHead })
+		axios.post('/api/user/template/tzero/reply/count', { uid: uid, codeHead: writeForm.codeHead })
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

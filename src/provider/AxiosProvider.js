@@ -7,7 +7,7 @@ const AxiosContext = createContext();
 export const AxiosProvider = ({ children }) => {
 
 	//이 구문을 추가하더라도 실제 요청에 {} 를 추가하지 않으면 데이터가 전달되지 않는다.
-	//예) axiosInstance.post('/topmenu/menu/list', {})
+	//예) axiosInstance.post('/api/topmenu/menu/list', {})
     const axiosInstance = axios.create({
         headers: {
             'Content-Type': 'application/json',

@@ -21,7 +21,7 @@ export const useContractFormContent = (props) => {
 
 	
 	const getContractCount = () => {
-		axiosInstance.post('/admin/contract/count', { })
+		axiosInstance.post('/api/admin/contract/count', { })
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

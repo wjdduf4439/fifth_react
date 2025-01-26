@@ -16,7 +16,7 @@ export const useProfileModalContext = (
 	}
 
 	const getLogOut = async () => {
-		await axiosInstance.post('/common/accLogout.go', {})
+		await axiosInstance.post('/api/common/accLogout.go', {})
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

@@ -43,7 +43,7 @@ export const useTopMenuContext = (props) => {
 	}
 
 	const getMenuTree = async () => {
-		axiosInstance.post('/topmenu/menu/list', {})
+		axiosInstance.post('/api/topmenu/menu/list', {})
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

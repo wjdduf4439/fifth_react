@@ -48,7 +48,7 @@ export const useContractListContent = (props) => {
     };
 
 	function getCodeHeadList(option) {
-		axiosInstance.post('/admin/contract/list', option)
+		axiosInstance.post('/api/admin/contract/list', option)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

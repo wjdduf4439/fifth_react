@@ -23,7 +23,7 @@ export const useTZEROStandardListContent = (props) => {
 
 	function getTZEROStandardList(option) {
 		setLoadingStatus(true, 'list');
-		axios.post('/user/template/tzero/post/list', option)
+		axios.post('/api/user/template/tzero/post/list', option)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
@@ -38,7 +38,7 @@ export const useTZEROStandardListContent = (props) => {
 	}
 
 	function getTZEROStandardNoticeList(option) {
-		axios.post('/user/template/tzero/post/notice', option)
+		axios.post('/api/user/template/tzero/post/notice', option)
 		.then(response => {
 			const data = response.data;
 			if (data.result) {

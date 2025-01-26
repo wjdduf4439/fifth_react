@@ -15,7 +15,7 @@ export const useMenuOptionContext = ( props ) => {
 	const getSiteOption = async () => {
         const formData = { index : 0, siteoption_index : 0 };
         try {
-            await axiosInstance.post('/admin/templateType/list', formData).then(response => {
+            await axiosInstance.post('/api/admin/templateType/list', formData).then(response => {
 				const data = response.data;
 				if (data.result) {
             		//const transformedData = transformMenuData(data.resultList);
@@ -36,7 +36,7 @@ export const useMenuOptionContext = ( props ) => {
 	const getSkinOption = async () => {
         const formData = { index : 0, siteoption_index : 0 };
         try {
-            await axiosInstance.post('/admin/skinType/list', formData).then(response => {
+            await axiosInstance.post('/api/admin/skinType/list', formData).then(response => {
 				const data = response.data;
 				if (data.result) {
             		//const transformedData = transformMenuData(data.resultList);

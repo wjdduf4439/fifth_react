@@ -32,7 +32,7 @@ export const useLoginModalContext = (
 
 	//기본형 axios 사용하기
 	const getLogin = async (requestNodeData) => {
-		await axios.post('/accLogin.go', requestNodeData, {
+		await axios.post('/api/accLogin.go', requestNodeData, {
 			headers: { 'Content-Type': 'application/json' }
 		}).then(response => {
 			const data = response.data;
