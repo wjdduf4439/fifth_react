@@ -18,6 +18,7 @@ import TZEROStandardViewForm from './view';
 const TZEROStandardForm = (props) => {
 
 	const {
+			environment,
 			templateOption, codeHead,
 			showWriteForm, setShowWriteForm,
 			showViewForm, setShowViewForm,
@@ -163,6 +164,7 @@ const TZEROStandardForm = (props) => {
 					{showWriteForm	&&
 						(
 							<TZEROStandardWriteForm 
+								environment={environment}
 								templateOption={templateOption}
 								reload={reload} setReload={setReload}
 								process={process} setProcess={setProcess}

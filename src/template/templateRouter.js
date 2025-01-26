@@ -100,7 +100,8 @@ function TemplateRouter(props) {
 		<p>showViewLoading: {showViewLoading.toString()}</p> */}
 
 		{templateType === 'TZERO' && skinType === 'STANDARD' && 
-			<TZEROStandardForm 
+			<TZEROStandardForm
+				environment={environment}
 				templateOption={templateOption} codeHead={codeHead} 
 				showWriteForm={showWriteForm} setShowWriteForm={setShowWriteForm}
 				showViewForm={showViewForm} setShowViewForm={setShowViewForm}
