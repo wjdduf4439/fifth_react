@@ -320,7 +320,13 @@ export const useTZEROStandardWriteContent = (props) => {
 
 	const insertContentImageNoPost = async(formData) => {
 
-		let imgtaghead = '<img src="http://localhost:3003/images/' + writeForm.codeHead + '/contentFileNoPost/';
+		let baseUrl;
+		if (navigator.userAgent.includes('Win')) {
+			baseUrl = 'http://localhost:3003';
+		} else {
+			baseUrl = 'https://www.ljycms.com';
+		}
+		let imgtaghead = `<img src="${baseUrl}/images/${writeForm.codeHead}/contentFileNoPost/`;
 		let imgtagtail = '" />';
 
 		if(writeForm.saveTempContentImageFileString !== '' && writeForm.saveTempContentImageFileString !== undefined){
