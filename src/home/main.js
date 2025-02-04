@@ -93,6 +93,7 @@ const Main = (props) => {
 
     return (
 		<div>
+			window width : {window.innerWidth}
 			<div className="main_container">
 				<div className={`${leftSidebarMode} ${leftSidebarWidth} ${displayNone}`}>
 					<div className={`profile_img_div ${profileDivWidth}`}>
