@@ -31,6 +31,7 @@ const UnderlineBox = (props) => {
 
 	return (
 		<>
+			{/* <div className={`underline_box ${memoryInOut ? 'left_70per' : ''}`}> */}
 			<div className={`underline_box ${memoryInOut ? 'left_70per' : ''}`}>
 				{memoryInfo ? (
 					<ul className='underline_box_ul'>

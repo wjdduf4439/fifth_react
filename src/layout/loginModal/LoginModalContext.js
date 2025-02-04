@@ -3,11 +3,14 @@ import CryptoJS from 'crypto-js';
 import { useContext } from 'react';
 import { AccessContext } from 'provider/AccessProvider';
 
-export const useLoginModalContext = (
-	id,
-	pw,
-	setIsLoginModalVisible,
-) => {
+export const useLoginModalContext = (props) => {
+
+	const { 
+		id,
+		pw,
+		setIsLoginModalVisible,
+		setIsRegistModalVisible,
+	} = props;
 
 	
 	const useAccess = useContext(AccessContext);
@@ -29,6 +32,16 @@ export const useLoginModalContext = (
 		};
 		getLogin(requestNodeData);
 	};
+
+	const handleCloseModal = () => {
+		setIsLoginModalVisible(false);
+		setIsRegistModalVisible(false);
+	}
+
+	const handleRegistModal = () => {
+		setIsLoginModalVisible(false);
+		setIsRegistModalVisible(true);
+	}
 
 	//기본형 axios 사용하기
 	const getLogin = async (requestNodeData) => {
@@ -57,5 +70,7 @@ export const useLoginModalContext = (
 
 	return {
 		handleLogin,
+		handleCloseModal,
+		handleRegistModal,
 	}
 }

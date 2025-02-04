@@ -28,6 +28,16 @@
 .margin_left_-90  { margin-left: -90px !important;  } .margin_right_-90  { margin-right: -90px !important;  }
 .margin_left_-95  { margin-left: -95px !important;  } .margin_right_-95  { margin-right: -95px !important;  }
 .margin_left_-100 { margin-left: -100px !important; } .margin_right_-100 { margin-right: -100px !important; }
+.margin_left_-200 { margin-left: -200px !important; } .margin_right_-200 { margin-right: -200px !important; }
+.margin_left_-300 { margin-left: -300px !important; } .margin_right_-300 { margin-right: -300px !important; }
+.margin_left_-400 { margin-left: -400px !important; } .margin_right_-400 { margin-right: -400px !important; }
+.margin_left_-500 { margin-left: -500px !important; } .margin_right_-500 { margin-right: -500px !important; }
+.margin_left_-600 { margin-left: -600px !important; } .margin_right_-600 { margin-right: -600px !important; }
+.margin_left_-700 { margin-left: -700px !important; } .margin_right_-700 { margin-right: -700px !important; }
+.margin_left_-800 { margin-left: -800px !important; } .margin_right_-800 { margin-right: -800px !important; }
+.margin_left_-900 { margin-left: -900px !important; } .margin_right_-900 { margin-right: -900px !important; }
+.margin_left_-1000 { margin-left: -1000px !important; } .margin_right_-1000 { margin-right: -1000px !important; }
+
 .margin_left_10  { margin-left: 10px !important;  } .margin_right_10  { margin-right: 10px !important;  }
 .margin_left_15  { margin-left: 15px !important;  } .margin_right_15  { margin-right: 15px !important;  }
 .margin_left_20  { margin-left: 20px !important;  } .margin_right_20  { margin-right: 20px !important;  }
@@ -66,7 +76,14 @@
 .margin_left_190  { margin-left: 190px !important;  } .margin_right_190  { margin-right: 190px !important;  }
 .margin_left_195  { margin-left: 195px !important;  } .margin_right_195  { margin-right: 195px !important;  }
 .margin_left_200 { margin-left: 200px !important; }   .margin_right_200 { margin-right: 200px !important; }
-
+.margin_left_300 { margin-left: 300px !important; }   .margin_right_300 { margin-right: 300px !important; }
+.margin_left_400 { margin-left: 400px !important; }   .margin_right_400 { margin-right: 400px !important; }
+.margin_left_500 { margin-left: 500px !important; }   .margin_right_500 { margin-right: 500px !important; }
+.margin_left_600 { margin-left: 600px !important; }   .margin_right_600 { margin-right: 600px !important; }
+.margin_left_700 { margin-left: 700px !important; }   .margin_right_700 { margin-right: 700px !important; }
+.margin_left_800 { margin-left: 800px !important; }   .margin_right_800 { margin-right: 800px !important; }
+.margin_left_900 { margin-left: 900px !important; }   .margin_right_900 { margin-right: 900px !important; }
+.margin_left_1000 { margin-left: 1000px !important; } .margin_right_1000 { margin-right: 1000px !important; }
 
 .margin_top_10  { margin-top: 10px !important;  } .margin_bottom_10  { margin-bottom: 10px !important;  }
 .margin_top_15  { margin-top: 15px !important;  } .margin_bottom_15  { margin-bottom: 15px !important;  }

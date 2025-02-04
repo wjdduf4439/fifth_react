@@ -8,6 +8,7 @@ import { MdOutlineSegment } from "react-icons/md";
 
 import MuiTheme from 'css/MuiTheme';
 import LoginModal from 'layout/loginModal/LoginModal';
+import RegistModal from 'layout/registModal/RegistModal';
 import ProfileModal from 'layout/profile/ProfileModal';
 
 import { AccessContext } from 'provider/AccessProvider';
@@ -20,6 +21,7 @@ const TopMenu = (props) => {
 
 	const [isTopMenuDropdownVisible, setIsTopMenuDropdownVisible] = useState(false);
 	const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
+	const [isRegistModalVisible, setIsRegistModalVisible] = useState(false);
 	const [isProfileMenuVisible, setIsProfileMenuVisible] = useState(false);
 	const [isRightMenuVisible, setIsRightMenuVisible] = useState(false);
 	const [isRightMenuVisibleValue, setIsRightMenuVisibleValue] = useState('hidden');
@@ -207,6 +209,13 @@ const TopMenu = (props) => {
 			{isLoginModalVisible && (
 				<LoginModal 
 					setIsLoginModalVisible={setIsLoginModalVisible}
+					setIsRegistModalVisible={setIsRegistModalVisible}
+				/>
+			)}
+
+			{isRegistModalVisible && (
+				<RegistModal 
+					setIsRegistModalVisible={setIsRegistModalVisible}
 				/>
 			)}
 		</>

@@ -27,15 +27,17 @@
 
 @media (max-width: 768px) {
     .underline_box {
-        left: 60%;
+        left: 85%;
         width: 40%;
+		display: none;
     }
 }
 
 @media (max-width: 480px) {
     .underline_box {
-        left: 50%;
+        left: 90%;
         width: 50%;
+		display: none;
     }
 }
 

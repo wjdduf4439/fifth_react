@@ -8,21 +8,25 @@ import { useLoginModalContext } from 'layout/loginModal/LoginModalContext';
 
 const LoginModal = (props) => {
 
+	const { 
+			setIsLoginModalVisible,
+			setIsRegistModalVisible,
+		} = props;
+
 	const [id, setId] = useState('');
 	const [pw, setPw] = useState('');
 	const [pwShow, setPwShow] = useState(true);
 
 	const { 
 		handleLogin,
-	} = useLoginModalContext(
-		id,
-		pw,
-		props.setIsLoginModalVisible,
-	);
-
-	const handleCloseModal = () => {
-		props.setIsLoginModalVisible(false);
-	}
+		handleCloseModal,
+		handleRegistModal,
+	} = useLoginModalContext({
+			id,
+			pw,
+			setIsLoginModalVisible,
+			setIsRegistModalVisible,
+	});
 
 	return (
 		<>
@@ -50,9 +54,9 @@ const LoginModal = (props) => {
 							</span>
 						</div>
 						<br />
-						<MuiTheme.LoginButton type="submit">로그인</MuiTheme.LoginButton>
-						<span className='margin_right_10'></span>
-						<MuiTheme.CancelButton onClick={() => handleCloseModal()} >취소</MuiTheme.CancelButton>
+						<MuiTheme.LoginButton className='margin_right_10' type="submit">로그인</MuiTheme.LoginButton>
+						<MuiTheme.CancelButton className='margin_right_10' onClick={() => handleCloseModal()} >취소</MuiTheme.CancelButton>
+						<MuiTheme.CancelButton className='margin_right_10' onClick={() => handleRegistModal()} >회원가입</MuiTheme.CancelButton>
 					</form>
 				</div>
 				<div className="modal_overlay" onClick={() => handleCloseModal()}>

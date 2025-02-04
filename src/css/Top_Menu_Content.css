@@ -280,6 +280,23 @@
 	margin-top: 5px;
 }
 
+.modal_warning {
+	position: absolute;
+	z-index: 10002;
+	background-color: var(--background-color);
+	color: var(--text-color);
+	border: 1px solid var(--background-border-color);
+	border-radius: 8px;
+	padding: 10px;
+}
+
+.toast-enter {
+    animation: fadeIn 0.5s forwards;
+}
+
+.toast-exit {
+    animation: fadeOut 0.5s forwards;
+}
 
 @media (max-width: 768px) {
     .sidebar_right {
@@ -290,5 +307,28 @@
 @media (max-width: 480px) {
     .sidebar_right {
         margin-right: 100px; /* 더 작은 화면에서는 너비를 더 줄임 */
+    }
+}
+
+/* CSS 파일에 추가 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
     }
 }

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Slider from "react-slick";
 
 import { RiServerFill } from "react-icons/ri";
-import { FaServer, FaDatabase } from "react-icons/fa";
+import { FaServer, FaDatabase, FaQuestion } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
 import { LuMonitor } from "react-icons/lu";
 import { BiLogInCircle } from "react-icons/bi";
@@ -21,10 +21,20 @@ import UserMenu from 'layout/UserMenu';
 const Main = (props) => {
 
 	let welcome_ment = '언제나 기술적인 고민, 방법을 찾고 문제 해결을 위해 노력하는 개발자';
-	let howto_ment = '포트폴리오를 작성하면서 겪은 문제점, 해결 방법';
+	let howto_ment = '홈페이지의 구조와 기능';
 	const [hoveredIndex, setHoveredIndex] = useState('');
 
 	const [contact_ip, setContactIp] = useState('');
+	const [leftSidebarMode, setLeftSidebarMode] = useState('sidebar_left');
+	const [leftSidebarWidth, setLeftSidebarWidth] = useState('width_100per');
+	const [profileDivWidth, setProfileDivWidth] = useState('width_100per');
+	const [profileImgWidth, setProfileImgWidth] = useState('width_10per');
+	const [profileDivAlign, setProfileDivAlign] = useState('text_align_center');
+	const [displayNone, setDisplayNone] = useState('');
+	const [containerMarginLeft, setContainerMarginLeft] = useState('margin_left_300');
+	const [containerMarginRight, setContainerMarginRight] = useState('margin_right_300');
+	const [contentWidth, setContentWidth] = useState('width_100per');
+	const [projectArcWidth, setProjectArcWidth] = useState('width_100per');
 
     // Slider Ref 생성
     const howToSliderRef = useRef(null);
@@ -40,14 +50,56 @@ const Main = (props) => {
 		howToSliderRef,
 		contact_ip, setContactIp,
 	 );
+	 
+	 const handleResize = () => {
+		if (window.innerWidth <= 640) {
+			setLeftSidebarMode('sidebar_up');
+			setLeftSidebarWidth('width_100per');
+			setProfileDivWidth('width_30per');
+			setProfileDivAlign('text_align_left padding_left_10');
+			setProfileImgWidth('width_30per');
+			setDisplayNone('display_none');
+			setContainerMarginLeft('');
+			setContainerMarginRight('');
+			setContentWidth('');
+		} else {
+			setLeftSidebarMode('sidebar_left');
+			setLeftSidebarWidth('width_10per');
+			setProfileDivWidth('width_100per');
+			setProfileDivAlign('text_align_center');
+			setProfileImgWidth('width_100per');
+			setDisplayNone('');
+			setContainerMarginLeft('margin_left_300');
+			setContainerMarginRight('margin_right_300');
+			setContentWidth('width_100per');
+		}
+		console.log('config handleResize');
+	};
+
+	 useEffect(() => {
+
+        // 초기 로드 시 크기 확인
+        handleResize();
+
+        // 창 크기 변경 이벤트 리스너 추가
+        window.addEventListener('resize', handleResize);
+		console.log('config useEffect');
+
+        // 컴포넌트 언마운트 시 이벤트 리스너 제거
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return (
 		<div>
 			<div className="main_container">
-				<div className="sidebar_left width_10per">
-					<img src="/image/profile.jpg" alt="프로필 사진" className='profile_img margin_top_20'/>
-					<h4 className='text_align_center GumiDotumTTF'>이정열</h4>
-					<div className='text_align_center GumiDotumTTF'>- java 백엔드 개발자 -</div>
+				<div className={`${leftSidebarMode} ${leftSidebarWidth} ${displayNone}`}>
+					<div className={`profile_img_div ${profileDivWidth}`}>
+						<img src="/image/profile.jpg" alt="프로필 사진" className={`profile_img margin_top_20 ${profileImgWidth}`} />
+						<h4 className={`width_100per ${profileDivAlign} GumiDotumTTF`}>이정열</h4>
+						<div className={`${profileDivAlign} GumiDotumTTF`}>- java 백엔드 개발자 -</div>
+					</div>
 					<ul className='left_menu_ul'>
 						<li><a href="#none" onClick={(e) => { e.preventDefault(); scrollToElementWithOffset('welcome'); }}>WELCOME</a></li>
 						<li><a href="#none" onClick={(e) => { e.preventDefault(); scrollToElementWithOffset('aboutme'); }}>ABOUT ME</a></li>
@@ -62,12 +114,12 @@ const Main = (props) => {
 					<p>여기에 페이지 소개 내용을 추가하세요.</p>
 				</div>
 				*/}
-				<div className="container">
-					<div className="content">
+				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
+					<div className={`content ${contentWidth}`}>
 						
 						<div id="welcome" className='about_me_meta'>WELCOME</div>
 
-						<Slider {...aboutMeTitleSliderSettings}>
+						<Slider {...aboutMeTitleSliderSettings} className='about_me_slider'>
 							<div className='about_me_slider_div'>
 								<h2>안녕하십니까. <br/> 저는 <br/>  이정열입니다.</h2>
 							</div>
@@ -82,8 +134,8 @@ const Main = (props) => {
 				
 
 			
-				<div className="container">
-					<div className="content">
+				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
+					<div className={`content ${contentWidth}`}>
 
 						<div id="aboutme" className='about_me_meta'>ABOUT ME</div>
 							
@@ -106,8 +158,8 @@ const Main = (props) => {
 				</div>
 
 				
-				<div className="container">
-					<div className="content">
+				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
+					<div className={`content ${contentWidth}`}>
 
 						<div id="stack" className='about_me_meta'>STACK</div>
 
@@ -132,7 +184,7 @@ const Main = (props) => {
 												<span className={`font_size_24 margin_right_10 ${hoveredIndex === index ? 'text_'+color : ''}`}><LuMonitor /></span>
 												<span>web</span><br />
 												<div className='margin_left_10 font_size_14'>
-													react,<br />
+													react, nginx<br />
 													javascript&jquery,<br />
 													jsp&jstl
 												</div>
@@ -175,8 +227,8 @@ const Main = (props) => {
 				</div>
 
 
-				<div className="container">
-					<div className="content">
+				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
+					<div className={`content ${contentWidth}`}>
 
 						<div id="howto" className="about_me_meta">HOW TO</div>
 
@@ -184,64 +236,72 @@ const Main = (props) => {
 							{howto_ment}
 						</div>
 
+						<img className='project_arc' src="/image/project_arc.png" alt="프로젝트 구조도" />
+						
 						<div className="howto-content">
 							<ul className="howto-content-ul">
 								<li onClick={() => handleHowToSliderClick(0)}>
-									<span className="font_size_46">+</span><br/>CMS 홈페이지 배포과정
+									<span className="font_size_46"><ImAmazon /></span><br/>Front-end 소개
 								</li>
 								<li onClick={() => handleHowToSliderClick(1)}>
-									<span className="font_size_46"><ImAmazon /></span><br/>AWS 활용에 대한 경험
+									<span className="font_size_46"><DiReact /></span><br/>Back-end 소개
 								</li>
 								<li onClick={() => handleHowToSliderClick(2)}>	
-									<span className="font_size_46"><DiReact /></span><br/>리액트 활용에 대한 경험
+									<span className="font_size_46"><FaDatabase /></span><br/>DB
 								</li>
-								<li onClick={() => handleHowToSliderClick(3)}>
-									<span className="font_size_46"><GoUpload /></span><br/>이미지 내용첨부 기능
-								</li>
-								<li onClick={() => handleHowToSliderClick(4)}>
-									<span className="font_size_46"><BiLogInCircle /></span><br/>jwt 로그인/인증 방식
-								</li>
-								<li onClick={() => handleHowToSliderClick(5)}>
-									<span className="font_size_46"><TbApi /></span><br/>api 활용에 대한 경험
-								</li>
-								<li onClick={() => handleHowToSliderClick(6)}>
-									<span className="font_size_46">+</span><br/>추가 백엔드 기능 구현
-								</li>
-								
 							</ul>
 						</div>
 
 						<div className='howto_bar margin_bottom_10'></div>
 						
-						<Slider ref={howToSliderRef}  {...aboutMeHowToContentSliderSettings}>
-							<div className='about_me_slider_div'>
-								<p>CMS 홈페이지 배포과정</p>
+						<Slider ref={howToSliderRef}  {...aboutMeHowToContentSliderSettings} className='howto_slider'>
+							<div className='about_me_slider_div min_height_500'>
+								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 React로 구현했나요?</h3>
+								<p className='margin_bottom_50'>
+								리엑트에서 사용하는 컴포넌트라는 구조 자체가 재사용성이 높고,<br/><br/>
+								처음 접속하기만 하면 이후 홈페이지를 쾌적하게 사용할 수 있고,<br/><br/>
+								세계적으로 여러군데 쓰이는 리액트를 배워두면 나중에 취업시장에서 수요를 챙길 수 있을것 같아서 배워두었습니다.<br/><br/>
+								전자정부프레임워크도 리액트를 활용가능하게 한다는 소식도 들어서 저는 미래에는 js보다는 jsx 기반의 자바스크립트 라이브러리가 쓰일거라고 생각하고 있습니다.
+								</p>
+
+								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 nginx를 사용했나요?</h3>
+								<p>
+								리버스 프록시 구조를 통한 클라이언트의 직접적인 서버 접근 제한 기능과<br/><br/>
+								경로 설정을 통해서 하나의 도메인 안에서 백엔드에 요청을 보낼지, 프론트엔드에 요청을 보낼지 결정할 수 있고<br/><br/>
+								HTTPS 프로토콜을 사용하기 위해서 nginx를 사용하기로 했습니다.
+								</p>
 							</div>
-							<div className='about_me_slider_div'>
-								<p>aws 활용에 대한 경험</p>
+							<div className='about_me_slider_div min_height_500'>
+								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 spring boot를 사용했나요?</h3>
+								<p className='margin_bottom_50'>
+									spring boot는 자바 기반의 프레임워크로, 오픈소스이고, 라이브러리가 많고, 커뮤니티가 활발하기 때문입니다.<br/><br/>
+									spring framework에 비해 프로필 기반의 어노테이션 작성을 통한 개발/서비스 코드 세분화가 쉽습니다.<br/><br/>
+									spring starter 기능을 통해 초기 설정을 쉽게 할 수 있고, 각 라이브러리에 대한 권장 버전 안내를 통해, 버전 관리가 쉽습니다.<br/><br/>
+									부가적인 기능으로 내장 서버가 있어, jar 파일을 배포 후 구동하기 쉽고, java 17 버전을 사용하여 코드 블록과 같은 편의성 기능을 사용할 수 있습니다.
+								</p>
+								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 docker를 사용했나요?</h3>
+								<p>
+								Docker은 컨테이너 기반 가상화 기술로, 가상 서버를 컨테이너라는 단위로 패키징하고 배포, 실행할 수 있게 해주는 프로그램입니다<br/><br/>
+								Dockerfile, Docker compose로 이미지를 정의하고, 컨테이너를 실행합니다.<br/><br/>
+								기존 가상 서버에 비해 부팅 속도가 빠르고, 어떤 운영체제 환경이든 Docker을 설치할수만 있다면 구동할수 있기 때문에 사용했습니다.
+								</p>
 							</div>
-							<div className='about_me_slider_div'>
-								<p>리액트 활용에 대한 경험</p>
-							</div>
-							<div className='about_me_slider_div'>
-								<p>이미지 내용첨부 기능</p>
-							</div>
-							<div className='about_me_slider_div'>
-								<p>jwt 로그인/인증 방식</p>
-							</div>
-							<div className='about_me_slider_div'>
-								<p>api 활용에 대한 경험</p>
-							</div>
-							<div className='about_me_slider_div'>
-								<p>백엔드 기능 구현에 대해서 적을것</p>
+							<div className='about_me_slider_div min_height_500'>
+								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 Mysql DB를 사용했나요?</h3>
+								<p>
+									MariaDB는 MySQL의 오픈소스 버전이며, 대부분의 기능이 동일하고, 라이선스가 무료이기 때문에 사용했습니다.<br/><br/>
+									소형 프로젝트에서 효과적인 인덱싱을 지원해서 소형 프로젝트에서의 빠른 성능을 더 돋보이게 만들 수 있다고 판단했습니다.<br/><br/>
+									관계형 데이터베이스는 데이터를 행과 열로 미리 구성된 테이블 형태로 저장하고, 테이블 간의 관계를 설정하여 데이터를 조회할 수 있습니다.
+								</p>
 							</div>
 						</Slider>
+						
 
 					</div>
 				</div>
 
-				<div className="container">
-					<div className="content">
+				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
+					<div className={`content ${contentWidth}`}>
 
 						<div id="contract" className='about_me_meta'>CONTACT</div>
 

@@ -1,8 +1,6 @@
 .container {
 	align-items: flex-start;
 	margin-top: 50px; 
-    margin-left: 300px; /* 왼쪽 사이드바의 너비 + 여백 */
-    margin-right: 300px; /* 오른쪽 사이드바의 너비 + 여백 */
 	margin-bottom: 50px; 
 }
 
@@ -18,7 +16,7 @@
     margin-left: 50px; /* 왼쪽 사이드바의 너비 + 여백 */
     margin-right: 50px; /* 오른쪽 사이드바의 너비 + 여백 */
 	align-items: flex-start;
-	width: 100%;
+	/* width: 100%; */
 	display: inline-block;
 }
 
@@ -37,8 +35,21 @@
 	border: 1px solid var(--background-border-color);
 }
 
+.sidebar_up {
+    position: fixed;
+    left: 0;
+    top: 90px; /* 상단에 위치하도록 설정 */
+    height: 150px; /* 원하는 높이로 설정 */
+    background-color: var(--background-color);
+    padding: 10px; /* 패딩을 줄여서 높이를 줄임 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 그림자 방향을 아래로 변경 */
+    border-bottom: 1px solid var(--background-border-color); /* 하단에만 테두리 추가 */
+    display: flex; /* 내용물을 가로로 배치 */
+    align-items: center; /* 수직 중앙 정렬 */
+    
+}
+
 .profile_img {
-	width: 100%;
 	border: 1px solid var(--background-border-color);
 	border-radius: 50%;
 	object-fit: cover; /* 이미지가 잘리지 않도록 */
@@ -241,7 +252,7 @@
 .howto-content-ul > li {
 	position: relative;
 	float:left;
-	width: 15%;
+	/* width: 15%; */
 	height: 80px;
 	background-color: rgba(0, 0, 0, 0.1);
 	box-shadow: inset 0px 0px 0 1px var(--background-border-color);
@@ -263,6 +274,10 @@
 
 .howto-content-ul > li:active {
 	box-shadow: inset 2px 2px 0 1px var(--background-border-color);
+}
+
+.project_arc {
+	/* width: 100%; */
 }
 
 .string_tool_heading {

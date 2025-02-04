@@ -6,8 +6,13 @@
 }
 
 /* 실제 슬라이더 요소 높이 지정 */
-.slick-vertical .slick-slide {
+.slick-vertical .slick-slide .about_me_slider {
 	height: 300px;
+}
+
+/* 실제 슬라이더 요소 높이 지정 */
+.slick-vertical .slick-slide .howto_slider {
+	height: 500px;
 }
     
 .slick-dots {
