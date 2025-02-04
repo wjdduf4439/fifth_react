@@ -93,7 +93,6 @@ const Main = (props) => {
 
     return (
 		<div>
-			window width : {window.innerWidth}
 			<div className="main_container">
 				<div className={`${leftSidebarMode} ${leftSidebarWidth} ${displayNone}`}>
 					<div className={`profile_img_div ${profileDivWidth}`}>
@@ -118,6 +117,7 @@ const Main = (props) => {
 				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
 					<div className={`content ${contentWidth}`}>
 						
+						window width : {window.innerWidth}
 						<div id="welcome" className='about_me_meta'>WELCOME</div>
 
 						<Slider {...aboutMeTitleSliderSettings} className='about_me_slider'>
