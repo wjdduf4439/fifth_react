@@ -258,7 +258,7 @@ const Main = (props) => {
 						</div> */}
 
 						<div className='howto_bar margin_bottom_10'></div>
-						
+						{/* 						
 						<Slider ref={howToSliderRef}  {...aboutMeHowToContentSliderSettings} className='howto_slider'>
 							<div className='about_me_slider_div min_height_500'>
 								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 React로 구현했나요?</h3>
@@ -300,7 +300,7 @@ const Main = (props) => {
 								</p>
 							</div>
 						</Slider>
-						
+						 */}
 
 					</div>
 				</div>
