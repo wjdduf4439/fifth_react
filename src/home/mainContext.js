@@ -12,7 +12,7 @@ export const useMainContext = (
 	const axiosInstance = useAxios();
 
 	const aboutMeTitleSliderSettings = {
-		className: 'width_100per',
+		variableWidth : true,
 		arrows: false,   // 이전/다음 버튼 비활성화
 		dots: true,
 		infinite: true,
