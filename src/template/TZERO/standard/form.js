@@ -19,6 +19,7 @@ const TZEROStandardForm = (props) => {
 
 	const {
 			environment,
+			templateName,
 			templateOption, codeHead,
 			showWriteForm, setShowWriteForm,
 			showViewForm, setShowViewForm,
@@ -157,7 +158,7 @@ const TZEROStandardForm = (props) => {
 
 					{showWriteForm && 
 						<div className="content">
-							<h1>게시물 수정</h1>
+							<h1>{templateName} 게시물 수정</h1>
 						</div>
 					}
 
@@ -182,7 +183,7 @@ const TZEROStandardForm = (props) => {
 
 					{showViewForm && 
 						<div className="content">
-							<h1>게시물 조회</h1>
+							<h1>{templateName} 게시물 조회</h1>
 						</div>
 					}
 
@@ -216,7 +217,7 @@ const TZEROStandardForm = (props) => {
 
 					{ !showWriteForm && !showViewForm &&
 						<div className="content">
-							<h1>게시판 목록</h1>
+							<h1>{templateName} 게시판 목록</h1>
 						</div>
 					}
 					{  showViewForm && templateOption.viewUnderListShow === 'Y' &&

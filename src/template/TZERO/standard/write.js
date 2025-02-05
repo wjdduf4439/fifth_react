@@ -75,7 +75,7 @@ const TZEROStandardWriteForm = (props) => {
 			{showWriteLoading? <Loading /> : 
 			<>
 				<div className=""><FaInfo /> esc 키를 누르면 리스트 페이지로 이동합니다. </div>
-				<div className="">env os {`>`} {environment.os}</div>
+				{/* <div className="">env os {`>`} {environment.os}</div> */}
 				<MuiTheme.TextField2 
 					style={{ width: templateOption.noticeShow === 'Y' ? '75%' : '100%' }}
 					label={"제목"}

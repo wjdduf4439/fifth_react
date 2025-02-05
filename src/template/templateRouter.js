@@ -19,6 +19,7 @@ function TemplateRouter(props) {
 
 	const axiosInstance = useAxios();
 
+	const [templateName, setTemplateName] = useState('');
 	const [templateType, setTemplateType] = useState('');
 	const [skinType, setSkinType] = useState('');
 	const [templateOption, setTemplateOption] = useState({
@@ -48,6 +49,7 @@ function TemplateRouter(props) {
 		.then(response => {
 			const data = response.data;
 			if (data.result) {
+				setTemplateName(data.resultList.name);
 				setTemplateType(data.resultList.templateType);
 				setSkinType(data.resultList.skinType);
 				setTemplateOption(JSON.parse(data.resultList.optionContent));
@@ -102,6 +104,7 @@ function TemplateRouter(props) {
 		{templateType === 'TZERO' && skinType === 'STANDARD' && 
 			<TZEROStandardForm
 				environment={environment}
+				templateName={templateName}
 				templateOption={templateOption} codeHead={codeHead} 
 				showWriteForm={showWriteForm} setShowWriteForm={setShowWriteForm}
 				showViewForm={showViewForm} setShowViewForm={setShowViewForm}
