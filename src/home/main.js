@@ -34,7 +34,7 @@ const Main = (props) => {
 	const [containerMarginLeft, setContainerMarginLeft] = useState('margin_left_300');
 	const [containerMarginRight, setContainerMarginRight] = useState('margin_right_300');
 	const [contentWidth, setContentWidth] = useState('width_100per');
-	const [projectArcWidth, setProjectArcWidth] = useState('width_100per');
+	const [projectArcMinusWidth, setProjectArcMinusWidth] = useState(0);
 
     // Slider Ref 생성
     const howToSliderRef = useRef(null);
@@ -66,6 +66,7 @@ const Main = (props) => {
 				if (containerMarginLeft !== '') setContainerMarginLeft('');
 				if (containerMarginRight !== '') setContainerMarginRight('');
 				if (contentWidth !== '') setContentWidth('');
+				if (projectArcMinusWidth !== '') setProjectArcMinusWidth(350);
 			} else {
 				if (leftSidebarMode !== 'sidebar_left') setLeftSidebarMode('sidebar_left');
 				if (leftSidebarWidth !== 'width_10per') setLeftSidebarWidth('width_10per');
@@ -76,6 +77,7 @@ const Main = (props) => {
 				if (containerMarginLeft !== 'margin_left_300') setContainerMarginLeft('margin_left_300');
 				if (containerMarginRight !== 'margin_right_300') setContainerMarginRight('margin_right_300');
 				if (contentWidth !== 'width_100per') setContentWidth('width_100per');
+				if (projectArcMinusWidth !== 0) setProjectArcMinusWidth(500);
 			}
 			console.log('config handleResize');
 		};
@@ -239,7 +241,7 @@ const Main = (props) => {
 							{howto_ment}
 						</div>
 
-						<img width={`${window.innerWidth - 200}px`} src="/image/project_arc.png" alt="프로젝트 구조도" />
+						<img width={`${window.innerWidth - projectArcMinusWidth}px`} src="/image/project_arc.png" alt="프로젝트 구조도" />
 						{/* 						
 						<div className="howto-content">
 							<ul className="howto-content-ul">
