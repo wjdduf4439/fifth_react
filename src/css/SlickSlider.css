@@ -1,4 +1,4 @@
-.slick-slider {
+.slick-slider .slick-list {
 	width: 100% !important; /* 슬라이더 컨테이너의 너비를 50%로 설정 */
 	max-width: 100% !important;
 	height: 400px; /* 슬라이더 컨테이너 높이 설정 */
