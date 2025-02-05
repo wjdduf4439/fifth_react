@@ -252,7 +252,7 @@
 .howto-content-ul > li {
 	position: relative;
 	float:left;
-	/* width: 15%; */
+	width: 15%;
 	height: 80px;
 	background-color: rgba(0, 0, 0, 0.1);
 	box-shadow: inset 0px 0px 0 1px var(--background-border-color);

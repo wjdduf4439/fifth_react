@@ -122,7 +122,7 @@ const Main = (props) => {
 				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
 					<div className={`content ${contentWidth}`}>
 						
-						window width : {window.innerWidth}
+						{/* window width : {window.innerWidth} */}
 						<div id="welcome" className='about_me_meta'>WELCOME</div>
 
 						<Slider {...aboutMeTitleSliderSettings} className='about_me_slider'>
