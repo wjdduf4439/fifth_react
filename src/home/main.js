@@ -98,7 +98,7 @@ const Main = (props) => {
     return (
 		<div>
 			<div className="main_container">
-				{/* <div className={`${leftSidebarMode} ${leftSidebarWidth} ${displayNone}`}>
+				<div className={`${leftSidebarMode} ${leftSidebarWidth} ${displayNone}`}>
 					<div className={`profile_img_div ${profileDivWidth}`}>
 						<img src="/image/profile.jpg" alt="프로필 사진" className={`profile_img margin_top_20 ${profileImgWidth}`} />
 						<h4 className={`width_100per ${profileDivAlign} GumiDotumTTF`}>이정열</h4>
@@ -111,13 +111,13 @@ const Main = (props) => {
 						<li><a href="#none" onClick={(e) => { e.preventDefault(); scrollToElementWithOffset('howto'); }}>HOW TO</a></li>
 						<li><a href="#none" onClick={(e) => { e.preventDefault(); scrollToElementWithOffset('contract'); }}>CONTACT</a></li>
 					</ul>
-				</div> */}
-				{/* 
+				</div>
+				{/*
 				<div className="sidebar_right">
 					<h4>페이지 소개</h4>
 					<p>여기에 페이지 소개 내용을 추가하세요.</p>
 				</div>
-				*/}
+				 */}
 				{/* 				
 				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
 					<div className={`content ${contentWidth}`}>
