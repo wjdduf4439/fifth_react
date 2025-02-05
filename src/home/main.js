@@ -118,7 +118,7 @@ const Main = (props) => {
 					<p>여기에 페이지 소개 내용을 추가하세요.</p>
 				</div>
 				 */}
-				{/* 				
+								
 				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
 					<div className={`content ${contentWidth}`}>
 						
@@ -137,8 +137,6 @@ const Main = (props) => {
 						
 					</div>
 				</div>
-				 */}
-
 			
 				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
 					<div className={`content ${contentWidth}`}>
