@@ -98,7 +98,7 @@ const Main = (props) => {
     return (
 		<div>
 			<div className="main_container">
-				<div className={`${leftSidebarMode} ${leftSidebarWidth} ${displayNone}`}>
+				{/* <div className={`${leftSidebarMode} ${leftSidebarWidth} ${displayNone}`}>
 					<div className={`profile_img_div ${profileDivWidth}`}>
 						<img src="/image/profile.jpg" alt="프로필 사진" className={`profile_img margin_top_20 ${profileImgWidth}`} />
 						<h4 className={`width_100per ${profileDivAlign} GumiDotumTTF`}>이정열</h4>
@@ -111,7 +111,7 @@ const Main = (props) => {
 						<li><a href="#none" onClick={(e) => { e.preventDefault(); scrollToElementWithOffset('howto'); }}>HOW TO</a></li>
 						<li><a href="#none" onClick={(e) => { e.preventDefault(); scrollToElementWithOffset('contract'); }}>CONTACT</a></li>
 					</ul>
-				</div>
+				</div> */}
 				{/* 
 				<div className="sidebar_right">
 					<h4>페이지 소개</h4>
@@ -242,7 +242,7 @@ const Main = (props) => {
 						</div>
 
 						<img src={projectArcLink} alt="프로젝트 구조도" />
-						{/* 						
+												
 						<div className="howto-content">
 							<ul className="howto-content-ul">
 								<li onClick={() => handleHowToSliderClick(0)}>
@@ -255,10 +255,10 @@ const Main = (props) => {
 									<span className="font_size_46"><FaDatabase /></span><br/>DB
 								</li>
 							</ul>
-						</div> */}
+						</div>
 
 						<div className='howto_bar margin_bottom_10'></div>
-						{/* 						
+												
 						<Slider ref={howToSliderRef}  {...aboutMeHowToContentSliderSettings} className='howto_slider'>
 							<div className='about_me_slider_div min_height_500'>
 								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 React로 구현했나요?</h3>
@@ -300,7 +300,7 @@ const Main = (props) => {
 								</p>
 							</div>
 						</Slider>
-						 */}
+						
 
 					</div>
 				</div>
