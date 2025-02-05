@@ -26,7 +26,7 @@ const UserMenu = (props) => {
 		<>
 		<TopMenu />
 		<UnderlineBox />
-	{/* 
+
 		<div style={{ position: 'fixed', bottom: 0, left: 0, width: '100%', height: '5px', background: '#f0f0f0', zIndex: 1000 }}>
 		  <motion.div
 			style={{
@@ -39,7 +39,7 @@ const UserMenu = (props) => {
 			transition={{ duration: 0.1 }}
 		  />
 		</div>
-		 */}
+		
 		</>
 	);
 }
