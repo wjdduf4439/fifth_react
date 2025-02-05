@@ -239,7 +239,7 @@ const Main = (props) => {
 							{howto_ment}
 						</div>
 
-						<img width={`${window.innerWidth - 200}px`} src="/image/project_arc.png" alt="프로젝트 구조도" />
+						<img width={`${window.innerWidth - 400}px`} src="/image/project_arc.png" alt="프로젝트 구조도" />
 						{/* 						
 						<div className="howto-content">
 							<ul className="howto-content-ul">
