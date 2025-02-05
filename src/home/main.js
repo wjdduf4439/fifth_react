@@ -66,7 +66,7 @@ const Main = (props) => {
 				if (containerMarginLeft !== '') setContainerMarginLeft('');
 				if (containerMarginRight !== '') setContainerMarginRight('');
 				if (contentWidth !== '') setContentWidth('');
-				if (projectArcMinusWidth !== '') setProjectArcMinusWidth(350);
+				if (projectArcMinusWidth !== '') setProjectArcMinusWidth(450);
 			} else {
 				if (leftSidebarMode !== 'sidebar_left') setLeftSidebarMode('sidebar_left');
 				if (leftSidebarWidth !== 'width_10per') setLeftSidebarWidth('width_10per');
