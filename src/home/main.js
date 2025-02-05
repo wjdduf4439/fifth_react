@@ -57,25 +57,25 @@ const Main = (props) => {
 
 		const handleResize = () => {
 			if (window.innerWidth <= 740) {
-				setLeftSidebarMode('sidebar_up');
-				setLeftSidebarWidth('width_100per');
-				setProfileDivWidth('width_30per');
-				setProfileDivAlign('text_align_left padding_left_10');
-				setProfileImgWidth('width_30per');
-				setDisplayNone('display_none');
-				setContainerMarginLeft('');
-				setContainerMarginRight('');
-				setContentWidth('');
+				if (leftSidebarMode !== 'sidebar_up') setLeftSidebarMode('sidebar_up');
+				if (leftSidebarWidth !== 'width_100per') setLeftSidebarWidth('width_100per');
+				if (profileDivWidth !== 'width_30per') setProfileDivWidth('width_30per');
+				if (profileDivAlign !== 'text_align_left padding_left_10') setProfileDivAlign('text_align_left padding_left_10');
+				if (profileImgWidth !== 'width_30per') setProfileImgWidth('width_30per');
+				if (displayNone !== 'display_none') setDisplayNone('display_none');
+				if (containerMarginLeft !== '') setContainerMarginLeft('');
+				if (containerMarginRight !== '') setContainerMarginRight('');
+				if (contentWidth !== '') setContentWidth('');
 			} else {
-				setLeftSidebarMode('sidebar_left');
-				setLeftSidebarWidth('width_10per');
-				setProfileDivWidth('width_100per');
-				setProfileDivAlign('text_align_center');
-				setProfileImgWidth('width_100per');
-				setDisplayNone('');
-				setContainerMarginLeft('margin_left_300');
-				setContainerMarginRight('margin_right_300');
-				setContentWidth('width_100per');
+				if (leftSidebarMode !== 'sidebar_left') setLeftSidebarMode('sidebar_left');
+				if (leftSidebarWidth !== 'width_10per') setLeftSidebarWidth('width_10per');
+				if (profileDivWidth !== 'width_100per') setProfileDivWidth('width_100per');
+				if (profileDivAlign !== 'text_align_center') setProfileDivAlign('text_align_center');
+				if (profileImgWidth !== 'width_100per') setProfileImgWidth('width_100per');
+				if (displayNone !== '') setDisplayNone('');
+				if (containerMarginLeft !== 'margin_left_300') setContainerMarginLeft('margin_left_300');
+				if (containerMarginRight !== 'margin_right_300') setContainerMarginRight('margin_right_300');
+				if (contentWidth !== 'width_100per') setContentWidth('width_100per');
 			}
 			console.log('config handleResize');
 		};
