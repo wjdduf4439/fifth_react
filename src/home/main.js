@@ -56,7 +56,7 @@ const Main = (props) => {
 	 useEffect(() => {
 
 		const handleResize = () => {
-			if (window.innerWidth <= 740) {
+			if (window.innerWidth <= 800) {
 				if (leftSidebarMode !== 'sidebar_up') setLeftSidebarMode('sidebar_up');
 				if (leftSidebarWidth !== 'width_100per') setLeftSidebarWidth('width_100per');
 				if (profileDivWidth !== 'width_30per') setProfileDivWidth('width_30per');
