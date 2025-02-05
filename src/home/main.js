@@ -52,7 +52,7 @@ const Main = (props) => {
 	 );
 	 
 	 const handleResize = () => {
-		if (window.innerWidth <= 640) {
+		if (window.innerWidth <= 691) {
 			setLeftSidebarMode('sidebar_up');
 			setLeftSidebarWidth('width_100per');
 			setProfileDivWidth('width_30per');
