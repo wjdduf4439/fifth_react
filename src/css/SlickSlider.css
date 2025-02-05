@@ -4,12 +4,7 @@
 	height: 400px; /* 슬라이더 컨테이너 높이 설정 */
 	/* 슬라이더를 가운데 정렬 */
 	/* margin: 0 auto; */
-}
-
-.slider-container {
-    max-width: 100%;
-    width: 100%;
-    overflow: hidden;
+	display: inline-block;
 }
 
 /* 실제 슬라이더 요소 높이 지정 */
