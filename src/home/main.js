@@ -237,8 +237,8 @@ const Main = (props) => {
 							{howto_ment}
 						</div>
 
-						<img className='project_arc' src="/image/project_arc.png" alt="프로젝트 구조도" />
-						
+						<img className='width_100per' src="/image/project_arc.png" alt="프로젝트 구조도" />
+						{/* 						
 						<div className="howto-content">
 							<ul className="howto-content-ul">
 								<li onClick={() => handleHowToSliderClick(0)}>
@@ -251,7 +251,7 @@ const Main = (props) => {
 									<span className="font_size_46"><FaDatabase /></span><br/>DB
 								</li>
 							</ul>
-						</div>
+						</div> */}
 
 						<div className='howto_bar margin_bottom_10'></div>
 						
