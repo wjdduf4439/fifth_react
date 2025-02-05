@@ -1,5 +1,6 @@
 .slick-slider {
 	width: 100% !important; /* 슬라이더 컨테이너의 너비를 50%로 설정 */
+	max-width: 100% !important;
 	height: 400px; /* 슬라이더 컨테이너 높이 설정 */
 	/* 슬라이더를 가운데 정렬 */
 	/* margin: 0 auto; */
