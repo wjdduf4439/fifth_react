@@ -51,32 +51,34 @@ const Main = (props) => {
 		contact_ip, setContactIp,
 	 );
 	 
-	 const handleResize = () => {
-		if (window.innerWidth <= 740) {
-			setLeftSidebarMode('sidebar_up');
-			setLeftSidebarWidth('width_100per');
-			setProfileDivWidth('width_30per');
-			setProfileDivAlign('text_align_left padding_left_10');
-			setProfileImgWidth('width_30per');
-			setDisplayNone('display_none');
-			setContainerMarginLeft('');
-			setContainerMarginRight('');
-			setContentWidth('');
-		} else {
-			setLeftSidebarMode('sidebar_left');
-			setLeftSidebarWidth('width_10per');
-			setProfileDivWidth('width_100per');
-			setProfileDivAlign('text_align_center');
-			setProfileImgWidth('width_100per');
-			setDisplayNone('');
-			setContainerMarginLeft('margin_left_300');
-			setContainerMarginRight('margin_right_300');
-			setContentWidth('width_100per');
-		}
-		console.log('config handleResize');
-	};
+	 
 
 	 useEffect(() => {
+
+		const handleResize = () => {
+			if (window.innerWidth <= 740) {
+				setLeftSidebarMode('sidebar_up');
+				setLeftSidebarWidth('width_100per');
+				setProfileDivWidth('width_30per');
+				setProfileDivAlign('text_align_left padding_left_10');
+				setProfileImgWidth('width_30per');
+				setDisplayNone('display_none');
+				setContainerMarginLeft('');
+				setContainerMarginRight('');
+				setContentWidth('');
+			} else {
+				setLeftSidebarMode('sidebar_left');
+				setLeftSidebarWidth('width_10per');
+				setProfileDivWidth('width_100per');
+				setProfileDivAlign('text_align_center');
+				setProfileImgWidth('width_100per');
+				setDisplayNone('');
+				setContainerMarginLeft('margin_left_300');
+				setContainerMarginRight('margin_right_300');
+				setContentWidth('width_100per');
+			}
+			console.log('config handleResize');
+		};
 
         // 초기 로드 시 크기 확인
         handleResize();
@@ -237,7 +239,7 @@ const Main = (props) => {
 							{howto_ment}
 						</div>
 
-						<img width={`${window.innerWidth - 100}px`} src="/image/project_arc.png" alt="프로젝트 구조도" />
+						<img width={`${window.innerWidth - 200}px`} src="/image/project_arc.png" alt="프로젝트 구조도" />
 						{/* 						
 						<div className="howto-content">
 							<ul className="howto-content-ul">
