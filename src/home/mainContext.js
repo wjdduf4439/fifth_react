@@ -23,6 +23,7 @@ export const useMainContext = (
 	};
 
 	const aboutMeHowToContentSliderSettings = {
+		variableWidth : true,
 		//dots: true,
 		arrows: false,   // 이전/다음 버튼 비활성화
 		infinite: true,
