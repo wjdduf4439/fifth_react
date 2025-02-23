@@ -322,7 +322,7 @@ const Main = (props) => {
 									</li>
 									<li className='padding_10 height_140'>
 										<span className={`font_size_24 margin_right_10`}><IoMailOutline /></span>
-										wjdduf4439 {mediaQuery.matches ? '' : <br />} @gmail.com
+										wjdduf4439 {mediaQuery.matches ? <br /> : ''} @gmail.com
 									</li>
 									<li className='padding_10 height_140'>
 										<span className={`font_size_24 margin_right_10`}><IoMdPhonePortrait /></span>
