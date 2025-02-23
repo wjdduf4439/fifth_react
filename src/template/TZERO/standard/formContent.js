@@ -215,6 +215,11 @@ export const useTZEROStandardFormContent = (props) => {
 				if (responsiveWebOption.containerMarginLeft !== 'margin_left_15') setResponsiveWebOption(prev => ({ ...prev, containerMarginLeft: 'margin_left_15' }));
 				if (responsiveWebOption.containerMarginRight !== 'margin_right_15') setResponsiveWebOption(prev => ({ ...prev, containerMarginRight: 'margin_right_15' }));
 
+				if (responsiveWebOption.viewTitleWidth !== '100%') setResponsiveWebOption(prev => ({ ...prev, viewTitleWidth: '100%' }));
+				if (responsiveWebOption.viewWriterNickWidth !== '50%') setResponsiveWebOption(prev => ({ ...prev, viewWriterNickWidth: '50%' }));
+				if (responsiveWebOption.viewDateWidth !== '30%') setResponsiveWebOption(prev => ({ ...prev, viewDateWidth: '30%' }));
+				if (responsiveWebOption.viewViewNumWidth !== '20%') setResponsiveWebOption(prev => ({ ...prev, viewViewNumWidth: '20%' }));
+
 				if (responsiveWebOption.replyWriterNickWidth !== '80') setResponsiveWebOption(prev => ({ ...prev, replyWriterNickWidth: '80' }));
 				if (responsiveWebOption.replyLikeWidth !== '20') setResponsiveWebOption(prev => ({ ...prev, replyLikeWidth: '20' }));
 				if (responsiveWebOption.replyContextWidth !== '100') setResponsiveWebOption(prev => ({ ...prev, replyContextWidth: '100' }));
@@ -229,6 +234,11 @@ export const useTZEROStandardFormContent = (props) => {
 			} else {
 				if (responsiveWebOption.containerMarginLeft !== 'margin_left_100') setResponsiveWebOption(prev => ({ ...prev, containerMarginLeft: 'margin_left_100' }));
 				if (responsiveWebOption.containerMarginRight !== 'margin_right_100') setResponsiveWebOption(prev => ({ ...prev, containerMarginRight: 'margin_right_100' }));
+
+				if (responsiveWebOption.viewTitleWidth !== '73%') setResponsiveWebOption(prev => ({ ...prev, viewTitleWidth: '73%' }));
+				if (responsiveWebOption.viewWriterNickWidth !== '10%') setResponsiveWebOption(prev => ({ ...prev, viewWriterNickWidth: '10%' }));
+				if (responsiveWebOption.viewDateWidth !== '12%') setResponsiveWebOption(prev => ({ ...prev, viewDateWidth: '12%' }));
+				if (responsiveWebOption.viewViewNumWidth !== '5%') setResponsiveWebOption(prev => ({ ...prev, viewViewNumWidth: '5%' }));
 
 				if (responsiveWebOption.ulMinHeight !== '150px') setResponsiveWebOption(prev => ({ ...prev, ulMinHeight: '150px' }));
 				if (responsiveWebOption.ulDisplay !== 'flex') setResponsiveWebOption(prev => ({ ...prev, ulDisplay: 'flex' }));

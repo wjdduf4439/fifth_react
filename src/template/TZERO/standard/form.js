@@ -37,6 +37,10 @@ const TZEROStandardForm = (props) => {
 	const [responsiveWebOption, setResponsiveWebOption] = useState({
 		containerMarginRight: 'margin_right_100',
 		containerMarginLeft: 'margin_left_100',
+		viewTitleWidth: '73%',
+		viewWriterNickWidth: '10%',
+		viewDateWidth: '12%',
+		viewViewNumWidth: '5%',
 		replyWriterNickWidth: '10',
 		replyLikeWidth: '5',
 		replyContextWidth : '65',

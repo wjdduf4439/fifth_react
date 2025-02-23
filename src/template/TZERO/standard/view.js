@@ -83,10 +83,22 @@ const TZEROStandardViewForm = (props) => {
 			{showViewLoading? <Loading /> : (
 				<>
 					<div className=""><FaInfo /> esc 키를 누르면 리스트 페이지로 이동합니다. </div>
-					<MuiTheme.TextField2 style={{ width: '73%' }} label={"제목"} value={viewForm.title} disabled />
-					<MuiTheme.TextField2 style={{ width: '10%' }} label={"작성자"} value={viewForm.frstRegistNm} disabled />
-					<MuiTheme.TextField2 style={{ width: '12%' }} label={"작성시간"} value={formatDate(viewForm.frstRegistPnttm)} disabled />
-					<MuiTheme.TextField2 style={{ width: '5%' }} label={"조회수"} value={viewForm.viewNum} disabled />
+					<MuiTheme.TextField2 
+						style={{ width: responsiveWebOption.viewTitleWidth }}
+						label={"제목"}
+						value={viewForm.title} disabled />
+					<MuiTheme.TextField2 
+						style={{ width: responsiveWebOption.viewWriterNickWidth }}
+						label={"작성자"}
+						value={viewForm.frstRegistNm} disabled />
+					<MuiTheme.TextField2 
+						style={{ width: responsiveWebOption.viewDateWidth }}
+						label={"작성시간"}
+						value={formatDate(viewForm.frstRegistPnttm)} disabled />
+					<MuiTheme.TextField2 
+						style={{ width: responsiveWebOption.viewViewNumWidth }}
+						label={"조회수"}
+						value={viewForm.viewNum} disabled />
 
 					<div style={{ minHeight: '250px' }}>
 						{/* dangerouslySetInnerHTML 옵션을 사용해서 내용을 표시 */}
@@ -100,11 +112,16 @@ const TZEROStandardViewForm = (props) => {
 							<AiOutlineDislike />싫어요<br /><br />{viewForm.dislike}
 						</MuiTheme.LikeButton>
 					</Box>
-					<ul className='uploaded_list_ul margin_top_50 margin_bottom_50'>
+					<ul className='uploaded_list_ul margin_top_50'
+						style={{
+							display: responsiveWebOption.ulDisplay,
+							minHeight: responsiveWebOption.ulMinHeight,
+						}}
+					>
 						<li style={{
 							flex: responsiveWebOption.fileDivOneFlex,
 							display: responsiveWebOption.fileOnLiDisplay,
-							fileDivFlexDirection: responsiveWebOption.flexDirection,
+							flexDirection: responsiveWebOption.fileDivFlexDirection,
 							marginBottom: responsiveWebOption.fileOneLiMarginBottom
 						}}>
 							<div className='file_uploaded_div font_size_18'>
