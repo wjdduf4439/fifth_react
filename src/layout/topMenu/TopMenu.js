@@ -16,6 +16,8 @@ import { useTopMenuContext } from './TopMenuContext';
 
 const TopMenu = (props) => {
 
+	const { rightMenuInfo } = props;
+
 	const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 	const { accessToken, refreshToken } = useContext(AccessContext);	
 
@@ -152,22 +154,14 @@ const TopMenu = (props) => {
 								>시스템 설정</MuiTheme.RightMenuButton>
 							{openRightMenus['right-0'] && (	
 								<ul className='right_content_menu' data-menutype="right" data-menucode="0" data-menurole="body">
-									<li>
-										<MuiTheme.RightMenuButton 
-											onClick={() => window.open('/admin/codeHead', '_blank', 'noopener,noreferrer')}>
-												게시판 설정
-										</MuiTheme.RightMenuButton>
-									</li>
-									<li>
-										<MuiTheme.RightMenuButton
-											onClick={() => window.open('/admin/contract', '_blank', 'noopener,noreferrer')}
-										>연락 보기</MuiTheme.RightMenuButton>
-									</li>
-									<li>
-										<MuiTheme.RightMenuButton
-											onClick={() => window.open('/admin/menu', '_blank', 'noopener,noreferrer')}
-										>메뉴 설정</MuiTheme.RightMenuButton>
-									</li>
+									{rightMenuInfo.map((menu) => (
+										<li>
+											<MuiTheme.RightMenuButton 
+													onClick={() => window.open(menu.link, '_blank', 'noopener,noreferrer')}>
+														{menu.title}
+											</MuiTheme.RightMenuButton>
+										</li>
+									))}
 								</ul>
 							)}
 						</li>

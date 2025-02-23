@@ -16,6 +16,8 @@ import { useCodeHeadListContent } from './listcontent';
 
 const CodeHeadList = (props) => {
 
+	const { mediaQuery } = props;
+
 	const [page, setPage] = useState(1);
 	// 예시 데이터
 	const itemsPerPage = 10;
@@ -79,18 +81,20 @@ const CodeHeadList = (props) => {
 			</List>
 
 			{resultCount > 0 ?
-				<Pagination
-					//현재 페이지 번호
-				activePage={page}
-				//한 페이지에 보여줄 실제 데이터 아이템의 개수
-				itemsCountPerPage={itemsPerPage}
-				//전체 데이터 수
-				totalItemsCount={resultCount}
-				//화면에 보여질 페이지 번호의 개수를 의미합니다
-				pageRangeDisplayed={10}
-				onChange={handlePageChange}
-					className="pagination"
-				/>
+				<div className={`${mediaQuery.matches ? 'margin_left_-55' : ''}`}>
+					<Pagination
+						//현재 페이지 번호
+					activePage={page}
+					//한 페이지에 보여줄 실제 데이터 아이템의 개수
+					itemsCountPerPage={itemsPerPage}
+					//전체 데이터 수
+					totalItemsCount={resultCount}
+					//화면에 보여질 페이지 번호의 개수를 의미합니다
+					pageRangeDisplayed={10}
+					onChange={handlePageChange}
+					className={`pagination`}
+					/>
+				</div>
 			: null}
 		</>
 	);

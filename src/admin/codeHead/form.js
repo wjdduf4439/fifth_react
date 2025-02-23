@@ -12,6 +12,8 @@ import CodeWriteForm from './write';
 
 const CodeHeadForm = (props) => {
 
+	const { mediaQuery } = props;
+
 	const [reload, setReload] = useState(true);
 	const [option, setOption] = useState({ startPoint: 0, limit: 10 });
 	const [process, setProcess] = useState('write');
@@ -38,6 +40,9 @@ const CodeHeadForm = (props) => {
 	const [commentShow, setCommentShow] = useState(true);
 	//comment : 부가적인 설명
 
+	const [containerMarginLeft, setContainerMarginLeft] = useState('margin_left_100');
+	const [containerMarginRight, setContainerMarginRight] = useState('margin_right_100');
+
 	
 	const allowFileType = ['jpg', 'png', 'pdf', 'zip', 'webp', 'java', 'xml', 'jsp', 'class',]; 
 
@@ -52,17 +57,20 @@ const CodeHeadForm = (props) => {
 		handleWriteForm,
 		handleCount,
 	} = useCodeHeadFormContent({
+		mediaQuery,
 		process, setProcess,
 		resultCount, setResultCount,
 		writeForm, setWriteForm,
 		setShowWriteForm,
+		containerMarginLeft, setContainerMarginLeft,
+		containerMarginRight, setContainerMarginRight,
 	});
 
 	return (
 		<>
 			<div className="main_container">
 				
-				<div className="container margin_left_100 margin_right_100">
+				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
 					<div className="content">
 						<h1>코드헤더 목록</h1>
 					</div>
@@ -84,6 +92,7 @@ const CodeHeadForm = (props) => {
 
 								
 					<CodeWriteForm 
+						mediaQuery={mediaQuery}
 						reload={reload} setReload={setReload}
 						process={process} setProcess={setProcess}
 						writeForm={writeForm} setWriteForm={setWriteForm}
@@ -96,6 +105,7 @@ const CodeHeadForm = (props) => {
 					
 
 					<CodeHeadList
+						mediaQuery={mediaQuery}
 						reload={reload} setReload={setReload}
 						option={option} setOption={setOption}
 						dense={dense}

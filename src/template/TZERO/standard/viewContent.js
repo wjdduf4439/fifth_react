@@ -13,6 +13,7 @@ import MuiTheme from 'css/MuiTheme';
 export const useTZEROStandardViewContent = (props) => {
 
 	const {
+		responsiveWebOption, setResponsiveWebOption,
 		textareaRef,
 		replyUpdateButtonId,
 		replyResponseButtonId,
@@ -233,8 +234,8 @@ export const useTZEROStandardViewContent = (props) => {
 							data-uid={reply.uid} 
 							className={`reply_list_div ${replyTagFocusUid === reply.uid ? 'reply_list_div_focus' : ''}`  }
 						>
-						<span className='width_10per display_inline_table'>{reply.writerNick}</span>
-						<span className='width_5per display_inline_table font_size_12'>
+						<span className={`width_${responsiveWebOption.replyWriterNickWidth}per display_inline_table`}>{reply.writerNick}</span>
+						<span className={`width_${responsiveWebOption.replyLikeWidth}per display_inline_table font_size_12`}>
 							<a href='#none' onClick={() => { likeProcessReply(reply.uid, viewForm.codeHead, 'like') }} className='reply_like_button'>
 								<AiOutlineLike /> : {reply.like}
 							</a>
@@ -245,7 +246,7 @@ export const useTZEROStandardViewContent = (props) => {
 								<AiOutlineDislike /> : {reply.dislike}
 							</a>
 						</span>
-						<span className='width_65per display_inline_table'>
+						<span className={`width_${responsiveWebOption.replyContextWidth}per display_inline_table`}>
 							
 							{reply.momRepUid !== reply.uid && (
 								<>
@@ -263,12 +264,12 @@ export const useTZEROStandardViewContent = (props) => {
 								{/* : {reply.momRepUid} */}
 							</a>
 						</span>
-						<span className='width_10per display_inline_table'>
+						<span className={`width_${responsiveWebOption.replyDateWidth}per display_inline_table`}>
 							{ reply.lastUpdtPnttm == null? formatDate(reply.frstRegistPnttm) : formatDate(reply.lastUpdtPnttm)}
 						</span>
 						{
 							reply.writerNick === localStorage.getItem('nick') && (
-								<span className='width_10per'>
+								<span className={`width_${responsiveWebOption.replyDeleteWidth}per`}>
 									<a href='#none' onClick={() => { deleteReply(reply.uid, viewForm.codeHead) }} className='reply_delete_button'>
 										삭제
 									</a>

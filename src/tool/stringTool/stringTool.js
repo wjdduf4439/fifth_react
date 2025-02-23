@@ -20,18 +20,17 @@ const StringTool = (props) => {
 			<div className="main_container">
 				
 				<div className="container_toolString">
-					<div className="content">
+					<div className="content width_100per">
 
 						<div className='string_tool_heading'>
 							문자열 도구
 						</div>
 
-						<div className='string_tool_content'>
-							<textarea value={stringValue} onChange={(e) => setStringValue(e.target.value)} 
-								class="string_tool_textarea"
-								placeholder="문자열 내용"
-								/>
-						</div>
+						
+						<textarea value={stringValue} onChange={(e) => setStringValue(e.target.value)} 
+							class="string_tool_textarea"
+							placeholder="문자열 내용"
+							/>
 
 						<ul className='string_tool_result'>
 							<li>

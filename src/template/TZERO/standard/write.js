@@ -22,6 +22,7 @@ const TZEROStandardWriteForm = (props) => {
 
 	const {
 		environment,
+		responsiveWebOption, setResponsiveWebOption,
 		templateOption,
 		reload, setReload,
 		process, setProcess,
@@ -49,6 +50,7 @@ const TZEROStandardWriteForm = (props) => {
 		contentImageHandler,
 	} = useTZEROStandardWriteContent({
 		environment,
+		responsiveWebOption, setResponsiveWebOption,
 		reload, setReload,
 		process,
 		writeForm, setWriteForm,
@@ -106,13 +108,27 @@ const TZEROStandardWriteForm = (props) => {
 						placeholder="내용을 입력해주세요. 이미지 파일 업로드는 jpg, jpeg, png, gif, webp 파일만 가능합니다."
 					/>
 				</div>
-				<ul className='uploaded_list_ul'>
-					<li>
+				<ul className='uploaded_list_ul'
+					style={{
+						display: responsiveWebOption.ulDisplay,
+						minHeight: responsiveWebOption.ulMinHeight,
+					}} >
+					<li style={{ 
+							flex: responsiveWebOption.fileDivOneFlex,
+							display: responsiveWebOption.fileOnLiDisplay,
+							flexDirection: responsiveWebOption.fileDivFlexDirection,
+							marginBottom: responsiveWebOption.fileOneLiMarginBottom
+						}}>
 						<div className='file_uploaded_div font_size_18'>
 							<MdOutlineUploadFile className='margin_right_15' />업로드된 파일
 						</div>
 					</li>
-					<li>
+					<li style={{ 
+							flex: responsiveWebOption.fileDivTwoFlex,
+							display: '',
+							flexDirection: responsiveWebOption.fileDivFlexDirection,
+							padding: responsiveWebOption.fileDivOnePadding
+						}}>
 						<ul className='file_uploaded_ul'>
 							{writeForm.fileVO.map((file, index) => (
 								<li key={index}>
@@ -151,8 +167,17 @@ const TZEROStandardWriteForm = (props) => {
 						</ul>
 					</li>
 				</ul>
-				<ul className='file_list_ul'>
-					<li>
+				<ul className='file_list_ul'
+					style={{
+						display: responsiveWebOption.ulDisplay,
+						minHeight: responsiveWebOption.ulMinHeight,
+					}}>
+					<li style={{ 
+							flex: responsiveWebOption.fileDivOneFlex,
+							display: responsiveWebOption.fileOnLiDisplay,
+							flexDirection: responsiveWebOption.fileDivFlexDirection,
+							marginBottom: responsiveWebOption.fileOneLiMarginBottom
+						}}>
 						<div className='file_upload_button_div font_size_18' 
 							onClick={() => { document.querySelector('input[name="selectedFiles"]').click(); }}
 
@@ -167,10 +192,15 @@ const TZEROStandardWriteForm = (props) => {
 							}}
 							onDrop={(e) => { handleSelectedFileUpload(e); }}
 							>
-								<MdOutlineUploadFile className='margin_right_15' />파일 업로드
+							<MdOutlineUploadFile className='margin_right_15' />파일 업로드
 						</div>
 					</li>
-					<li>
+					<li style={{ 
+							flex: responsiveWebOption.fileDivTwoFlex,
+							display: '',
+							flexDirection: responsiveWebOption.fileDivFlexDirection,
+							padding: responsiveWebOption.fileDivOnePadding
+						}}>
 						<ul className='file_upload_ul'>
 							{selectedFiles.map((file, index) => (
 								<li key={index}>

@@ -4,9 +4,11 @@ import { useAxios } from 'provider/AxiosProvider';
 export const useCodeHeadWriteContent = (props) => {
 
 	const {
+		mediaQuery,
 		reload, setReload,
 		process,
-		setShowWriteForm,
+		showWriteForm, setShowWriteForm,
+		inputWidth, setInputWidth,
 	} = props;
 
 	const axiosInstance = useAxios();
@@ -141,6 +143,30 @@ export const useCodeHeadWriteContent = (props) => {
 			console.error('Error updating data:', error);
 		});
 	}
+
+	useEffect(() => {
+
+		const handleResize = () => {
+			if (mediaQuery.matches) {
+				if (inputWidth !== 'width_100per') setInputWidth('width_100per');
+			} else {
+				if (inputWidth !== 'width_32per') setInputWidth('width_32per');
+			}
+			
+		};
+
+        // 초기 로드 시 크기 확인
+        handleResize();
+
+        // 창 크기 변경 이벤트 리스너 추가
+        window.addEventListener('resize', handleResize);
+		console.log('config useEffect');
+
+        // 컴포넌트 언마운트 시 이벤트 리스너 제거
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
 	return {
 		handleInsertCodeHead,

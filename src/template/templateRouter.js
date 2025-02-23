@@ -11,7 +11,7 @@ import TZEROStandardForm from 'template/TZERO/standard/form';
 
 function TemplateRouter(props) {
 
-	const { environment } = props;
+	const { environment, mediaQuery } = props;
 
 	// URL의 'code' 값을 가져옴
 	const { codeHead } = useParams();
@@ -104,6 +104,7 @@ function TemplateRouter(props) {
 		{templateType === 'TZERO' && skinType === 'STANDARD' && 
 			<TZEROStandardForm
 				environment={environment}
+				mediaQuery={mediaQuery}
 				templateName={templateName}
 				templateOption={templateOption} codeHead={codeHead} 
 				showWriteForm={showWriteForm} setShowWriteForm={setShowWriteForm}

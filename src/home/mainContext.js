@@ -64,12 +64,25 @@ export const useMainContext = (
 			alert('연락자명을 입력해주세요.');
 			return;
 		}
+		if (data.name.length < 50) {
+			alert('연락자명을 50자 이내로 입력해주세요.');
+			return;
+		}
 		if (data.subject === '') {
 			alert('연락 제목을 입력해주세요.');
 			return;
 		}
+		if (data.subject.length < 50) {
+			alert('연락 내용을 50자 이내로 입력해주세요.');
+			return;
+		}
 		if (data.message === '') {
 			alert('연락 내용을 입력해주세요.');
+			return;
+		}
+
+		if (data.message.length < 200) {
+			alert('연락 내용을 200자 이내로 입력해주세요.');
 			return;
 		}
 

@@ -7,6 +7,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';  // 상단에 �
 export const useTZEROStandardFormContent = (props) => {
 
 	const {
+		mediaQuery,
+		responsiveWebOption, setResponsiveWebOption,
 		reloadView, setReloadView,
 		reloadReply, setReloadReply,
 		resetReplyOption,
@@ -205,6 +207,51 @@ export const useTZEROStandardFormContent = (props) => {
 			setReloadReply(false);
 		}
 	}, [reloadReply]);
+
+	useEffect(() => {
+
+		const handleResize = () => {
+			if (mediaQuery.matches) {
+				if (responsiveWebOption.containerMarginLeft !== 'margin_left_15') setResponsiveWebOption(prev => ({ ...prev, containerMarginLeft: 'margin_left_15' }));
+				if (responsiveWebOption.containerMarginRight !== 'margin_right_15') setResponsiveWebOption(prev => ({ ...prev, containerMarginRight: 'margin_right_15' }));
+
+				if (responsiveWebOption.replyWriterNickWidth !== '80') setResponsiveWebOption(prev => ({ ...prev, replyWriterNickWidth: '80' }));
+				if (responsiveWebOption.replyLikeWidth !== '20') setResponsiveWebOption(prev => ({ ...prev, replyLikeWidth: '20' }));
+				if (responsiveWebOption.replyContextWidth !== '100') setResponsiveWebOption(prev => ({ ...prev, replyContextWidth: '100' }));
+				if (responsiveWebOption.replyDateWidth !== '75') setResponsiveWebOption(prev => ({ ...prev, replyDateWidth: '75' }));
+				if (responsiveWebOption.replyDeleteWidth !== '25') setResponsiveWebOption(prev => ({ ...prev, replyDeleteWidth: '25' }));
+
+				if (responsiveWebOption.ulMinHeight !== '60px') setResponsiveWebOption(prev => ({ ...prev, ulMinHeight: '60px' }));
+				if (responsiveWebOption.ulDisplay !== 'block') setResponsiveWebOption(prev => ({ ...prev, ulDisplay: 'block' }));
+				if (responsiveWebOption.fileDivOneFlex !== '') setResponsiveWebOption(prev => ({ ...prev, fileDivOneFlex: '' }));
+				if (responsiveWebOption.fileDivTwoFlex !== '') setResponsiveWebOption(prev => ({ ...prev, fileDivTwoFlex: '' }));
+				if (responsiveWebOption.fileDivOnePadding !== '0px 0px 0px 0px') setResponsiveWebOption(prev => ({ ...prev, fileDivOnePadding: '0px 0px 0px 0px' }));
+			} else {
+				if (responsiveWebOption.containerMarginLeft !== 'margin_left_100') setResponsiveWebOption(prev => ({ ...prev, containerMarginLeft: 'margin_left_100' }));
+				if (responsiveWebOption.containerMarginRight !== 'margin_right_100') setResponsiveWebOption(prev => ({ ...prev, containerMarginRight: 'margin_right_100' }));
+
+				if (responsiveWebOption.ulMinHeight !== '150px') setResponsiveWebOption(prev => ({ ...prev, ulMinHeight: '150px' }));
+				if (responsiveWebOption.ulDisplay !== 'flex') setResponsiveWebOption(prev => ({ ...prev, ulDisplay: 'flex' }));
+				if (responsiveWebOption.fileDivOneFlex !== '0 0 20%') setResponsiveWebOption(prev => ({ ...prev, fileDivOneFlex: '0 0 20%' }));
+				if (responsiveWebOption.fileDivTwoFlex !== '1 1 75%') setResponsiveWebOption(prev => ({ ...prev, fileDivTwoFlex: '1 1 75%' }));
+				if (responsiveWebOption.fileDivOnePadding !== '0px 0px 0px 20px') setResponsiveWebOption(prev => ({ ...prev, fileDivOnePadding: '0px 0px 0px 20px' }));
+			}
+			
+		};
+
+        // 초기 로드 시 크기 확인
+        handleResize();
+
+        // 창 크기 변경 이벤트 리스너 추가
+        window.addEventListener('resize', handleResize);
+		console.log('config useEffect');
+
+        // 컴포넌트 언마운트 시 이벤트 리스너 제거
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
 
 	return {
 		linkParams,

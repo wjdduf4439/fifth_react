@@ -17,14 +17,18 @@ import MuiTheme from 'css/MuiTheme';
 
 import { useMainContext } from 'home/mainContext';
 import UserMenu from 'layout/UserMenu';
+import MainPageSlider from 'util/mainPageSlider/MainPageSlider';
 
 const Main = (props) => {
+
+	const { mediaQuery } = props;
 
 	let welcome_ment = '언제나 기술적인 고민, 방법을 찾고 문제 해결을 위해 노력하는 개발자';
 	let howto_ment = '홈페이지의 구조와 기능';
 	const [hoveredIndex, setHoveredIndex] = useState('');
 
 	const [contact_ip, setContactIp] = useState('');
+	
 	const [leftSidebarMode, setLeftSidebarMode] = useState('sidebar_left');
 	const [leftSidebarWidth, setLeftSidebarWidth] = useState('width_100per');
 	const [profileDivWidth, setProfileDivWidth] = useState('width_100per');
@@ -38,7 +42,41 @@ const Main = (props) => {
 
     // Slider Ref 생성
     const howToSliderRef = useRef(null);
+	const welcomeSliderSettings = [
+            {
+                title: "안녕하십니까. \n 저는 \n 이정열입니다.",
+                content: null
+            },
+            {
+                title: "저는 \n '개발자'를\n 목표로\n 합니다",
+                content: "문제 해결에 대한 열정이 강하며, \n 개인과 단체의 문제 해결을 위해 백엔드 개발에 전념하는 개발자입니다."
+            }
+        ];
 
+	const howToSliderButtonList = [
+		{ title: "Front-end 소개", button_icon: <><DiReact /></> },
+		{ title: "Back-end 소개", button_icon: <><ImAmazon /></> },
+		{ title: "DB 소개", button_icon: <><FaDatabase /></> },
+	];
+
+	const howToSliderSettings = [
+		{
+			title: "왜 React로 구현했나요?",
+			content: "리엑트에서 사용하는 컴포넌트라는 구조 자체가 재사용성이 높고, 처음 접속하기만 하면 이후 홈페이지를 쾌적하게 사용할 수 있고, 세계적으로 여러군데 쓰이는 리액트를 배워두면 나중에 취업시장에서 수요를 챙길 수 있을것 같아서 배워두었습니다.\n\n 전자정부프레임워크도 리액트를 활용가능하게 한다는 소식도 들어서 저는 미래에는 js보다는 jsx 기반의 자바스크립트 라이브러리가 쓰일거라고 생각하고 있습니다.",
+			title2: "왜 nginx를 사용했나요?",
+			content2: "리버스 프록시 구조를 통한 클라이언트의 직접적인 서버 접근 제한 기능과 경로 설정을 통해서 하나의 도메인 안에서 \n\n 백엔드에 요청을 보낼지, 프론트엔드에 요청을 보낼지 결정할 수 있고 HTTPS 프로토콜을 사용하기 위해서 nginx를 사용하기로 했습니다."
+		},
+		{
+			title: "왜 spring boot를 사용했나요?",
+			content: "spring boot는 자바 기반의 프레임워크로, 오픈소스이고, 라이브러리가 많고, 커뮤니티가 활발하기 때문입니다. spring framework에 비해 프로필 기반의 어노테이션 작성을 통한 개발/서비스 코드 세분화가 쉽습니다. spring starter 기능을 통해 초기 설정을 쉽게 할 수 있고, 각 라이브러리에 대한 권장 버전 안내를 통해, 버전 관리가 쉽습니다. 부가적인 기능으로 내장 서버가 있어, jar 파일을 배포 후 구동하기 쉽고, java 17 버전을 사용하여 코드 블록과 같은 편의성 기능을 사용할 수 있습니다.",
+			title2: "왜 docker를 사용했나요?",
+			content2: "Docker은 컨테이너 기반 가상화 기술로, 가상 서버를 컨테이너라는 단위로 패키징하고 배포, 실행할 수 있게 해주는 프로그램입니다. Dockerfile, Docker compose로 이미지를 정의하고, 컨테이너를 실행합니다. 기존 가상 서버에 비해 부팅 속도가 빠르고, 어떤 운영체제 환경이든 Docker을 설치할수만 있다면 구동할수 있기 때문에 사용했습니다."
+		},
+		{
+			title: "왜 Mysql DB를 사용했나요?",
+			content: "MariaDB는 MySQL의 오픈소스 버전이며, 대부분의 기능이 동일하고, 라이선스가 무료이기 때문에 사용했습니다. 소형 프로젝트에서 효과적인 인덱싱을 지원해서 소형 프로젝트에서의 빠른 성능을 더 돋보이게 만들 수 있다고 판단했습니다. 관계형 데이터베이스는 데이터를 행과 열로 미리 구성된 테이블 형태로 저장하고, 테이블 간의 관계를 설정하여 데이터를 조회할 수 있습니다."
+		}
+	]
 	const { 
 		aboutMeTitleSliderSettings,
 		aboutMeHowToContentSliderSettings,
@@ -50,23 +88,21 @@ const Main = (props) => {
 		howToSliderRef,
 		contact_ip, setContactIp,
 	 );
-	 
-	 
 
 	 useEffect(() => {
 
 		const handleResize = () => {
-			if (window.innerWidth <= 800) {
+			if (mediaQuery.matches) {
 				if (leftSidebarMode !== 'sidebar_up') setLeftSidebarMode('sidebar_up');
 				if (leftSidebarWidth !== 'width_100per') setLeftSidebarWidth('width_100per');
 				if (profileDivWidth !== 'width_30per') setProfileDivWidth('width_30per');
 				if (profileDivAlign !== 'text_align_left padding_left_10') setProfileDivAlign('text_align_left padding_left_10');
 				if (profileImgWidth !== 'width_30per') setProfileImgWidth('width_30per');
 				if (displayNone !== 'display_none') setDisplayNone('display_none');
-				if (containerMarginLeft !== '') setContainerMarginLeft('');
+				if (containerMarginLeft !== '') setContainerMarginLeft('margin_left_20');
 				if (containerMarginRight !== '') setContainerMarginRight('');
 				if (contentWidth !== '') setContentWidth('');
-				setProjectArcLink('/image/project_arc_mobile.png');
+				setProjectArcLink('/image/project_arc_mobile_mini.png');
 			} else {
 				if (leftSidebarMode !== 'sidebar_left') setLeftSidebarMode('sidebar_left');
 				if (leftSidebarWidth !== 'width_10per') setLeftSidebarWidth('width_10per');
@@ -74,8 +110,8 @@ const Main = (props) => {
 				if (profileDivAlign !== 'text_align_center') setProfileDivAlign('text_align_center');
 				if (profileImgWidth !== 'width_100per') setProfileImgWidth('width_100per');
 				if (displayNone !== '') setDisplayNone('');
-				if (containerMarginLeft !== 'margin_left_300') setContainerMarginLeft('margin_left_300');
-				if (containerMarginRight !== 'margin_right_300') setContainerMarginRight('margin_right_300');
+				if (containerMarginLeft !== 'margin_left_350') setContainerMarginLeft('margin_left_350');
+				if (containerMarginRight !== 'margin_right_350') setContainerMarginRight('margin_right_350');
 				if (contentWidth !== 'width_100per') setContentWidth('width_100per');
 				setProjectArcLink('/image/project_arc.png');
 			}
@@ -124,7 +160,7 @@ const Main = (props) => {
 						
 						{/* window width : {window.innerWidth} */}
 						<div id="welcome" className='about_me_meta'>WELCOME</div>
-
+						{/* 
 						<Slider {...aboutMeTitleSliderSettings} className='about_me_slider'>
 							<div className='about_me_slider_div'>
 								<h2>안녕하십니까. <br/> 저는 <br/>  이정열입니다.</h2>
@@ -134,6 +170,8 @@ const Main = (props) => {
 								<p>문제 해결에 대한 열정이 강하며, <br/> 개인과 단체의 문제 해결을 위해 백엔드 개발에 전념하는 개발자입니다.</p>
 							</div>
 						</Slider>
+						 */}
+						<MainPageSlider slides={welcomeSliderSettings} />
 						
 					</div>
 				</div>
@@ -167,15 +205,24 @@ const Main = (props) => {
 
 						<div id="stack" className='about_me_meta'>STACK</div>
 
-						<ul className='stack_ul'>
+						<ul className='stack_ul'
+							style={{
+								width: mediaQuery.matches ? '80%' : '100%',
+							}}>
 							{['blue', 'orange', 'purple', 'green'].map((color, index) => (
 								<li
 									key={index}
 									onMouseEnter={() => setHoveredIndex(index)}
 									onMouseLeave={() => setHoveredIndex('')}
-									className={`${hoveredIndex === index ? 'border_li_'+color : ''} padding_left_10`}
-									
-								>
+									className={
+										`${hoveredIndex === index ? 'border_li_'+color : ''} `
+										+ (mediaQuery.matches ? 'padding_left_0' : 'padding_left_10')
+									}
+									style={{
+										width: mediaQuery.matches ? '42.5%' : '20%',
+										marginLeft: mediaQuery.matches ? '0px' : '10px',
+										paddingLeft: mediaQuery.matches ? '10px' : '0px',
+									}}>
 									<div 
 										className={ `about_me_bar border_${color} margin_bottom_10 margin_top_10`}
 									></div>
@@ -189,7 +236,9 @@ const Main = (props) => {
 												<span>web</span><br />
 												<div className='margin_left_10 font_size_14'>
 													react, nginx<br />
-													javascript&jquery,<br />
+													javascript {mediaQuery.matches ? <br /> : ''}
+													& {mediaQuery.matches ? <br /> : ''}
+													jquery,<br />
 													jsp&jstl
 												</div>
 											</div>
@@ -241,64 +290,16 @@ const Main = (props) => {
 						</div>
 
 						<img src={projectArcLink} alt="프로젝트 구조도" />
-												
-						<div className="howto-content">
-							<ul className="howto-content-ul">
-								<li onClick={() => handleHowToSliderClick(0)}>
-									<span className="font_size_46"><ImAmazon /></span><br/>Front-end 소개
-								</li>
-								<li onClick={() => handleHowToSliderClick(1)}>
-									<span className="font_size_46"><DiReact /></span><br/>Back-end 소개
-								</li>
-								<li onClick={() => handleHowToSliderClick(2)}>	
-									<span className="font_size_46"><FaDatabase /></span><br/>DB
-								</li>
-							</ul>
-						</div>
-
-						<div className='howto_bar margin_bottom_10'></div>
-												
-						<Slider ref={howToSliderRef}  {...aboutMeHowToContentSliderSettings} className='howto_slider'>
-							<div className='about_me_slider_div min_height_500'>
-								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 React로 구현했나요?</h3>
-								<p className='margin_bottom_50'>
-								리엑트에서 사용하는 컴포넌트라는 구조 자체가 재사용성이 높고,<br/><br/>
-								처음 접속하기만 하면 이후 홈페이지를 쾌적하게 사용할 수 있고,<br/><br/>
-								세계적으로 여러군데 쓰이는 리액트를 배워두면 나중에 취업시장에서 수요를 챙길 수 있을것 같아서 배워두었습니다.<br/><br/>
-								전자정부프레임워크도 리액트를 활용가능하게 한다는 소식도 들어서 저는 미래에는 js보다는 jsx 기반의 자바스크립트 라이브러리가 쓰일거라고 생각하고 있습니다.
-								</p>
-
-								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 nginx를 사용했나요?</h3>
-								<p>
-								리버스 프록시 구조를 통한 클라이언트의 직접적인 서버 접근 제한 기능과<br/><br/>
-								경로 설정을 통해서 하나의 도메인 안에서 백엔드에 요청을 보낼지, 프론트엔드에 요청을 보낼지 결정할 수 있고<br/><br/>
-								HTTPS 프로토콜을 사용하기 위해서 nginx를 사용하기로 했습니다.
-								</p>
-							</div>
-							<div className='about_me_slider_div min_height_500'>
-								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 spring boot를 사용했나요?</h3>
-								<p className='margin_bottom_50'>
-									spring boot는 자바 기반의 프레임워크로, 오픈소스이고, 라이브러리가 많고, 커뮤니티가 활발하기 때문입니다.<br/><br/>
-									spring framework에 비해 프로필 기반의 어노테이션 작성을 통한 개발/서비스 코드 세분화가 쉽습니다.<br/><br/>
-									spring starter 기능을 통해 초기 설정을 쉽게 할 수 있고, 각 라이브러리에 대한 권장 버전 안내를 통해, 버전 관리가 쉽습니다.<br/><br/>
-									부가적인 기능으로 내장 서버가 있어, jar 파일을 배포 후 구동하기 쉽고, java 17 버전을 사용하여 코드 블록과 같은 편의성 기능을 사용할 수 있습니다.
-								</p>
-								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 docker를 사용했나요?</h3>
-								<p>
-								Docker은 컨테이너 기반 가상화 기술로, 가상 서버를 컨테이너라는 단위로 패키징하고 배포, 실행할 수 있게 해주는 프로그램입니다<br/><br/>
-								Dockerfile, Docker compose로 이미지를 정의하고, 컨테이너를 실행합니다.<br/><br/>
-								기존 가상 서버에 비해 부팅 속도가 빠르고, 어떤 운영체제 환경이든 Docker을 설치할수만 있다면 구동할수 있기 때문에 사용했습니다.
-								</p>
-							</div>
-							<div className='about_me_slider_div min_height_500'>
-								<h3><span className="font_size_32 margin_right_10"><FaQuestion /></span>왜 Mysql DB를 사용했나요?</h3>
-								<p>
-									MariaDB는 MySQL의 오픈소스 버전이며, 대부분의 기능이 동일하고, 라이선스가 무료이기 때문에 사용했습니다.<br/><br/>
-									소형 프로젝트에서 효과적인 인덱싱을 지원해서 소형 프로젝트에서의 빠른 성능을 더 돋보이게 만들 수 있다고 판단했습니다.<br/><br/>
-									관계형 데이터베이스는 데이터를 행과 열로 미리 구성된 테이블 형태로 저장하고, 테이블 간의 관계를 설정하여 데이터를 조회할 수 있습니다.
-								</p>
-							</div>
-						</Slider>
+						
+						<MainPageSlider
+								mediaQuery={mediaQuery}
+								slides={howToSliderSettings} 
+								divWidth={33.5}
+								translateXWidth={33.55}
+								slider_dots={false} 
+								slider_button={true}
+								slider_button_list={howToSliderButtonList}
+						/>
 						
 
 					</div>
@@ -309,16 +310,19 @@ const Main = (props) => {
 
 						<div id="contract" className='about_me_meta'>CONTACT</div>
 
-						<ul className='contact_ul min_height_500 position_relative'>
+						<ul className='contact_ul min_height_500 position_relative'
+							style={{
+								width: mediaQuery.matches ? '85%' : '100%',
+							}}>
 							<li>
 								<ul className='contact_my_ul'>
 									<li className='padding_10 height_140'>
 										<span className={`font_size_24 margin_right_10`}><FaHouse /></span>
-										wjdduf4439@gmail.com
+										대구 중구
 									</li>
 									<li className='padding_10 height_140'>
 										<span className={`font_size_24 margin_right_10`}><IoMailOutline /></span>
-										대구 중구 공평로 31-11 
+										wjdduf4439 {mediaQuery.matches ? '' : <br />} @gmail.com
 									</li>
 									<li className='padding_10 height_140'>
 										<span className={`font_size_24 margin_right_10`}><IoMdPhonePortrait /></span>
@@ -327,11 +331,11 @@ const Main = (props) => {
 								</ul>
 							</li>
 							<li>
-								<form name="contact_form" id="contact_form" >
+								<form name="contact_form" id="contact_form">
 									<input type="hidden" name="ip" id="ip" value={contact_ip} />
 									<ul className='contact_contact_ul margin_left_20'>
 										<li className='padding_10'>
-										<input type="text" name="name" id="name" className="form-control" placeholder="연락자명" />
+										<input type="text" name="name" id="name" className="form-control" placeholder="연락자명(50자 제한)" />
 									</li>
 									{/* 								
 									<li className='padding_10'>
@@ -340,7 +344,7 @@ const Main = (props) => {
 									*/}
 
 									<li className='padding_10'>
-										<input type="text" name="subject" id="subject" className="form-control" placeholder="제목" />
+										<input type="text" name="subject" id="subject" className="form-control" placeholder="제목(50자 제한)" />
 									</li>
 									<li className='padding_10 height_300'>
 									<textarea name="message" id="message" cols="30" rows="7" className="form-control height_100per" placeholder="내용(200자 제한)"></textarea>

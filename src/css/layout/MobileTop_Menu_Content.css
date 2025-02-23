@@ -1,0 +1,93 @@
+
+.mobile_sidebar_top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    /* border-color: solid 3px var(--background-border-color); */
+    /* box-shadow: 1px 1px 1px 2px var(--background-border-color); */
+    background-color: var(--background-color);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 10001;
+}
+
+.mobile_sidebar_top::before {
+    content: "";
+    position: fixed;
+    right: -3px; /* 흰색 줄 바로 다음에 위치 */
+    top: 36px;
+    width: 3px;
+    height: 100%; /* 색깔 세로줄의 높이 */
+    background-color: var(--background-border-color); /* 색깔 세로줄 */
+}
+
+.mobile_sidebar_top.visible {
+    transform: translateX(0);
+}
+
+.mobile_sidebar_top.hidden {
+    transform: translateX(-100%);
+}
+
+
+.mobile_dropdown_content_main {
+	position: relative;
+	width: 80%;
+    background-color: var(--background-color);;
+    z-index: 1;
+}
+
+.mobile_dropdown_content_main ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mobile_dropdown_content_main li {
+	font-family: 'GumiDotumTTF';
+    font-size: 16px;
+    padding: 8px 0px;
+	min-width: 100px;
+}
+
+.mobile_dropdown_content_main li a {
+    text-decoration: none;
+	color: var(--text-color);
+    display: block;
+    border-left: 0px solid var(--background-border-color);
+	border-bottom: 0.5px solid var(--background-border-color);
+}
+
+.mobile_dropdown_content_main li a:hover {
+    background-color: var(--background-hover-color);
+}
+
+.mobile_login_button {
+	position: relative;
+    margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	/* border: 1px solid var(--background-border-color); */
+}
+
+.mobile_login_profile_logout {
+	font-family: 'GumiDotumTTF';
+	font-size: 16px;
+    position: fixed;
+    top: 70px;
+    left: 150px;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.mobile_login_profile_logout:hover {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+.mobile_menu_bar {
+	width: 100%;
+	border: 1px solid var(--background-border-color);
+}

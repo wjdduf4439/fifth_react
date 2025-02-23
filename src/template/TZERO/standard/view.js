@@ -21,6 +21,8 @@ const TZEROStandardViewForm = (props) => {
 	const textareaRef = useRef(null);
 
 	const {
+		environment,
+		responsiveWebOption, setResponsiveWebOption,
 		replyInsertButtonId,
 		replyUpdateButtonId,
 		replyResponseButtonId,
@@ -56,6 +58,7 @@ const TZEROStandardViewForm = (props) => {
 		FileDownloadNode,
 		ReplyNode,
 	} = useTZEROStandardViewContent({
+		responsiveWebOption, setResponsiveWebOption,
 		textareaRef,
 		replyUpdateButtonId,
 		replyResponseButtonId,
@@ -98,7 +101,12 @@ const TZEROStandardViewForm = (props) => {
 						</MuiTheme.LikeButton>
 					</Box>
 					<ul className='uploaded_list_ul margin_top_50 margin_bottom_50'>
-						<li>
+						<li style={{
+							flex: responsiveWebOption.fileDivOneFlex,
+							display: responsiveWebOption.fileOnLiDisplay,
+							fileDivFlexDirection: responsiveWebOption.flexDirection,
+							marginBottom: responsiveWebOption.fileOneLiMarginBottom
+						}}>
 							<div className='file_uploaded_div font_size_18'>
 								<MdOutlineUploadFile className='margin_right_15' />업로드된 파일
 							</div>

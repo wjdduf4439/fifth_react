@@ -3,10 +3,19 @@ import { motion, useAnimation } from 'framer-motion';
 
 import TopMenu from 'layout/topMenu/TopMenu';
 import UnderlineBox from 'layout/UnderlineBox';
+import MobileUserMenu from 'layout/topMobileMenu/TopMobileMenu';
 
 const UserMenu = (props) => {
+
+	const {mediaQuery} = props;
+
 	const [scrollProgress, setScrollProgress] = useState(0);
 
+	const rightMenuInfo = [
+		{title : '게시판 설정', link : '/admin/codeHead'},
+		{title : '연락 보기', link : '/admin/contract'},
+		{title : '메뉴 설정', link : '/admin/menu'},
+	]
 	
 	const handleScroll = () => {
 		const scrollTop = window.scrollY;
@@ -24,7 +33,10 @@ const UserMenu = (props) => {
 	  
 	return (
 		<>
-		<TopMenu />
+		{mediaQuery.matches ? 
+			<MobileUserMenu rightMenuInfo={rightMenuInfo} /> 
+			: 
+			<TopMenu rightMenuInfo={rightMenuInfo} />}
 		<UnderlineBox />
 
 		<div style={{ position: 'fixed', bottom: 0, left: 0, width: '100%', height: '5px', background: '#f0f0f0', zIndex: 1000 }}>

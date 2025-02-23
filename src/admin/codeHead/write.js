@@ -25,6 +25,7 @@ import { Button } from '@mui/material';
 
 const CodeWriteForm = (props) => {
 
+	const { mediaQuery } = props;
 	const { isDarkMode } = useContext(ThemeContext);
 
 	const {
@@ -38,15 +39,19 @@ const CodeWriteForm = (props) => {
 		allowFileType,
 	} = props;
 
+	const [inputWidth, setInputWidth] = useState('width_100per');
+
 	const {
 		handleInsertCodeHead,
 		handleUpdateCodeHead,
 		handleRestoreCodeHead,
 		handleDeleteCodeHead,
 	} = useCodeHeadWriteContent({
+		mediaQuery,
 		reload, setReload,
 		process,
 		showWriteForm, setShowWriteForm,
+		inputWidth, setInputWidth,
 	});
 	
     // 사용자 정의 테마 설정
@@ -78,16 +83,19 @@ const CodeWriteForm = (props) => {
 						label="코드(대문자)"
 						value={writeForm.code}
 						onChange={(e) => setWriteForm({ ...writeForm, code: e.target.value.toUpperCase() })} 
+						className={`${inputWidth}`}
 					/>
 					<MuiTheme.TextField1 
 						label="이름"
 						value={writeForm.name}
 						onChange={(e) => setWriteForm({ ...writeForm, name: e.target.value })} 
+						className={`${inputWidth}`}
 					/>
 					<MuiTheme.TextField1 
 						label="주석"
 						value={writeForm.comment}
 						onChange={(e) => setWriteForm({ ...writeForm, comment: e.target.value })} 
+						className={`${inputWidth}`}
 					/>
 
 					{/* <label htmlFor='templateType'>템플릿 타입 : </label> */}
@@ -164,12 +172,11 @@ const CodeWriteForm = (props) => {
 					}
 
 					<br />
-					{process === 'write' && <MuiTheme.ListButton1 onClick={() => { handleInsertCodeHead(writeForm); }}>등록</MuiTheme.ListButton1>}
-					{process === 'update' && <MuiTheme.ListButton1 onClick={() => { handleUpdateCodeHead(writeForm); }}>수정</MuiTheme.ListButton1>}
-					{process === 'update' && writeForm.del_chk === 'N' && <MuiTheme.ListButton1 onClick={() => { handleDeleteCodeHead(writeForm); }}>비활성화</MuiTheme.ListButton1>}
-					{process === 'update' && writeForm.del_chk === 'Y' && <MuiTheme.ListButton1 onClick={() => { handleRestoreCodeHead(writeForm); }}>복구</MuiTheme.ListButton1>}
-					{process === 'update' && writeForm.del_chk === 'Y' && <MuiTheme.ListButton1 onClick={() => { handleDeleteCodeHead(writeForm); }}>삭제</MuiTheme.ListButton1>}
-					<MuiTheme.ListButton1 onClick={() => { setShowWriteForm(false); }}>취소</MuiTheme.ListButton1>
+					{process === 'write' && 								<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleInsertCodeHead(writeForm); }}>등록</MuiTheme.ListButton1> 		{mediaQuery.matches && <br />}</>}
+					{process === 'update' && 								<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleUpdateCodeHead(writeForm); }}>수정</MuiTheme.ListButton1> 		{mediaQuery.matches && <br />}</>}
+					{process === 'update' && writeForm.del_chk === 'N' && 	<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleDeleteCodeHead(writeForm); }}>비활성화</MuiTheme.ListButton1>	{mediaQuery.matches && <br />}</>}
+					{process === 'update' && writeForm.del_chk === 'Y' && 	<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleDeleteCodeHead(writeForm); }}>삭제</MuiTheme.ListButton1>		{mediaQuery.matches && <br />}</> }
+					<MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { setShowWriteForm(false); }}>취소</MuiTheme.ListButton1>
 				</MuiTheme.DialogContent1>
 			</Dialog>
 

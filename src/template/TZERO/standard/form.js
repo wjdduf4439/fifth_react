@@ -19,6 +19,7 @@ const TZEROStandardForm = (props) => {
 
 	const {
 			environment,
+			mediaQuery,
 			templateName,
 			templateOption, codeHead,
 			showWriteForm, setShowWriteForm,
@@ -32,6 +33,24 @@ const TZEROStandardForm = (props) => {
 	const replyInsertButtonId = 'reply_insert_button';
 	const replyUpdateButtonId = 'reply_update_button';
 	const replyResponseButtonId = 'reply_response_button';
+
+	const [responsiveWebOption, setResponsiveWebOption] = useState({
+		containerMarginRight: 'margin_right_100',
+		containerMarginLeft: 'margin_left_100',
+		replyWriterNickWidth: '10',
+		replyLikeWidth: '5',
+		replyContextWidth : '65',
+		replyDateWidth : '10',
+		replyDeleteWidth : '10',
+		ulDisplay: 'flex',
+		ulMinHeight: '150px',
+		fileOnLiDisplay: 'flex',
+		fileOneLiMarginBottom: '10px',
+		fileDivFlexDirection: 'row',
+		fileDivOneFlex: '0 0 20%',
+		fileDivTwoFlex: '1 1 75%',
+		fileDivOnePadding: '0px 0px 0px 20px',
+	});
 
 	const [reload, setReload] = useState(true);
 	const [reloadView, setReloadView] = useState(true);
@@ -111,6 +130,8 @@ const TZEROStandardForm = (props) => {
 		backParams,
 		handleCount,
 	} = useTZEROStandardFormContent({
+		mediaQuery,
+		responsiveWebOption, setResponsiveWebOption,
 		reloadView, setReloadView,
 		reloadReply, setReloadReply,
 		resetReplyOption,
@@ -154,7 +175,7 @@ const TZEROStandardForm = (props) => {
 	return (
 		<>
 			<div className="main_container">
-				<div className="container margin_left_100 margin_right_100">
+				<div className={`container ${responsiveWebOption.containerMarginLeft} ${responsiveWebOption.containerMarginRight}`}>
 
 					{showWriteForm && 
 						<div className="content">
@@ -166,6 +187,7 @@ const TZEROStandardForm = (props) => {
 						(
 							<TZEROStandardWriteForm 
 								environment={environment}
+								responsiveWebOption={responsiveWebOption} setResponsiveWebOption={setResponsiveWebOption}
 								templateOption={templateOption}
 								reload={reload} setReload={setReload}
 								process={process} setProcess={setProcess}
@@ -189,6 +211,8 @@ const TZEROStandardForm = (props) => {
 
 					{showViewForm &&
 						<TZEROStandardViewForm
+							environment={environment}
+							responsiveWebOption={responsiveWebOption} setResponsiveWebOption={setResponsiveWebOption}
 							replyInsertButtonId={replyInsertButtonId}
 							replyUpdateButtonId={replyUpdateButtonId}
 							replyResponseButtonId={replyResponseButtonId}

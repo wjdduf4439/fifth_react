@@ -14,7 +14,8 @@ export const useContractListContent = (props) => {
 
 	const axiosInstance = useAxios();
 
-    const {
+    const {	
+		mediaQuery,
 		page, setPage,
 		reload, setReload,
 		option, setOption,

@@ -1,0 +1,117 @@
+.main_page_welcome_slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;     /* 중요: 여기서 overflow 제어 */
+}
+
+.main_page_welcome_slider-container {
+    display: flex;
+    width: 100%;
+}
+
+
+.main_page_welcome_slider_div {
+    flex-shrink: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.main_page_welcome_slider_div:hover {
+    box-shadow: inset -2px -2px 0 4px var(--background-border-color);
+}
+
+.main_page_welcome_slider_div h2{
+    font-family: 'MaruBuri';
+}
+
+.main_page_welcome_slider_div p{
+    width: 70%;
+}
+
+.main_page_welcome_slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: orange;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.main_page_welcome_slider-btn.prev {
+    left: 10px;
+}
+
+.main_page_welcome_slider-btn.next {
+    right: 10px;
+}
+
+.main_page_welcome_slider-dots {
+    position: relative;
+    bottom: 10px;
+    left: 50%;
+    /* transform: translateX(-50%); */
+    display: flex;
+    gap: 10px;
+    max-width: 49%;
+}
+
+.main_page_welcome_slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.main_page_welcome_slider-dot.active {
+    background: rgba(230, 168, 0, 0.8);
+}
+
+
+.main_page_welcome_slider_button_form {
+	
+	font-family: 'MinSans-Regular';
+	width: 100%; 
+	text-align: center;
+	display: inline-block;
+}
+
+.main_page_welcome_slider_button_ul {
+	width: 100%;
+	min-height: 200px;
+	text-decoration: none;
+	list-style-type: none; 
+	margin-bottom: -40px;
+	margin-left: -40px;
+
+}
+
+.main_page_welcome_slider_button_ul > li {
+	position: relative;
+	float:left;
+	background-color: rgba(0, 0, 0, 0.1);
+	box-shadow: inset 0px 0px 0 1px var(--background-border-color);
+	margin: 10px;
+	padding:10px;
+
+	/* 추가된 스타일 */
+    user-select: none;          /* 텍스트 선택 비활성화 */
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+/Edge */
+    cursor: default;            /* 커서 모양 기본 설정 */
+}
+
+.main_page_welcome_slider_button_ul > li:hover {
+	box-shadow: inset -2px -2px 0 1px var(--background-border-color);
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.main_page_welcome_slider_button_ul > li:active {
+	box-shadow: inset 2px 2px 0 1px var(--background-border-color);
+}

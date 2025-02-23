@@ -17,6 +17,7 @@ import DialogContent from '@mui/material/DialogContent';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { brown } from '@mui/material/colors';
+import { transform } from 'framer-motion';
 
 const CommonTextField = styled(TextField)({
     margin: '10px 5px',
@@ -108,6 +109,29 @@ const MuiTheme = {
 		padding: '10px 20px',
 		boxShadow: '1px 1px 1px 2px var(--background-border-color)',
 		borderRadius: '1px',
+	}),
+	MobileTopMenuButton: styled('button')({
+		backgroundColor: 'var(--background-color)',
+		position: 'fixed',
+		width: '55px',
+		top: '0',
+		left: '0',
+		zIndex: '10001',
+		color: 'var(--text-color)',
+		padding: '10px 10px',
+		borderTop: 'none',
+		borderRight: 'solid 3px var(--background-border-color)',
+		borderBottom: 'solid 3px var(--background-border-color)',
+		borderLeft: 'solid transparent var(--background-color)',
+		// borderRadius: '1px',
+		transition: 'transform 0.3s ease', // 애니메이션 추가
+		transform: 'translateX(0)', // 기본 상태
+		'&.visible': {
+			transform: 'translateX(-0%)', // visible 클래스가 있을 때
+		},
+		'&.hidden': {
+			transform: 'translateX(452%)', // hidden 클래스가 있을 때
+		},
 	}),
 	ShowPwButton: styled('button')({
 		backgroundColor: 'var(--background-color)',
@@ -285,7 +309,7 @@ const MuiTheme = {
 	}),
 
 	TextField1: styled(CommonTextField)({
-		width: '32%',
+		//width: '32%',
 	}),
 
 	TextField2: styled(CommonTextField)({

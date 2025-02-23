@@ -37,15 +37,15 @@ const LoginModal = (props) => {
 					<form name='loginForm' id='loginForm' onSubmit={handleLogin}>
 						<label htmlFor="username">id:</label>
 						<div>
-							<input type="text" id="id" name="id" value={id} onChange={(e) => setId(e.target.value)} />
+							<input className='width_40per' type="text" id="id" name="id" value={id} onChange={(e) => setId(e.target.value)} />
 						</div>
 						<br />
 						<label htmlFor="password">pw:</label>
 						<div>
 							{pwShow ? (
-								<input type="password" id="pw" name="pw" value={pw} onChange={(e) => setPw(e.target.value)} />
+								<input className='width_40per' type="password" id="pw" name="pw" value={pw} onChange={(e) => setPw(e.target.value)} />
 							) : (
-								<input type="text" id="pw_show" name="pw_show" value={pw} onChange={(e) => setPw(e.target.value)} 	/>
+								<input className='width_40per' type="text" id="pw_show" name="pw_show" value={pw} onChange={(e) => setPw(e.target.value)} 	/>
 							)}
 							<span className='font_size_16' title="비밀번호 보기">
 								<MuiTheme.ShowPwButton type="button" onClick={() => setPwShow(!pwShow)} > 
