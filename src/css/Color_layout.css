@@ -14,4 +14,5 @@
 .text_orange { color: #f5a031; }
 .text_purple { color: #800080; }
 .text_green { color: #008000; }
-.text_grey { color: var(--background-border-color); }
+.text_grey { color: grey; }
+.text_border-color { color: var(--background-border-color); }

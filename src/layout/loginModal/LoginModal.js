@@ -56,7 +56,7 @@ const LoginModal = (props) => {
 						<br />
 						<MuiTheme.LoginButton className='margin_right_10' type="submit">로그인</MuiTheme.LoginButton>
 						<MuiTheme.CancelButton className='margin_right_10' onClick={() => handleCloseModal()} >취소</MuiTheme.CancelButton>
-						{/* <MuiTheme.CancelButton className='margin_right_10' onClick={() => handleRegistModal()} >회원가입</MuiTheme.CancelButton> */}
+						<MuiTheme.CancelButton className='margin_right_10' onClick={() => handleRegistModal()} >회원가입</MuiTheme.CancelButton>
 					</form>
 				</div>
 				<div className="modal_overlay" onClick={() => handleCloseModal()}>

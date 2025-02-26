@@ -133,7 +133,31 @@ const MuiTheme = {
 			transform: 'translateX(452%)', // hidden 클래스가 있을 때
 		},
 	}),
+	IdCheckButton: styled('button')({
+		backgroundColor: 'var(--background-color)',
+		color: 'var(--text-color)',
+		'&:hover': {
+		//   backgroundColor: 'var(--background-color_loginbutton)',
+		boxShadow: '1px 1px 1px 3px var(--background-border-color)',
+		},
+		marginLeft: '10px',
+		padding: '1px 20px',
+		boxShadow: '1px 1px 1px 2px var(--background-border-color)',
+		borderRadius: '1px',
+	}),
 	ShowPwButton: styled('button')({
+		backgroundColor: 'var(--background-color)',
+		color: 'var(--text-color)',
+		'&:hover': {
+		//   backgroundColor: 'var(--background-color_loginbutton)',
+		boxShadow: '1px 1px 1px 3px var(--background-border-color)',
+		},
+		marginLeft: '10px',
+		padding: '1px 20px',
+		boxShadow: '1px 1px 1px 2px var(--background-border-color)',
+		borderRadius: '1px',
+	}),
+	AuthEmailButton: styled('button')({
 		backgroundColor: 'var(--background-color)',
 		color: 'var(--text-color)',
 		'&:hover': {

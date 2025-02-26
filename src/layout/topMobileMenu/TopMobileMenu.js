@@ -146,7 +146,7 @@ const TopMenu = (props) => {
 
 					
 
-					{localStorage.getItem('accessToken') && localStorage.getItem('accessCode') === 'ACCESS_------------1' && (
+					{localStorage.getItem('accessToken') && localStorage.getItem('accessCode') === '1' && (						
 						<>
 							<div className='font_size_14 margin_top_80'>
 								관리자 관리 항목 <RiAdminFill />

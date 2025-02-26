@@ -210,6 +210,7 @@ export const useTZEROStandardFormContent = (props) => {
 
 	useEffect(() => {
 
+		//창 css 반응형 옵션
 		const handleResize = () => {
 			if (mediaQuery.matches) {
 				if (responsiveWebOption.containerMarginLeft !== 'margin_left_15') setResponsiveWebOption(prev => ({ ...prev, containerMarginLeft: 'margin_left_15' }));
