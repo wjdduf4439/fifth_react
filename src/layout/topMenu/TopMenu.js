@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { ThemeContext } from 'provider/ThemeContext';
 
 import { FaHome } from "react-icons/fa"
@@ -31,6 +31,9 @@ const TopMenu = (props) => {
 	const [openRightMenus, setOpenRightMenus] = useState({});
 	const [topMenuDataList, setTopMenuDataList] = useState([]);
 
+	const loginButtonPlaceRef = useRef(null);
+	const profileImgRef = useRef(null);
+
 	const { 
 		handleLoginButtonClick, 
 		handleCloseModal, 
@@ -62,7 +65,7 @@ const TopMenu = (props) => {
 						))}
 						<li><a href="#menu3">기타 도구</a></li>
 					</ul>
-					<div className='login_button' >
+					<div className='login_button' ref={loginButtonPlaceRef}>
 						<MuiTheme.TopMenuButton 
 							className="position_relative"
 							onClick={() => window.open('/', '_blank', 'noopener,noreferrer')}
@@ -94,15 +97,18 @@ const TopMenu = (props) => {
 						{localStorage.getItem('accessToken') && (
 							<>
 								<span className='margin_left_30'></span>
-								<img src="/image/profile.jpg" alt="프로필 사진" className='login_profile_img position_relative' onClick={() => setIsProfileMenuVisible(!isProfileMenuVisible)}/>
+								<img ref={profileImgRef} src="/image/profile.jpg" alt="프로필 사진" className='login_profile_img position_relative' onClick={() => setIsProfileMenuVisible(!isProfileMenuVisible)}/>
 								
-								<span className='margin_left_20'></span>
-								<MuiTheme.TopMenuButton 
-									className="position_relative"
-									onClick={() => handleRightMenu()}
-									> 
-									<MdOutlineSegment />
-								</MuiTheme.TopMenuButton>
+								{localStorage.getItem('accessCode') === '1' && (
+									<>
+										<span className='margin_left_20'></span>
+										<MuiTheme.TopMenuButton 
+											className="position_relative"
+										onClick={() => handleRightMenu()}> 
+											<MdOutlineSegment />
+										</MuiTheme.TopMenuButton>
+									</>
+								)}
 							</>
 						)}
 						
@@ -138,7 +144,7 @@ const TopMenu = (props) => {
 					</div>
 				)}
 			</div>
-			{localStorage.getItem('accessToken') && (
+			{localStorage.getItem('accessToken') && localStorage.getItem('accessCode') === '1' && (
 				<div className={`sidebar_right
 									${isRightMenuVisibleValue === 'hidden' ? 'slide-hidden' : 
 											`${isRightMenuVisible ? 'slide-in' : 'slide-out'}`
@@ -197,6 +203,8 @@ const TopMenu = (props) => {
 			{isProfileMenuVisible && (
 				<ProfileModal 
 					setIsProfileMenuVisible={setIsProfileMenuVisible}
+					loginButtonPlaceRef={loginButtonPlaceRef}
+					profileImgRef={profileImgRef}
 				/>
 			)}
 			

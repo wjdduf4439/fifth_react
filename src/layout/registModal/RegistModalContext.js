@@ -100,6 +100,12 @@ export const useRegistModalContext = (props) => {
 			return;
 		}
 
+		if(nick.includes('#') || tag.includes('#')){
+			setTargetRef('nick');
+			setWarning('닉네임과 태그에 #을 포함할 수 없습니다.');
+			return;
+		}
+
 		if(!nickCheck){
 			setTargetRef('nick');
 			setWarning('닉네임 중복확인을 진행해주세요.');
@@ -127,7 +133,8 @@ export const useRegistModalContext = (props) => {
 	
 		const requestNodeData = {
 			id: id,
-			nick: nick + '#' + tag,
+			nick: nick,
+			tag: tag,
 			pw: pw,
 			email: email,
 		};

@@ -64,7 +64,7 @@ export const useLoginModalContext = (props) => {
 			}
 		}).catch(error => {
 			console.error('Error updating data:', error);
-			alert("문제가 발생해서 요청이 차단되었습니다.");
+			alert("로그인 정보가 잘못되었습니다.");
 		});
 	};
 

@@ -15,6 +15,7 @@ const UserMenu = (props) => {
 		{title : '게시판 설정', link : '/admin/codeHead'},
 		{title : '연락 보기', link : '/admin/contract'},
 		{title : '메뉴 설정', link : '/admin/menu'},
+		{title : '회원가입 승인', link : '/admin/accessAccount'},
 	]
 	
 	const handleScroll = () => {
