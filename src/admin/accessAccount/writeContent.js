@@ -13,46 +13,45 @@ export const useAccessAccountWriteContent = (props) => {
 
 	const axiosInstance = useAxios();
 
-	const handleInsertCodeHead = (writeForm) => {
+	const handleInsertAccessAccount = (writeForm) => {
 		if (!validateWriteForm(writeForm)) return;
-		insertCodeHead(writeForm);
+		insertAccessAccount(writeForm);
 	}
 
-	const handleUpdateCodeHead = (writeForm) => {
+	const handleUpdateAccessAccount = (writeForm) => {
 		if (!validateWriteForm(writeForm)) return;
-		updateCodeHead(writeForm);
+		updateAccessAccount(writeForm);
 	}
 
-	const handleRestoreCodeHead = (writeForm) => {
-		restoreCodeHead(writeForm);
+	const handleRestoreAccessAccount = (writeForm) => {
+		restoreAccessAccount(writeForm);
 	}
 
-	const handleDeleteCodeHead = (writeForm) => {	
-		deleteCodeHead(writeForm);
+	const handleDeleteAccessAccount = (writeForm) => {	
+		deleteAccessAccount(writeForm);
 	}
 
 	const validateWriteForm = (writeForm) => {
-		const codeRegex = /^[A-Z]{3,10}$/; // 대문자 알파벳 3자리에서 10자리 사이
-
-		if (!writeForm.code ) {
-			alert("코드를 입력해야 합니다.");
+		if (!writeForm.id) {
+			alert("아이디를 입력해야 합니다.");
 			return false;
 		}
-		if (!codeRegex.test(writeForm.code)) {
-			alert("코드는 대문자 알파벳 3자리에서 10자리 사이로 입력해야 합니다.");
-			return false;
-		}
-		if (!writeForm.name) {
-			alert("이름을 입력해야 합니다.");
-			return false;
-		}
-		if (!writeForm.comment) {
-			alert("주석을 입력해야 합니다.");
+		
+		if (!writeForm.nick) {
+			alert("닉네임을 입력해야 합니다.");
 			return false;
 		}
 
-		if (!writeForm.templateType?.trim()){
-			alert("템플릿 타입을 입력해야 합니다.");
+		if (!writeForm.email) {
+			alert("이메일을 입력해야 합니다.");
+			return false;
+		}
+		if (!writeForm.role) {
+			alert("역할을 입력해야 합니다.");
+			return false;
+		}
+		if (!writeForm.authority) {
+			alert("권한을 입력해야 합니다.");
 			return false;
 		}
 
@@ -80,7 +79,7 @@ export const useAccessAccountWriteContent = (props) => {
 	}
 
 
-	const insertCodeHead = async(writeForm) => {
+	const insertAccessAccount = async(writeForm) => {
 		await axiosInstance.post('/api/admin/accessAccount/insert', writeForm)
 		.then(response => {
 			const data = response.data;
@@ -96,7 +95,7 @@ export const useAccessAccountWriteContent = (props) => {
 		});
 	}
 
-	const updateCodeHead = async (writeForm) => {
+	const updateAccessAccount = async (writeForm) => {
 		await axiosInstance.post('/api/admin/accessAccount/update', writeForm)
 		.then(response => {
 			const data = response.data;
@@ -112,7 +111,7 @@ export const useAccessAccountWriteContent = (props) => {
 		});
 	}
 
-	const restoreCodeHead = async (writeForm) => {
+	const restoreAccessAccount = async (writeForm) => {
 		await axiosInstance.post('/api/admin/accessAccount/restore', writeForm)
 		.then(response => {
 			const data = response.data;
@@ -128,7 +127,7 @@ export const useAccessAccountWriteContent = (props) => {
 		});
 	}
 
-	const deleteCodeHead = async (writeForm) => {
+	const deleteAccessAccount = async (writeForm) => {
 		await axiosInstance.post('/api/admin/accessAccount/delete', writeForm)
 		.then(response => {
 			const data = response.data;
@@ -169,9 +168,9 @@ export const useAccessAccountWriteContent = (props) => {
     }, []);
 
 	return {
-		handleInsertCodeHead,
-		handleUpdateCodeHead,
-		handleRestoreCodeHead,
-		handleDeleteCodeHead,
+		handleInsertAccessAccount,
+		handleUpdateAccessAccount,
+		handleRestoreAccessAccount,
+		handleDeleteAccessAccount,
 	}
 }

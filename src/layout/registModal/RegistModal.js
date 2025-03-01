@@ -80,6 +80,7 @@ const RegistModal  = (props) => {
 					<div className='margin_bottom_10'>
 						<span className="close" onClick={() => handleCloseModal()}>&times;</span>
 						<h2>회원가입</h2>
+						<div className='font_size_10 margin_top_15 margin_bottom_15 '>회원가입 후, 관리자의 승인이 있어야 회원등록이 완료됩니다.</div>
 						<label htmlFor="username">등록 아이디:</label>
 						<div>
 							<input ref={idInputRef} type="text" id="id" name="id" value={id} onChange={(e) => setId(e.target.value)} />

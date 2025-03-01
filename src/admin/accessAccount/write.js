@@ -42,10 +42,10 @@ const AccessWriteForm = (props) => {
 	const [inputWidth, setInputWidth] = useState('width_100per');
 
 	const {
-		handleInsertCodeHead,
-		handleUpdateCodeHead,
-		handleRestoreCodeHead,
-		handleDeleteCodeHead,
+		handleInsertAccessAccount,
+		handleUpdateAccessAccount,
+		handleRestoreAccessAccount,
+		handleDeleteAccessAccount,
 	} = useAccessAccountWriteContent({
 		mediaQuery,
 		reload, setReload,
@@ -97,10 +97,10 @@ const AccessWriteForm = (props) => {
 
 
 					<br />
-					{process === 'write' && 								<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleInsertCodeHead(writeForm); }}>등록</MuiTheme.ListButton1> 		{mediaQuery.matches && <br />}</>}
-					{process === 'update' && 								<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleUpdateCodeHead(writeForm); }}>수정</MuiTheme.ListButton1> 		{mediaQuery.matches && <br />}</>}
-					{process === 'update' && writeForm.del_chk === 'N' && 	<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleDeleteCodeHead(writeForm); }}>비활성화</MuiTheme.ListButton1>	{mediaQuery.matches && <br />}</>}
-					{process === 'update' && writeForm.del_chk === 'Y' && 	<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleDeleteCodeHead(writeForm); }}>삭제</MuiTheme.ListButton1>		{mediaQuery.matches && <br />}</> }
+					{process === 'write' && 								<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleInsertAccessAccount(writeForm); }}>등록</MuiTheme.ListButton1> 		{mediaQuery.matches && <br />}</>}
+					{process === 'update' && 								<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleUpdateAccessAccount(writeForm); }}>수정</MuiTheme.ListButton1> 		{mediaQuery.matches && <br />}</>}
+					{process === 'update' && writeForm.del_chk === 'N' && 	<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleDeleteAccessAccount(writeForm); }}>비활성화</MuiTheme.ListButton1>	{mediaQuery.matches && <br />}</>}
+					{process === 'update' && writeForm.del_chk === 'Y' && 	<><MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { handleDeleteAccessAccount(writeForm); }}>삭제</MuiTheme.ListButton1>		{mediaQuery.matches && <br />}</> }
 					<MuiTheme.ListButton1 className='margin_bottom_10' onClick={() => { setShowWriteForm(false); }}>취소</MuiTheme.ListButton1>
 				</MuiTheme.DialogContent1>
 			</Dialog>
