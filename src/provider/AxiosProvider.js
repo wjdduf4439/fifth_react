@@ -27,13 +27,14 @@ export const AxiosProvider = ({ children }) => {
             const accessToken = localStorage.getItem('accessToken');
             const refreshToken = localStorage.getItem('refreshToken');
             const nick = localStorage.getItem('nick');
+			const role = localStorage.getItem('role');
 
 			if (accessCode) 	config.headers['AccessCode'] = accessCode; 
 			if (accessId)		config.headers['AccessId'] = accessId; 
             if (accessToken)	config.headers['AccessToken'] = accessToken; 
             if (refreshToken)	config.headers['RefreshToken'] = refreshToken;	
 			if (nick)			config.headers['Nick'] = nick;	
-			
+			if (role)			config.headers['Role'] = role;	
             return config;
         },
         (error) => {

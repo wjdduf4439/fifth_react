@@ -99,7 +99,7 @@ const TopMenu = (props) => {
 								<span className='margin_left_30'></span>
 								<img ref={profileImgRef} src="/image/profile.jpg" alt="프로필 사진" className='login_profile_img position_relative' onClick={() => setIsProfileMenuVisible(!isProfileMenuVisible)}/>
 								
-								{localStorage.getItem('accessCode') === '1' && (
+								{localStorage.getItem('role').includes('admin') && (
 									<>
 										<span className='margin_left_20'></span>
 										<MuiTheme.TopMenuButton 
@@ -144,7 +144,7 @@ const TopMenu = (props) => {
 					</div>
 				)}
 			</div>
-			{localStorage.getItem('accessToken') && localStorage.getItem('accessCode') === '1' && (
+			{localStorage.getItem('accessToken') && localStorage.getItem('role').includes('admin') && (
 				<div className={`sidebar_right
 									${isRightMenuVisibleValue === 'hidden' ? 'slide-hidden' : 
 											`${isRightMenuVisible ? 'slide-in' : 'slide-out'}`

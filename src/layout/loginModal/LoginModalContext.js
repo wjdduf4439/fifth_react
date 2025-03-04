@@ -14,7 +14,7 @@ export const useLoginModalContext = (props) => {
 
 	
 	const useAccess = useContext(AccessContext);
-	const { setCode, setId, setNick, setAccessToken, setRefreshToken } = useAccess;	
+	const { setAccessInfo } = useAccess;	//provider에서 받고는 있지만. 현재는 localstorage에서 받아오는 것으로 변경
 
 	const handleLogin = (event) => {
 		event.preventDefault();
@@ -52,9 +52,10 @@ export const useLoginModalContext = (props) => {
 			if (data.result) {
 				alert(data.message);
 
-				if(data.code) 			localStorage.setItem('accessCode', data.code);
+				if(data.accessCode) 	localStorage.setItem('accessCode', data.accessCode);
 				if(data.id) 			localStorage.setItem('id', data.id);
 				if(data.nick) 			localStorage.setItem('nick', data.nick);
+				if(data.role) 			localStorage.setItem('role', data.role);
 				if(data.accessToken) 	localStorage.setItem('accessToken', data.accessToken);
 				if(data.refreshToken) 	localStorage.setItem('refreshToken', data.refreshToken);
 				

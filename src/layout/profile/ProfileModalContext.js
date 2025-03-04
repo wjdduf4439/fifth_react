@@ -25,6 +25,7 @@ export const useProfileModalContext = (
 				localStorage.removeItem('accessCode');
 				localStorage.removeItem('id');
 				localStorage.removeItem('nick');
+				localStorage.removeItem('role');
 				localStorage.removeItem('accessToken');
 				localStorage.removeItem('refreshToken');
 				

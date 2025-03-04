@@ -78,12 +78,27 @@ const AccessWriteForm = (props) => {
 						onChange={(e) => setWriteForm({ ...writeForm, email: e.target.value })} 
 						className={`${inputWidth}`}
 					/>
+{/* 					
 					<MuiTheme.TextField1 
-						label="role"
+						label="권한"
 						value={writeForm.role}
 						onChange={(e) => setWriteForm({ ...writeForm, role: e.target.value })} 
 						className={`${inputWidth}`}
-					/>
+					/> */}
+					<FormControl variant="outlined" className={`${inputWidth} `}>
+						<MuiTheme.InputLabel1 id="role-label">권한</MuiTheme.InputLabel1>
+						<MuiTheme.Select2
+							value={writeForm.role ? writeForm.role : "ROLE_user"}
+							onChange={(e) => {setWriteForm({ ...writeForm, role: e.target.value });}} 
+							label="권한"
+							labelId="role-label"
+							id="role"
+							name="role"
+						>
+							<MenuItem value="ROLE_admin">관리자</MenuItem>
+							<MenuItem value="ROLE_user">사용자</MenuItem>
+						</MuiTheme.Select2>
+					</FormControl>
 
 					<FormGroup row>
 						<FormControlLabel

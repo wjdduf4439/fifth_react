@@ -321,6 +321,33 @@ const MuiTheme = {
 		},
 	}),
 
+	Select2: styled(Select)({
+		margin: '25px 5px',
+		width: '100%',
+		color: 'var(--text-color)', // 기본 텍스트 색상 설정
+		border: '1px solid var(--background-border-color)',
+		// 아이콘 색상 변경을 위한 스타일 추가
+		'& .MuiSelect-icon': {
+			color: 'var(--background-border-color)',  // 기본 아이콘 색상
+		},
+
+		'&.Mui-disabled .MuiSelect-icon': {
+			color: '#000000',  // 비활성화 상태의 아이콘 색상
+		},
+		
+		'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+			// borderColor: 'var(--background-border-color)', // 활성화 상태의 테두리 색상 설정
+		},
+        '&.Mui-disabled': {
+			// '.css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input .Mui-disabled'			
+            color: 'var(--background-border-color)',
+            borderColor: 'var(--background-border-color)',
+        },
+		'& .MuiSelect-select.Mui-disabled': {
+			'-webkit-text-fill-color': 'var(--background-border-color) !important',
+		},
+	}),
+
 	MenuItem1: styled(MenuItem)({
 		color: 'var(--background-border-color)', // 기본 텍스트 색상 설정
 	}),
