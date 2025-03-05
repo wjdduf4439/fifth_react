@@ -12,8 +12,8 @@ const MainPageSlider = (props) => {
         const {
             mediaQuery = window.matchMedia('(max-width: 800px)'),
             slider_minWidth = "300px",      // 최소 너비
-            slider_maxWidth = "1680px",     // 최대 너비
-            slider_defaultWidth = "90vw",    // 기본 너비
+            slider_maxWidth = "2160px",     // 최대 너비
+            slider_defaultWidth = "70vw",    // 기본 너비
             slides = [ { title: "슬라이더의 제목이 없습니다.", content: null } ],
             slider_dots = true,
             slider_button = false,

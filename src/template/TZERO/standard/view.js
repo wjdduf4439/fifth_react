@@ -128,7 +128,12 @@ const TZEROStandardViewForm = (props) => {
 								<MdOutlineUploadFile className='margin_right_15' />업로드된 파일
 							</div>
 						</li>
-						<li>
+						<li style={{ 
+							flex: responsiveWebOption.fileDivTwoFlex,
+							display: '',
+							flexDirection: responsiveWebOption.fileDivFlexDirection,
+							padding: responsiveWebOption.fileDivOnePadding
+						}}>
 							<ul className='file_uploaded_ul'>
 								{viewForm.fileVO.map((file, index) => (
 									FileDownloadNode(file, index)
@@ -171,12 +176,16 @@ const TZEROStandardViewForm = (props) => {
 						</ul>
 					</div>
 				</li>
-
-				{replyList.map((reply, index) => (
-					<div key={`reply_div_${reply.uid}`}>
-						{ReplyNode(reply, index)}
-					</div>
-				))}
+				{replyList.length === 0 || (replyList[0] && replyList[0].pid === '') ?
+					<></>
+				: 
+					replyList.map((reply, index) => (
+						<div key={`reply_div_${reply.uid}`}>
+							{ReplyNode(reply, index)}
+						</div>
+					))
+				}
+				
 				
 			</ul>
 			{replyCount > 0 ?
