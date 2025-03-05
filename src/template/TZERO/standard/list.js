@@ -125,9 +125,15 @@ const TZEROStandardList = (props) => {
 					</>
 				)}
 			</List>
-			<FormGroup row>
-				<MuiTheme.ListButton1 onClick={() => { linkParams('write', 0); } }>글쓰기</MuiTheme.ListButton1>
-			</FormGroup>
+			{localStorage.getItem('accessCode') !== '' ?
+				<FormGroup row>
+					<MuiTheme.ListButton1 onClick={() => { linkParams('write', 0); } }>글쓰기</MuiTheme.ListButton1>
+				</FormGroup>
+			: <>
+				<div className='font_size_12 margin_top_20'>
+					⁕ 글쓰기는 로그인 후 이용 가능합니다.
+				</div>
+			</>}
 
 			{resultCount > 0 ?
 				<Pagination

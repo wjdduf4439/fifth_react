@@ -103,7 +103,10 @@ const AccessWriteForm = (props) => {
 					<FormGroup row>
 						<FormControlLabel
 							control={
-								<MuiTheme.ListItemCheckbox checked={writeForm.approve === 'Y'} onChange={(event) => setWriteForm({ ...writeForm, approve: event.target.checked ? 'Y' : 'N' })} />
+								<MuiTheme.ListItemCheckbox 
+									checked={writeForm.approve === 'Y'}
+									onChange={(event) => setWriteForm({ ...writeForm, approve: event.target.checked ? 'Y' : 'N' })}
+								/>
 							}
 							label="회원가입 승인"
 						/>
