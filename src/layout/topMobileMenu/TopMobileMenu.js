@@ -82,6 +82,17 @@ const TopMenu = (props) => {
 								{/* {isDarkMode ? <FaRegLightbulb /> : <FaLightbulb />} */}
 								<FaLightbulb />
 							</MuiTheme.TopMenuButton>
+							{!localStorage.getItem('accessToken') && (
+								<>
+									<span className='margin_left_20'></span>
+									<MuiTheme.TopMenuButton 
+										className="position_relative"
+										onClick={() => handleLoginButtonClick()}
+										> 
+										<RxEnter />
+									</MuiTheme.TopMenuButton>
+								</>
+							)}
 					</div>
 					
 							
