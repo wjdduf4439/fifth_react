@@ -30,6 +30,12 @@ export const useProfileModalContext = (
 				localStorage.removeItem('refreshToken');
 				
 				setIsProfileMenuVisible(false);
+
+				// 현재 경로가 /admin/으로 시작하면 '/'로 리다이렉트
+				if (window.location.pathname.startsWith('/admin/')) {
+					window.location.href = '/';
+				}
+
 			} else {
 				alert("문제가 발생했습니다 : " + data.message);
 			}

@@ -55,26 +55,6 @@ export const useAccessAccountWriteContent = (props) => {
 			return false;
 		}
 
-		let isValidJson = true;
-
-		if(process === 'update') {
-			try {
-				JSON.parse(writeForm.optionContent);
-			} catch (e) {
-				isValidJson = false;
-			}
-
-			if(!isValidJson) {
-				alert("옵션 내용을 입력해야 합니다.");
-				return false;
-			}
-		}
-
-		if (!writeForm.skinType?.trim()){
-			alert("스킨 타입을 입력해야 합니다.");
-			return false;
-		}
-
 		return true;
 	}
 
