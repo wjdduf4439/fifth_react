@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { ThemeContext } from 'provider/ThemeContext';
 
 import { FaHome } from "react-icons/fa"
@@ -48,6 +48,12 @@ const TopMenu = (props) => {
 		setOpenRightMenus,
 		topMenuDataList, setTopMenuDataList,
 	});
+
+	useEffect(() => {
+		const open = isRightMenuVisibleValue !== 'hidden' && isRightMenuVisible;
+		document.body.classList.toggle('right-drawer-open', open);
+		return () => document.body.classList.remove('right-drawer-open');
+	}, [isRightMenuVisible, isRightMenuVisibleValue]);
 
 	return (
 		// React.Fragment는 여러 자식 요소를 그룹화하는 데 사용되며, 불필요한 DOM 노드를 추가하지 않습니다.
@@ -104,7 +110,7 @@ const TopMenu = (props) => {
 										<span className='margin_left_20'></span>
 										<MuiTheme.TopMenuButton 
 											className="position_relative"
-										onClick={() => handleRightMenu()}> 
+											onClick={() => handleRightMenu()}> 
 											<MdOutlineSegment />
 										</MuiTheme.TopMenuButton>
 									</>

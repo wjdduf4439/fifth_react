@@ -7,9 +7,24 @@
 .container_toolString {
 	align-items: flex-start;
 	margin-top: 50px; 
-    margin-left: 300px; /* 왼쪽 사이드바의 너비 + 여백 */
-    margin-right: 300px; /* 오른쪽 사이드바의 너비 + 여백 */
+    margin-left: clamp(16px, 8vw, 300px);
+    margin-right: clamp(16px, 8vw, 300px);
 	margin-bottom: 50px; 
+}
+
+.home_frame {
+	margin-left: calc(var(--side-left-width) + 24px);
+	margin-right: clamp(24px, 4vw, 48px);
+	max-width: 100%;
+	box-sizing: border-box;
+	transition: margin-right 0.3s ease;
+}
+
+@media (max-width: 800px) {
+	.home_frame {
+		margin-left: 20px;
+		margin-right: 16px;
+	}
 }
 
 .content {
@@ -18,6 +33,8 @@
 	align-items: flex-start;
 	/* width: 100%; */
 	display: inline-block;
+	max-width: 100%;
+	box-sizing: border-box;
 }
 
 .content > p {
@@ -27,8 +44,13 @@
 .sidebar_left {
     position: fixed;
     left: 0;
-    top: 70px;
-    height: 100%;
+    top: var(--topbar-offset);
+    width: var(--side-left-width);
+    height: calc(100vh - var(--topbar-offset));
+    height: calc(100dvh - var(--topbar-offset));
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
     background-color: var(--background-color);
     padding: 20px;
     box-shadow: -2px 0 5px rgba(0,0,0,0.1);
@@ -39,6 +61,8 @@
     position: fixed;
     left: 0;
     top: 90px; /* 상단에 위치하도록 설정 */
+    width: 100%;
+    box-sizing: border-box;
     height: 150px; /* 원하는 높이로 설정 */
     background-color: var(--background-color);
     padding: 10px; /* 패딩을 줄여서 높이를 줄임 */

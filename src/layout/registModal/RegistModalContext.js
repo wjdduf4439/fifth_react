@@ -31,13 +31,28 @@ export const useRegistModalContext = (props) => {
 	const useAccess = useContext(AccessContext);
 	const { setCode, setId, setNick, setAccessToken, setRefreshToken } = useAccess;	
 
-	const handleNickCheck = (nick) => {
-		console.log("nick : " + nick);
+	const handleNickCheck = (nick, tag) => {
+		let nickIsEmpty = (nick === '' || nick === null || nick === undefined);
+		let tagIsEmpty = (tag === '' || tag === null || tag === undefined);
 
+		// console.log("nick : " + nick);
+		// console.log("nickIsEmpty : " + nickIsEmpty);
+
+		if(nickIsEmpty){
+			setTargetRef('nick');
+			setWarning('닉네임을 입력해주세요.');
+			return;
+		}
+
+		if(tagIsEmpty){
+			setTargetRef('tag');
+			setWarning('태그를 입력해주세요.');
+			return;
+		}
+		
 		const requestNodeData = {
-			nick: nick,
+			nick: nick + '#' + tag,
 		};
-
 		getNickNameCheck(requestNodeData);
 	}
 

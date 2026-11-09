@@ -43,6 +43,10 @@ code {
 	--spoiler-color: #ff4800;
 	--loading-color: #ffffffb7;
 
+	--topbar-offset: 70px;
+	--side-left-width: clamp(180px, 16vw, 280px);
+	--right-drawer-width: min(350px, 88vw);
+
 }
 
 .dark-mode {

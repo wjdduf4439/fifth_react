@@ -11,18 +11,19 @@ const MainPageSlider = (props) => {
 
         const {
             mediaQuery = window.matchMedia('(max-width: 800px)'),
-            slider_minWidth = "300px",      // 최소 너비
-            slider_maxWidth = "2160px",     // 최대 너비
-            slider_defaultWidth = "70vw",    // 기본 너비
+            slider_minWidth = "0px",
+            slider_maxWidth = "100%",
+            slider_defaultWidth = "100%",
             slides = [ { title: "슬라이더의 제목이 없습니다.", content: null } ],
             slider_dots = true,
             slider_button = false,
             slider_button_list = [
                 { title: "버튼이 없습니다.", button_icon: <></> }
             ],
-            translateXWidth = 50,
-            divWidth = 50
         } = props;
+
+        const slideCount = Math.max(slides.length, 1);
+        const slideShare = 100 / slideCount;
 
         const slideRef = useRef([]);
 
@@ -79,14 +80,15 @@ const MainPageSlider = (props) => {
                 
                 <div className='main_page_welcome_slider'
                     style={{
-                        width: `clamp(${slider_minWidth}, ${slider_defaultWidth}, ${slider_maxWidth})`
+                        width: `clamp(${slider_minWidth}, ${slider_defaultWidth}, ${slider_maxWidth})`,
+                        maxWidth: '100%',
                     }}
                     ref={slideRef}  // slideRef를 여기서 사용
                 >
                     <div className='main_page_welcome_slider-container' 
                     style={{ 
-                        width: `${slides.length * 100}%`,  // slides 배열의 길이에 따라 동적으로 계산
-                        transform: `translateX(calc(-${currentSlide * translateXWidth}% + ${currentSlide * 8}px))`,
+                        width: `${slideCount * 100}%`,
+                        transform: `translateX(-${currentSlide * slideShare}%)`,
                         transition: 'transform 0.5s ease-in-out',
                         '&:hover': {
                             boxShadow: 'inset -2px -2px 0 4px var(--background-border-color)'
@@ -97,8 +99,9 @@ const MainPageSlider = (props) => {
                             <div key={index} 
                                 className='main_page_welcome_slider_div'
                                 style={{
-                                    minWidth: `calc(${divWidth}% - 26px)`,  // slides 배열의 길이에 따라 동적으로 계산
-                                    width: `calc(${divWidth}% - 26px)`,  // slides 배열의 길이에 따라 동적으로 계산
+                                    minWidth: `${slideShare}%`,
+                                    width: `${slideShare}%`,
+                                    boxSizing: 'border-box',
                                 }}>
                                 {/*제목 표시*/}
                                 <h2>{slide.title.split('\n').map((line, i) => (

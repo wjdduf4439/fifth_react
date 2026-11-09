@@ -30,13 +30,10 @@ const Main = (props) => {
 	const [contact_ip, setContactIp] = useState('');
 	
 	const [leftSidebarMode, setLeftSidebarMode] = useState('sidebar_left');
-	const [leftSidebarWidth, setLeftSidebarWidth] = useState('width_100per');
 	const [profileDivWidth, setProfileDivWidth] = useState('width_100per');
 	const [profileImgWidth, setProfileImgWidth] = useState('width_10per');
 	const [profileDivAlign, setProfileDivAlign] = useState('text_align_center');
 	const [displayNone, setDisplayNone] = useState('');
-	const [containerMarginLeft, setContainerMarginLeft] = useState('margin_left_300');
-	const [containerMarginRight, setContainerMarginRight] = useState('margin_right_300');
 	const [contentWidth, setContentWidth] = useState('width_100per');
 	const [projectArcLink, setProjectArcLink] = useState('/image/project_arc.png');
 
@@ -94,24 +91,18 @@ const Main = (props) => {
 		const handleResize = () => {
 			if (mediaQuery.matches) {
 				if (leftSidebarMode !== 'sidebar_up') setLeftSidebarMode('sidebar_up');
-				if (leftSidebarWidth !== 'width_100per') setLeftSidebarWidth('width_100per');
 				if (profileDivWidth !== 'width_30per') setProfileDivWidth('width_30per');
 				if (profileDivAlign !== 'text_align_left padding_left_10') setProfileDivAlign('text_align_left padding_left_10');
 				if (profileImgWidth !== 'width_30per') setProfileImgWidth('width_30per');
 				if (displayNone !== 'display_none') setDisplayNone('display_none');
-				if (containerMarginLeft !== '') setContainerMarginLeft('margin_left_20');
-				if (containerMarginRight !== '') setContainerMarginRight('');
 				if (contentWidth !== '') setContentWidth('');
 				setProjectArcLink('/image/project_arc_mobile_mini.png');
 			} else {
 				if (leftSidebarMode !== 'sidebar_left') setLeftSidebarMode('sidebar_left');
-				if (leftSidebarWidth !== 'width_10per') setLeftSidebarWidth('width_10per');
 				if (profileDivWidth !== 'width_100per') setProfileDivWidth('width_100per');
 				if (profileDivAlign !== 'text_align_center') setProfileDivAlign('text_align_center');
 				if (profileImgWidth !== 'width_100per') setProfileImgWidth('width_100per');
 				if (displayNone !== '') setDisplayNone('');
-				if (containerMarginLeft !== 'margin_left_350') setContainerMarginLeft('margin_left_350');
-				if (containerMarginRight !== 'margin_right_350') setContainerMarginRight('margin_right_350');
 				if (contentWidth !== 'width_100per') setContentWidth('width_100per');
 				setProjectArcLink('/image/project_arc.png');
 			}
@@ -134,7 +125,7 @@ const Main = (props) => {
     return (
 		<div>
 			<div className="main_container">
-				<div className={`${leftSidebarMode} ${leftSidebarWidth} ${displayNone}`}>
+				<div className={`${leftSidebarMode} ${displayNone}`}>
 					<div className={`profile_img_div ${profileDivWidth}`}>
 						<img src="/image/profile.jpg" alt="프로필 사진" className={`profile_img margin_top_20 ${profileImgWidth}`} />
 						<h4 className={`width_100per ${profileDivAlign} GumiDotumTTF`}>이정열</h4>
@@ -155,7 +146,7 @@ const Main = (props) => {
 				</div>
 				 */}
 								
-				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
+				<div className="container home_frame">
 					<div className={`content ${contentWidth}`}>
 						
 						{/* window width : {window.innerWidth} */}
@@ -176,7 +167,7 @@ const Main = (props) => {
 					</div>
 				</div>
 			
-				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
+				<div className="container home_frame">
 					<div className={`content ${contentWidth}`}>
 
 						<div id="aboutme" className='about_me_meta'>ABOUT ME</div>
@@ -200,7 +191,7 @@ const Main = (props) => {
 				</div>
 
 				
-				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
+				<div className="container home_frame">
 					<div className={`content ${contentWidth}`}>
 
 						<div id="stack" className='about_me_meta'>STACK</div>
@@ -280,7 +271,7 @@ const Main = (props) => {
 				</div>
 
 
-				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
+				<div className="container home_frame">
 					<div className={`content ${contentWidth}`}>
 
 						<div id="howto" className="about_me_meta">HOW TO</div>
@@ -294,8 +285,6 @@ const Main = (props) => {
 						<MainPageSlider
 								mediaQuery={mediaQuery}
 								slides={howToSliderSettings} 
-								divWidth={33.5}
-								translateXWidth={33.55}
 								slider_dots={false} 
 								slider_button={true}
 								slider_button_list={howToSliderButtonList}
@@ -305,7 +294,7 @@ const Main = (props) => {
 					</div>
 				</div>
 
-				<div className={`container ${containerMarginLeft} ${containerMarginRight}`}>
+				<div className="container home_frame">
 					<div className={`content ${contentWidth}`}>
 
 						<div id="contract" className='about_me_meta'>CONTACT</div>

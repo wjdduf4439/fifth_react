@@ -32,6 +32,7 @@ const AccessList = (props) => {
 	} = props;
 
 	const [page, setPage] = useState(1);
+	const [approveMessage, setApproveMessage] = useState('');
 	// 예시 데이터
 	const itemsPerPage = 10;
 
@@ -42,6 +43,7 @@ const AccessList = (props) => {
 		handleApproveAccount,
 	} = useCodeHeadListContent({
 		page, setPage,
+		approveMessage, setApproveMessage,
 		reload, setReload,
 		setShowWriteForm,
 		option, setOption,
@@ -101,6 +103,7 @@ const AccessList = (props) => {
 			<MuiTheme.ListButton1 
 				className='margin_bottom_10'
 				onClick={() => { handleApproveAccount(approveAccountList); }}>승인</MuiTheme.ListButton1>
+			<div className='margin_bottom_10' style={{ color: 'var(--dislike-color)' }}> {approveMessage} </div>
 
 			<h3>등록된 회원 목록</h3>
 			<List dense={true}>
@@ -128,7 +131,7 @@ const AccessList = (props) => {
 					resultList.length === 0 ?
 						<MuiTheme.ListItem1>
 							<ListItemAvatar>
-								등록되어 있는 코드헤더가 없습니다.
+								등록되어 있는 계정이 없습니다.
 							</ListItemAvatar>
 						</MuiTheme.ListItem1>
 					: null

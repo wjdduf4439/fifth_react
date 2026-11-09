@@ -26,15 +26,30 @@
 
 .sidebar_right {
     position: fixed;
-	right: -25%;
-    top: 70px;
-    width: 350px;
-    height: 100%;
+	right: 0;
+    top: var(--topbar-offset);
+    width: var(--right-drawer-width);
+    height: calc(100vh - var(--topbar-offset));
+    height: calc(100dvh - var(--topbar-offset));
+    box-sizing: border-box;
     background-color: var(--background-color);
     padding: 20px;
     box-shadow: -2px 0 5px rgba(0,0,0,0.1);
 	border: 1px solid var(--background-border-color);
 	z-index: 9000;
+	overflow-x: hidden;
+	overflow-y: auto;
+	transform: translateX(100%);
+	transition: transform 0.3s ease-out;
+}
+
+.sidebar_right.slide-in {
+	transform: translateX(0);
+}
+
+.sidebar_right.slide-out,
+.sidebar_right.slide-hidden {
+	transform: translateX(100%);
 }
 
 .dropdown_content_main {
@@ -257,22 +272,25 @@
 	padding: 0;
 }
 
-.right_menu_ul {
+.right_menu_ul,
+.right_content_menu {
 	list-style-type: none;
-	margin-left: -40px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	box-sizing: border-box;
 }
 
-.right_menu_ul li {
+.right_menu_ul > li,
+.right_content_menu > li {
 	margin-top: 10px;
 	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .right_content_menu {
-	list-style-type: none;
-}
-
-.right_content_menu li {
-	margin-top: 5px;
+	margin-top: 8px;
 }
 
 .modal_warning {
@@ -293,16 +311,11 @@
     animation: fadeOut 0.5s forwards;
 }
 
-@media (max-width: 768px) {
-    .sidebar_right {
-        right: -60%; /* 작은 화면에서는 너비를 줄임 */
-    }
-}
-
-@media (max-width: 480px) {
-    .sidebar_right {
-        margin-right: 100px; /* 더 작은 화면에서는 너비를 더 줄임 */
-    }
+@media (min-width: 801px) {
+	body.right-drawer-open .container,
+	body.right-drawer-open .home_frame {
+		margin-right: calc(var(--right-drawer-width) + 16px) !important;
+	}
 }
 
 /* CSS 파일에 추가 */

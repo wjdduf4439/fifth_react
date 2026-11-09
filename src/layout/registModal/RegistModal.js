@@ -91,11 +91,11 @@ const RegistModal  = (props) => {
 							<input ref={nickInputRef} type="	text" className='width_40per margin_right_10' id="nick" name="nick" value={nick} onChange={(e) => setNick(e.target.value)} />
 							<span className='margin_right_10'>#</span>
 							<input ref={tagInputRef} type="text" className='width_20per' id="tag" name="tag" value={tag} onChange={(e) => checkTag(e)} />
-							<MuiTheme.IdCheckButton type="button" onClick={() => handleNickCheck(nick + '#' + tag)} > 
+							<MuiTheme.IdCheckButton type="button" onClick={() => handleNickCheck(nick, tag)} > 
 								중복확인
 							</MuiTheme.IdCheckButton>
 							{nickCheck ? (	
-								<span className='font_size_10 text_border-color'>사용가능한 닉네임입니다.</span>
+								<div className='font_size_10 text_border-color'>사용가능한 닉네임입니다.</div>
 							) : (
 								<></>
 							)}

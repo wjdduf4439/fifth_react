@@ -16,6 +16,7 @@ export const useCodeHeadListContent = (props) => {
 
     const {
 		page, setPage,
+		approveMessage, setApproveMessage,
 		reload, setReload,
 		setShowWriteForm,
 		option, setOption,
@@ -70,7 +71,12 @@ export const useCodeHeadListContent = (props) => {
 
 	//승인 처리
 	const handleApproveAccount = (approveAccountList) => {
-		getApproveAccount(approveAccountList);
+		if(approveAccountList.length === 0){
+			setApproveMessage('승인 대상 계정이 없습니다.');
+		}else{
+			setApproveMessage('');
+			getApproveAccount(approveAccountList);
+		}
 	}
 
 	function getNoAppoveList(option) {

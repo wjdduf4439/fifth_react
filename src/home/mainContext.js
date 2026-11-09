@@ -126,7 +126,7 @@ export const useMainContext = (
 	}
 
 	const getIp = () => {
-		axios.get('https://api.ipify.org?format=json').then(response => {
+		axios.get('https://api.ipify.org').then(response => {
 			setContactIp(response.data.ip);
 		}).then(response => {
 			console.log( 'ip : ' + response);	

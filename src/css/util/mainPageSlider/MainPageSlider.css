@@ -27,7 +27,10 @@
 }
 
 .main_page_welcome_slider_div p{
-    width: 70%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
 }
 
 .main_page_welcome_slider-btn {
@@ -83,17 +86,21 @@
 
 .main_page_welcome_slider_button_ul {
 	width: 100%;
-	min-height: 200px;
+	min-height: 120px;
 	text-decoration: none;
-	list-style-type: none; 
-	margin-bottom: -40px;
-	margin-left: -40px;
-
+	list-style-type: none;
+	margin: 0 0 16px 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	box-sizing: border-box;
 }
 
 .main_page_welcome_slider_button_ul > li {
 	position: relative;
-	float:left;
+	float: none;
+	box-sizing: border-box;
 	background-color: rgba(0, 0, 0, 0.1);
 	box-shadow: inset 0px 0px 0 1px var(--background-border-color);
 	margin: 10px;

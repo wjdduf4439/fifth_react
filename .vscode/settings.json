@@ -1,4 +1,12 @@
 {
 	"workbench.colorTheme": "One Dark Pro Darker",
 	"editor.wordWrap": "off",
+	"workbench.editor.labelFormat": "medium",
+	"terminal.integrated.profiles.windows": {
+    "mPowerShell": {
+			"source": "PowerShell",
+			"args": ["-NoExit", "-Command ", "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8"]
+		}
+	},
+	"terminal.integrated.defaultProfile.windows": "mPowerShell",
 }
